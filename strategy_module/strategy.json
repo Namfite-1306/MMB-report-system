@@ -1,0 +1,4089 @@
+{
+  "schema_version": "1.0",
+  "run_id": "mvp-demo-001",
+  "ticker": "TEST",
+  "exchange": "HOSE",
+  "sector": "Demo sector",
+  "as_of": "2026-10-09",
+  "analysis_period": {
+    "start": "2025-01-01",
+    "end": "2026-10-09"
+  },
+  "investment_horizon_months": 12,
+  "status": "demo_only",
+  "data": {
+    "module_version": "2.0",
+    "is_demo": true,
+    "validation": {
+      "contract": "passed",
+      "real_data_verified": false,
+      "schema_status": "proposed_pending_team_agreement"
+    },
+    "theory_sources": [
+      {
+        "id": "value",
+        "title": "Graham and Dodd, Security Analysis (1934)",
+        "pages": null,
+        "verification": "Edition-specific pages pending",
+        "url": "https://www.mheducation.com/highered/mhp/product/security-analysis-seventh-edition.html"
+      },
+      {
+        "id": "valuation",
+        "title": "Aswath Damodaran, Valuation teaching materials",
+        "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm"
+      },
+      {
+        "id": "momentum",
+        "title": "Jegadeesh and Titman (1993)",
+        "pages": "65-91; sample p.67; portfolio construction p.68",
+        "url": "https://doi.org/10.1111/j.1540-6261.1993.tb04702.x"
+      },
+      {
+        "id": "capm",
+        "title": "Sharpe (1964); Lintner (1965)",
+        "pages": "Sharpe 425-442; Lintner 13-37",
+        "url": "https://doi.org/10.1111/j.1540-6261.1964.tb02865.x",
+        "supporting_url": "https://www.aea.ru/data/pdf/lintner1965.pdf"
+      },
+      {
+        "id": "portfolio",
+        "title": "Markowitz (1952), Portfolio Selection",
+        "pages": "77-91",
+        "url": "https://doi.org/10.1111/j.1540-6261.1952.tb01525.x"
+      },
+      {
+        "id": "emh",
+        "title": "Fama (1970), Efficient Capital Markets",
+        "pages": "383-417",
+        "verification": "Detailed full-text review pending",
+        "url": "https://doi.org/10.1111/j.1540-6261.1970.tb00518.x"
+      }
+    ],
+    "rules": [
+      {
+        "id": "macro",
+        "status": "evaluated",
+        "values": {
+          "drivers": [
+            {
+              "name": "Demo borrowing rate",
+              "change": -0.010000000000000009,
+              "change_unit": "fraction",
+              "direction": "down",
+              "conditional_effect": "tailwind",
+              "mechanism": "Conditional assumption: higher rates raise financing costs."
+            }
+          ],
+          "limitation": "Tác động có điều kiện theo cơ chế đầu vào; chưa phải ước lượng nhân quả hoặc dự báo lợi nhuận."
+        },
+        "evidence_refs": [
+          "macro.drivers.0.current",
+          "macro.drivers.0.effect_if_rises",
+          "macro.drivers.0.mechanism",
+          "macro.drivers.0.previous"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "industry",
+        "status": "evaluated",
+        "values": {
+          "industry_revenue_growth": 0.10000000000000009,
+          "company_growth_minus_industry": 0.09999999999999987
+        },
+        "evidence_refs": [
+          "company.financial.current.revenue",
+          "company.financial.previous.revenue",
+          "industry.revenue_current",
+          "industry.revenue_previous"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "fundamental",
+        "status": "evaluated",
+        "values": {
+          "revenue_growth": 0.19999999999999996,
+          "profit_growth": 0.19999999999999996,
+          "net_margin": 0.1,
+          "roe": 0.21818181818181817,
+          "roa": 0.12631578947368421,
+          "debt_to_equity": 0.3,
+          "current_ratio": 2.0,
+          "interest_coverage": 8.0,
+          "cfo_to_profit": 1.1666666666666667,
+          "cash_after_capex": 100,
+          "limitations": "ROE/ROA dùng số dư bình quân hai kỳ; cash_after_capex không mặc nhiên là FCFF hoặc FCFE. Các tỷ số chung không thay thế phân tích đặc thù ngân hàng."
+        },
+        "evidence_refs": [
+          "company.financial.current.assets",
+          "company.financial.current.capex",
+          "company.financial.current.cfo",
+          "company.financial.current.current_assets",
+          "company.financial.current.current_liabilities",
+          "company.financial.current.debt",
+          "company.financial.current.ebit",
+          "company.financial.current.equity",
+          "company.financial.current.interest_expense",
+          "company.financial.current.net_income",
+          "company.financial.current.revenue",
+          "company.financial.previous.assets",
+          "company.financial.previous.equity",
+          "company.financial.previous.net_income",
+          "company.financial.previous.revenue"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "value",
+        "status": "not_applied",
+        "values": null,
+        "evidence_refs": [],
+        "explanation": "Module bị tắt theo cấu hình."
+      },
+      {
+        "id": "relative_valuation",
+        "status": "evaluated",
+        "values": {
+          "estimates": {
+            "PE": {
+              "company_multiple": 8.333333333333334,
+              "peer_median": 11.0,
+              "relative_price_reference": 132.0,
+              "discount_to_reference": 0.24242424242424243,
+              "peers": [
+                {
+                  "ticker": "PEER1",
+                  "multiple": 10.0
+                },
+                {
+                  "ticker": "PEER2",
+                  "multiple": 11.0
+                },
+                {
+                  "ticker": "PEER3",
+                  "multiple": 12.0
+                }
+              ]
+            },
+            "PB": {
+              "company_multiple": 1.6666666666666667,
+              "peer_median": 2.2,
+              "relative_price_reference": 132.0,
+              "discount_to_reference": 0.24242424242424243,
+              "peers": [
+                {
+                  "ticker": "PEER1",
+                  "multiple": 2.0
+                },
+                {
+                  "ticker": "PEER2",
+                  "multiple": 2.2
+                },
+                {
+                  "ticker": "PEER3",
+                  "multiple": 2.4
+                }
+              ]
+            }
+          },
+          "excluded_peers": [],
+          "limitation": "Mức tham chiếu tương đối không phải giá trị nội tại; khả năng so sánh cần được người phân tích kiểm chứng."
+        },
+        "evidence_refs": [
+          "company.bvps",
+          "company.earnings_normalized",
+          "company.eps_ttm",
+          "company.price",
+          "industry.peers.0.bvps",
+          "industry.peers.0.comparability_note",
+          "industry.peers.0.earnings_normalized",
+          "industry.peers.0.eps_ttm",
+          "industry.peers.0.price",
+          "industry.peers.1.bvps",
+          "industry.peers.1.comparability_note",
+          "industry.peers.1.earnings_normalized",
+          "industry.peers.1.eps_ttm",
+          "industry.peers.1.price",
+          "industry.peers.2.bvps",
+          "industry.peers.2.comparability_note",
+          "industry.peers.2.earnings_normalized",
+          "industry.peers.2.eps_ttm",
+          "industry.peers.2.price"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "momentum",
+        "status": "evaluated",
+        "values": {
+          "price_return_6m": 0.06000000000000005,
+          "limitation": "Mô tả một mã; không tái lập danh mục momentum và không chứng minh lợi nhuận tương lai."
+        },
+        "evidence_refs": [
+          "company.monthly_prices.points.0",
+          "company.monthly_prices.points.1",
+          "company.monthly_prices.points.2",
+          "company.monthly_prices.points.3",
+          "company.monthly_prices.points.4",
+          "company.monthly_prices.points.5",
+          "company.monthly_prices.points.6"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "risk",
+        "status": "evaluated",
+        "values": {
+          "sample_return_count": 72,
+          "sample_start": "2026-07-01",
+          "sample_end": "2026-10-09",
+          "volatility_annualized": 0.03954695551039088,
+          "max_drawdown": -0.0024000000000000687,
+          "financial_flags": [],
+          "position_limit": null,
+          "limitation": "Ước lượng trên mẫu được cung cấp; chưa đo rủi ro danh mục, thanh khoản hoặc đặt tỷ trọng/stop-loss theo khẩu vị người dùng."
+        },
+        "evidence_refs": [
+          "company.financial.current.cfo",
+          "company.financial.current.equity",
+          "company.financial.current.net_income",
+          "company.history.points.0",
+          "company.history.points.1",
+          "company.history.points.10",
+          "company.history.points.11",
+          "company.history.points.12",
+          "company.history.points.13",
+          "company.history.points.14",
+          "company.history.points.15",
+          "company.history.points.16",
+          "company.history.points.17",
+          "company.history.points.18",
+          "company.history.points.19",
+          "company.history.points.2",
+          "company.history.points.20",
+          "company.history.points.21",
+          "company.history.points.22",
+          "company.history.points.23",
+          "company.history.points.24",
+          "company.history.points.25",
+          "company.history.points.26",
+          "company.history.points.27",
+          "company.history.points.28",
+          "company.history.points.29",
+          "company.history.points.3",
+          "company.history.points.30",
+          "company.history.points.31",
+          "company.history.points.32",
+          "company.history.points.33",
+          "company.history.points.34",
+          "company.history.points.35",
+          "company.history.points.36",
+          "company.history.points.37",
+          "company.history.points.38",
+          "company.history.points.39",
+          "company.history.points.4",
+          "company.history.points.40",
+          "company.history.points.41",
+          "company.history.points.42",
+          "company.history.points.43",
+          "company.history.points.44",
+          "company.history.points.45",
+          "company.history.points.46",
+          "company.history.points.47",
+          "company.history.points.48",
+          "company.history.points.49",
+          "company.history.points.5",
+          "company.history.points.50",
+          "company.history.points.51",
+          "company.history.points.52",
+          "company.history.points.53",
+          "company.history.points.54",
+          "company.history.points.55",
+          "company.history.points.56",
+          "company.history.points.57",
+          "company.history.points.58",
+          "company.history.points.59",
+          "company.history.points.6",
+          "company.history.points.60",
+          "company.history.points.61",
+          "company.history.points.62",
+          "company.history.points.63",
+          "company.history.points.64",
+          "company.history.points.65",
+          "company.history.points.66",
+          "company.history.points.67",
+          "company.history.points.68",
+          "company.history.points.69",
+          "company.history.points.7",
+          "company.history.points.70",
+          "company.history.points.71",
+          "company.history.points.72",
+          "company.history.points.8",
+          "company.history.points.9"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "capm",
+        "status": "evaluated",
+        "values": {
+          "beta": 1.200000000000015,
+          "expected_return_annual": 0.1120000000000009,
+          "risk_free_annual": 0.04,
+          "market_risk_premium_annual": 0.06,
+          "sample_return_count": 72,
+          "sample_start": "2026-07-01",
+          "sample_end": "2026-10-09",
+          "limitation": "CAPM là mô hình có giả định; beta phụ thuộc mẫu. Không dùng beta làm tín hiệu mua độc lập."
+        },
+        "evidence_refs": [
+          "company.history.points.0",
+          "company.history.points.1",
+          "company.history.points.10",
+          "company.history.points.11",
+          "company.history.points.12",
+          "company.history.points.13",
+          "company.history.points.14",
+          "company.history.points.15",
+          "company.history.points.16",
+          "company.history.points.17",
+          "company.history.points.18",
+          "company.history.points.19",
+          "company.history.points.2",
+          "company.history.points.20",
+          "company.history.points.21",
+          "company.history.points.22",
+          "company.history.points.23",
+          "company.history.points.24",
+          "company.history.points.25",
+          "company.history.points.26",
+          "company.history.points.27",
+          "company.history.points.28",
+          "company.history.points.29",
+          "company.history.points.3",
+          "company.history.points.30",
+          "company.history.points.31",
+          "company.history.points.32",
+          "company.history.points.33",
+          "company.history.points.34",
+          "company.history.points.35",
+          "company.history.points.36",
+          "company.history.points.37",
+          "company.history.points.38",
+          "company.history.points.39",
+          "company.history.points.4",
+          "company.history.points.40",
+          "company.history.points.41",
+          "company.history.points.42",
+          "company.history.points.43",
+          "company.history.points.44",
+          "company.history.points.45",
+          "company.history.points.46",
+          "company.history.points.47",
+          "company.history.points.48",
+          "company.history.points.49",
+          "company.history.points.5",
+          "company.history.points.50",
+          "company.history.points.51",
+          "company.history.points.52",
+          "company.history.points.53",
+          "company.history.points.54",
+          "company.history.points.55",
+          "company.history.points.56",
+          "company.history.points.57",
+          "company.history.points.58",
+          "company.history.points.59",
+          "company.history.points.6",
+          "company.history.points.60",
+          "company.history.points.61",
+          "company.history.points.62",
+          "company.history.points.63",
+          "company.history.points.64",
+          "company.history.points.65",
+          "company.history.points.66",
+          "company.history.points.67",
+          "company.history.points.68",
+          "company.history.points.69",
+          "company.history.points.7",
+          "company.history.points.70",
+          "company.history.points.71",
+          "company.history.points.72",
+          "company.history.points.8",
+          "company.history.points.9",
+          "market.benchmark.points.0",
+          "market.benchmark.points.1",
+          "market.benchmark.points.10",
+          "market.benchmark.points.11",
+          "market.benchmark.points.12",
+          "market.benchmark.points.13",
+          "market.benchmark.points.14",
+          "market.benchmark.points.15",
+          "market.benchmark.points.16",
+          "market.benchmark.points.17",
+          "market.benchmark.points.18",
+          "market.benchmark.points.19",
+          "market.benchmark.points.2",
+          "market.benchmark.points.20",
+          "market.benchmark.points.21",
+          "market.benchmark.points.22",
+          "market.benchmark.points.23",
+          "market.benchmark.points.24",
+          "market.benchmark.points.25",
+          "market.benchmark.points.26",
+          "market.benchmark.points.27",
+          "market.benchmark.points.28",
+          "market.benchmark.points.29",
+          "market.benchmark.points.3",
+          "market.benchmark.points.30",
+          "market.benchmark.points.31",
+          "market.benchmark.points.32",
+          "market.benchmark.points.33",
+          "market.benchmark.points.34",
+          "market.benchmark.points.35",
+          "market.benchmark.points.36",
+          "market.benchmark.points.37",
+          "market.benchmark.points.38",
+          "market.benchmark.points.39",
+          "market.benchmark.points.4",
+          "market.benchmark.points.40",
+          "market.benchmark.points.41",
+          "market.benchmark.points.42",
+          "market.benchmark.points.43",
+          "market.benchmark.points.44",
+          "market.benchmark.points.45",
+          "market.benchmark.points.46",
+          "market.benchmark.points.47",
+          "market.benchmark.points.48",
+          "market.benchmark.points.49",
+          "market.benchmark.points.5",
+          "market.benchmark.points.50",
+          "market.benchmark.points.51",
+          "market.benchmark.points.52",
+          "market.benchmark.points.53",
+          "market.benchmark.points.54",
+          "market.benchmark.points.55",
+          "market.benchmark.points.56",
+          "market.benchmark.points.57",
+          "market.benchmark.points.58",
+          "market.benchmark.points.59",
+          "market.benchmark.points.6",
+          "market.benchmark.points.60",
+          "market.benchmark.points.61",
+          "market.benchmark.points.62",
+          "market.benchmark.points.63",
+          "market.benchmark.points.64",
+          "market.benchmark.points.65",
+          "market.benchmark.points.66",
+          "market.benchmark.points.67",
+          "market.benchmark.points.68",
+          "market.benchmark.points.69",
+          "market.benchmark.points.7",
+          "market.benchmark.points.70",
+          "market.benchmark.points.71",
+          "market.benchmark.points.72",
+          "market.benchmark.points.8",
+          "market.benchmark.points.9",
+          "market.benchmark_name",
+          "market.market_risk_premium_annual",
+          "market.risk_free_annual"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "news",
+        "status": "evaluated",
+        "values": {
+          "coverage": "Synthetic event set for software testing.",
+          "events": [
+            {
+              "title": "Synthetic event requiring review",
+              "direction": "negative",
+              "mechanism": "Synthetic risk annotation, not real news.",
+              "verification": "unverified",
+              "source": "https://example.com/synthetic-test-data",
+              "requires_review": true
+            }
+          ],
+          "limitation": "Phân loại sự kiện là đầu vào có nguồn, không phải kiểm chứng tự động nội dung bài báo. Không đọc lệnh từ nội dung tin tức."
+        },
+        "evidence_refs": [
+          "news.coverage",
+          "news.items.0.direction",
+          "news.items.0.mechanism",
+          "news.items.0.title",
+          "news.items.0.verification"
+        ],
+        "explanation": "Đã tính từ đầu vào; cần kiểm chứng nguồn thực tế."
+      },
+      {
+        "id": "mvp_target_price",
+        "status": "evaluated",
+        "values": {
+          "market_price": 100,
+          "method": "60% PE + 40% Graham screening reference",
+          "relative_method": "PE",
+          "median_multiple": 11,
+          "relative_source": "industry_supplied_median",
+          "relative_target": 132,
+          "graham_reference": 116.1895003862225,
+          "target_price": 125.67580015448901,
+          "target_price_unit": "VND/share",
+          "upside": 0.25675800154489004,
+          "margin_of_safety": 0.20430186338918566,
+          "valuation_date": "2026-10-09",
+          "limitation": "Giá mục tiêu là tham chiếu theo phương pháp, không phải dự báo giá chắc chắn sau thời hạn đầu tư."
+        },
+        "explanation": "Ưu tiên định giá tương đối; Graham là bổ sung.",
+        "evidence_refs": [
+          "company.bvps",
+          "company.earnings_normalized",
+          "company.eps_avg_3y",
+          "company.eps_ttm",
+          "company.graham_applicable",
+          "company.graham_basis",
+          "company.price",
+          "industry.comparability_note",
+          "industry.ind_pe_median",
+          "industry.peer_count"
+        ]
+      },
+      {
+        "id": "mvp_decision_matrix",
+        "status": "evaluated",
+        "values": {
+          "target_available": true,
+          "upside_at_least_15_percent": true,
+          "financial_risk_safe": true,
+          "financial_risk_high": false
+        },
+        "explanation": "Upside đạt ngưỡng 15% theo chính sách MVP và đầu vào đánh giá rủi ro tài chính ở mức safe.",
+        "evidence_refs": [
+          "company.bvps",
+          "company.de",
+          "company.earnings_normalized",
+          "company.eps_avg_3y",
+          "company.eps_ttm",
+          "company.financial_risk",
+          "company.financial_risk_basis",
+          "company.graham_applicable",
+          "company.graham_basis",
+          "company.price",
+          "industry.comparability_note",
+          "industry.ind_pe_median",
+          "industry.peer_count"
+        ]
+      },
+      {
+        "id": "news_keywords",
+        "status": "evaluated",
+        "values": {
+          "events": [
+            {
+              "title": "Synthetic event requiring review",
+              "categories": [
+                "other"
+              ],
+              "source": "https://example.com/synthetic-test-data",
+              "published_at": "2026-09-30",
+              "requires_content_review": true
+            }
+          ]
+        },
+        "explanation": "Chỉ phân loại chủ đề; không dùng từ khóa để tự kết luận tốt/xấu.",
+        "evidence_refs": [
+          "news.items.0.title"
+        ]
+      }
+    ],
+    "evidence_refs": {
+      "macro.drivers.0.current": {
+        "value": 0.06,
+        "unit": "fraction",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "macro.drivers.0.previous": {
+        "value": 0.07,
+        "unit": "fraction",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "macro.drivers.0.effect_if_rises": {
+        "value": "headwind",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "macro.drivers.0.mechanism": {
+        "value": "Conditional assumption: higher rates raise financing costs.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.revenue_current": {
+        "value": 11000,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.revenue_previous": {
+        "value": 10000,
+        "unit": "VND",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "industry.peers.0.comparability_note": {
+        "value": "Synthetic peers with matched growth and risk assumptions.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.0.price": {
+        "value": 100,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.peers.0.eps_ttm": {
+        "value": 10,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.0.bvps": {
+        "value": 50,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.0.earnings_normalized": {
+        "value": true,
+        "unit": "boolean",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.1.comparability_note": {
+        "value": "Synthetic peers with matched growth and risk assumptions.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.1.price": {
+        "value": 110,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.peers.1.eps_ttm": {
+        "value": 10,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.1.bvps": {
+        "value": 50,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.1.earnings_normalized": {
+        "value": true,
+        "unit": "boolean",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.2.comparability_note": {
+        "value": "Synthetic peers with matched growth and risk assumptions.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.2.price": {
+        "value": 120,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.peers.2.eps_ttm": {
+        "value": 10,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.2.bvps": {
+        "value": 50,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.peers.2.earnings_normalized": {
+        "value": true,
+        "unit": "boolean",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "industry.ind_pe_median": {
+        "value": 11,
+        "unit": "multiple",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.ind_pb_median": {
+        "value": 2.2,
+        "unit": "multiple",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.peer_count": {
+        "value": 3,
+        "unit": "count",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "industry.comparability_note": {
+        "value": "Synthetic matched accounting, earnings periods, growth and risk.",
+        "unit": "text",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.price": {
+        "value": 100,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.eps_ttm": {
+        "value": 12,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.bvps": {
+        "value": 60,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.earnings_normalized": {
+        "value": true,
+        "unit": "boolean",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.valuation.low": {
+        "value": 125,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.valuation.high": {
+        "value": 150,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.financial.current.revenue": {
+        "value": 1200,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.net_income": {
+        "value": 120,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.equity": {
+        "value": 600,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.assets": {
+        "value": 1000,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.debt": {
+        "value": 180,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.current_assets": {
+        "value": 400,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.current_liabilities": {
+        "value": 200,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.ebit": {
+        "value": 160,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.interest_expense": {
+        "value": 20,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.cfo": {
+        "value": 140,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.current.capex": {
+        "value": 40,
+        "unit": "VND",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.financial.previous.revenue": {
+        "value": 1000,
+        "unit": "VND",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "company.financial.previous.net_income": {
+        "value": 100,
+        "unit": "VND",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "company.financial.previous.equity": {
+        "value": 500,
+        "unit": "VND",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "company.financial.previous.assets": {
+        "value": 900,
+        "unit": "VND",
+        "period": "2025-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2025-09-30",
+        "published_at": "2025-09-30"
+      },
+      "company.monthly_prices.points.0": {
+        "value": 100,
+        "unit": "VND/share",
+        "period": "2026-03-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-03-31",
+        "published_at": "2026-03-31"
+      },
+      "company.monthly_prices.points.1": {
+        "value": 101,
+        "unit": "VND/share",
+        "period": "2026-04-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-04-30",
+        "published_at": "2026-04-30"
+      },
+      "company.monthly_prices.points.2": {
+        "value": 102,
+        "unit": "VND/share",
+        "period": "2026-05-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-05-31",
+        "published_at": "2026-05-31"
+      },
+      "company.monthly_prices.points.3": {
+        "value": 103,
+        "unit": "VND/share",
+        "period": "2026-06-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-06-30",
+        "published_at": "2026-06-30"
+      },
+      "company.monthly_prices.points.4": {
+        "value": 104,
+        "unit": "VND/share",
+        "period": "2026-07-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-31",
+        "published_at": "2026-07-31"
+      },
+      "company.monthly_prices.points.5": {
+        "value": 105,
+        "unit": "VND/share",
+        "period": "2026-08-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-31",
+        "published_at": "2026-08-31"
+      },
+      "company.monthly_prices.points.6": {
+        "value": 106,
+        "unit": "VND/share",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.history.points.0": {
+        "value": 100.24,
+        "unit": "index",
+        "period": "2026-07-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-01",
+        "published_at": "2026-07-01"
+      },
+      "company.history.points.1": {
+        "value": 100.11971199999999,
+        "unit": "index",
+        "period": "2026-07-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-02",
+        "published_at": "2026-07-02"
+      },
+      "company.history.points.2": {
+        "value": 100.4801429632,
+        "unit": "index",
+        "period": "2026-07-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-03",
+        "published_at": "2026-07-03"
+      },
+      "company.history.points.3": {
+        "value": 100.23899062008832,
+        "unit": "index",
+        "period": "2026-07-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-06",
+        "published_at": "2026-07-06"
+      },
+      "company.history.points.4": {
+        "value": 100.47956419757652,
+        "unit": "index",
+        "period": "2026-07-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-07",
+        "published_at": "2026-07-07"
+      },
+      "company.history.points.5": {
+        "value": 100.35898872053943,
+        "unit": "index",
+        "period": "2026-07-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-08",
+        "published_at": "2026-07-08"
+      },
+      "company.history.points.6": {
+        "value": 100.72028107993337,
+        "unit": "index",
+        "period": "2026-07-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-09",
+        "published_at": "2026-07-09"
+      },
+      "company.history.points.7": {
+        "value": 100.47855240534153,
+        "unit": "index",
+        "period": "2026-07-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-10",
+        "published_at": "2026-07-10"
+      },
+      "company.history.points.8": {
+        "value": 100.71970093111435,
+        "unit": "index",
+        "period": "2026-07-13",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-13",
+        "published_at": "2026-07-13"
+      },
+      "company.history.points.9": {
+        "value": 100.59883728999701,
+        "unit": "index",
+        "period": "2026-07-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-14",
+        "published_at": "2026-07-14"
+      },
+      "company.history.points.10": {
+        "value": 100.960993104241,
+        "unit": "index",
+        "period": "2026-07-15",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-15",
+        "published_at": "2026-07-15"
+      },
+      "company.history.points.11": {
+        "value": 100.71868672079083,
+        "unit": "index",
+        "period": "2026-07-16",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-16",
+        "published_at": "2026-07-16"
+      },
+      "company.history.points.12": {
+        "value": 100.96041156892072,
+        "unit": "index",
+        "period": "2026-07-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-17",
+        "published_at": "2026-07-17"
+      },
+      "company.history.points.13": {
+        "value": 100.83925907503802,
+        "unit": "index",
+        "period": "2026-07-20",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-20",
+        "published_at": "2026-07-20"
+      },
+      "company.history.points.14": {
+        "value": 101.20228040770816,
+        "unit": "index",
+        "period": "2026-07-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-21",
+        "published_at": "2026-07-21"
+      },
+      "company.history.points.15": {
+        "value": 100.95939493472966,
+        "unit": "index",
+        "period": "2026-07-22",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-22",
+        "published_at": "2026-07-22"
+      },
+      "company.history.points.16": {
+        "value": 101.20169748257301,
+        "unit": "index",
+        "period": "2026-07-23",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-23",
+        "published_at": "2026-07-23"
+      },
+      "company.history.points.17": {
+        "value": 101.08025544559392,
+        "unit": "index",
+        "period": "2026-07-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-24",
+        "published_at": "2026-07-24"
+      },
+      "company.history.points.18": {
+        "value": 101.44414436519806,
+        "unit": "index",
+        "period": "2026-07-27",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-27",
+        "published_at": "2026-07-27"
+      },
+      "company.history.points.19": {
+        "value": 101.20067841872158,
+        "unit": "index",
+        "period": "2026-07-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-28",
+        "published_at": "2026-07-28"
+      },
+      "company.history.points.20": {
+        "value": 101.4435600469265,
+        "unit": "index",
+        "period": "2026-07-29",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-29",
+        "published_at": "2026-07-29"
+      },
+      "company.history.points.21": {
+        "value": 101.3218277748702,
+        "unit": "index",
+        "period": "2026-07-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-30",
+        "published_at": "2026-07-30"
+      },
+      "company.history.points.22": {
+        "value": 101.68658635485974,
+        "unit": "index",
+        "period": "2026-07-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-31",
+        "published_at": "2026-07-31"
+      },
+      "company.history.points.23": {
+        "value": 101.44253854760808,
+        "unit": "index",
+        "period": "2026-08-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-03",
+        "published_at": "2026-08-03"
+      },
+      "company.history.points.24": {
+        "value": 101.68600064012233,
+        "unit": "index",
+        "period": "2026-08-04",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-04",
+        "published_at": "2026-08-04"
+      },
+      "company.history.points.25": {
+        "value": 101.56397743935419,
+        "unit": "index",
+        "period": "2026-08-05",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-05",
+        "published_at": "2026-08-05"
+      },
+      "company.history.points.26": {
+        "value": 101.92960775813587,
+        "unit": "index",
+        "period": "2026-08-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-06",
+        "published_at": "2026-08-06"
+      },
+      "company.history.points.27": {
+        "value": 101.68497669951635,
+        "unit": "index",
+        "period": "2026-08-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-07",
+        "published_at": "2026-08-07"
+      },
+      "company.history.points.28": {
+        "value": 101.9290206435952,
+        "unit": "index",
+        "period": "2026-08-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-10",
+        "published_at": "2026-08-10"
+      },
+      "company.history.points.29": {
+        "value": 101.80670581882288,
+        "unit": "index",
+        "period": "2026-08-11",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-11",
+        "published_at": "2026-08-11"
+      },
+      "company.history.points.30": {
+        "value": 102.17320995977065,
+        "unit": "index",
+        "period": "2026-08-12",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-12",
+        "published_at": "2026-08-12"
+      },
+      "company.history.points.31": {
+        "value": 101.9279942558672,
+        "unit": "index",
+        "period": "2026-08-13",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-13",
+        "published_at": "2026-08-13"
+      },
+      "company.history.points.32": {
+        "value": 102.17262144208128,
+        "unit": "index",
+        "period": "2026-08-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-14",
+        "published_at": "2026-08-14"
+      },
+      "company.history.points.33": {
+        "value": 102.05001429635078,
+        "unit": "index",
+        "period": "2026-08-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-17",
+        "published_at": "2026-08-17"
+      },
+      "company.history.points.34": {
+        "value": 102.41739434781765,
+        "unit": "index",
+        "period": "2026-08-18",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-18",
+        "published_at": "2026-08-18"
+      },
+      "company.history.points.35": {
+        "value": 102.17159260138288,
+        "unit": "index",
+        "period": "2026-08-19",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-19",
+        "published_at": "2026-08-19"
+      },
+      "company.history.points.36": {
+        "value": 102.4168044236262,
+        "unit": "index",
+        "period": "2026-08-20",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-20",
+        "published_at": "2026-08-20"
+      },
+      "company.history.points.37": {
+        "value": 102.29390425831785,
+        "unit": "index",
+        "period": "2026-08-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-21",
+        "published_at": "2026-08-21"
+      },
+      "company.history.points.38": {
+        "value": 102.6621623136478,
+        "unit": "index",
+        "period": "2026-08-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-24",
+        "published_at": "2026-08-24"
+      },
+      "company.history.points.39": {
+        "value": 102.41577312409505,
+        "unit": "index",
+        "period": "2026-08-25",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-25",
+        "published_at": "2026-08-25"
+      },
+      "company.history.points.40": {
+        "value": 102.66157097959288,
+        "unit": "index",
+        "period": "2026-08-26",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-26",
+        "published_at": "2026-08-26"
+      },
+      "company.history.points.41": {
+        "value": 102.53837709441737,
+        "unit": "index",
+        "period": "2026-08-27",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-27",
+        "published_at": "2026-08-27"
+      },
+      "company.history.points.42": {
+        "value": 102.90751525195728,
+        "unit": "index",
+        "period": "2026-08-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-28",
+        "published_at": "2026-08-28"
+      },
+      "company.history.points.43": {
+        "value": 102.66053721535259,
+        "unit": "index",
+        "period": "2026-08-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-31",
+        "published_at": "2026-08-31"
+      },
+      "company.history.points.44": {
+        "value": 102.90692250466944,
+        "unit": "index",
+        "period": "2026-09-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-01",
+        "published_at": "2026-09-01"
+      },
+      "company.history.points.45": {
+        "value": 102.78343419766384,
+        "unit": "index",
+        "period": "2026-09-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-02",
+        "published_at": "2026-09-02"
+      },
+      "company.history.points.46": {
+        "value": 103.15345456077543,
+        "unit": "index",
+        "period": "2026-09-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-03",
+        "published_at": "2026-09-03"
+      },
+      "company.history.points.47": {
+        "value": 102.90588626982958,
+        "unit": "index",
+        "period": "2026-09-04",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-04",
+        "published_at": "2026-09-04"
+      },
+      "company.history.points.48": {
+        "value": 103.15286039687717,
+        "unit": "index",
+        "period": "2026-09-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-07",
+        "published_at": "2026-09-07"
+      },
+      "company.history.points.49": {
+        "value": 103.02907696440093,
+        "unit": "index",
+        "period": "2026-09-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-08",
+        "published_at": "2026-09-08"
+      },
+      "company.history.points.50": {
+        "value": 103.39998164147278,
+        "unit": "index",
+        "period": "2026-09-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-09",
+        "published_at": "2026-09-09"
+      },
+      "company.history.points.51": {
+        "value": 103.15182168553325,
+        "unit": "index",
+        "period": "2026-09-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-10",
+        "published_at": "2026-09-10"
+      },
+      "company.history.points.52": {
+        "value": 103.39938605757852,
+        "unit": "index",
+        "period": "2026-09-11",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-11",
+        "published_at": "2026-09-11"
+      },
+      "company.history.points.53": {
+        "value": 103.27530679430943,
+        "unit": "index",
+        "period": "2026-09-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-14",
+        "published_at": "2026-09-14"
+      },
+      "company.history.points.54": {
+        "value": 103.64709789876895,
+        "unit": "index",
+        "period": "2026-09-15",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-15",
+        "published_at": "2026-09-15"
+      },
+      "company.history.points.55": {
+        "value": 103.3983448638119,
+        "unit": "index",
+        "period": "2026-09-16",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-16",
+        "published_at": "2026-09-16"
+      },
+      "company.history.points.56": {
+        "value": 103.64650089148505,
+        "unit": "index",
+        "period": "2026-09-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-17",
+        "published_at": "2026-09-17"
+      },
+      "company.history.points.57": {
+        "value": 103.52212509041527,
+        "unit": "index",
+        "period": "2026-09-18",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-18",
+        "published_at": "2026-09-18"
+      },
+      "company.history.points.58": {
+        "value": 103.89480474074077,
+        "unit": "index",
+        "period": "2026-09-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-21",
+        "published_at": "2026-09-21"
+      },
+      "company.history.points.59": {
+        "value": 103.64545720936299,
+        "unit": "index",
+        "period": "2026-09-22",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-22",
+        "published_at": "2026-09-22"
+      },
+      "company.history.points.60": {
+        "value": 103.89420630666545,
+        "unit": "index",
+        "period": "2026-09-23",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-23",
+        "published_at": "2026-09-23"
+      },
+      "company.history.points.61": {
+        "value": 103.76953325909746,
+        "unit": "index",
+        "period": "2026-09-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-24",
+        "published_at": "2026-09-24"
+      },
+      "company.history.points.62": {
+        "value": 104.1431035788302,
+        "unit": "index",
+        "period": "2026-09-25",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-25",
+        "published_at": "2026-09-25"
+      },
+      "company.history.points.63": {
+        "value": 103.89316013024101,
+        "unit": "index",
+        "period": "2026-09-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-28",
+        "published_at": "2026-09-28"
+      },
+      "company.history.points.64": {
+        "value": 104.14250371455358,
+        "unit": "index",
+        "period": "2026-09-29",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-29",
+        "published_at": "2026-09-29"
+      },
+      "company.history.points.65": {
+        "value": 104.01753271009612,
+        "unit": "index",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "company.history.points.66": {
+        "value": 104.39199582785247,
+        "unit": "index",
+        "period": "2026-10-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-01",
+        "published_at": "2026-10-01"
+      },
+      "company.history.points.67": {
+        "value": 104.14145503786563,
+        "unit": "index",
+        "period": "2026-10-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-02",
+        "published_at": "2026-10-02"
+      },
+      "company.history.points.68": {
+        "value": 104.3913945299565,
+        "unit": "index",
+        "period": "2026-10-05",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-05",
+        "published_at": "2026-10-05"
+      },
+      "company.history.points.69": {
+        "value": 104.26612485652055,
+        "unit": "index",
+        "period": "2026-10-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-06",
+        "published_at": "2026-10-06"
+      },
+      "company.history.points.70": {
+        "value": 104.64148290600403,
+        "unit": "index",
+        "period": "2026-10-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-07",
+        "published_at": "2026-10-07"
+      },
+      "company.history.points.71": {
+        "value": 104.39034334702963,
+        "unit": "index",
+        "period": "2026-10-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-08",
+        "published_at": "2026-10-08"
+      },
+      "company.history.points.72": {
+        "value": 104.64088017106249,
+        "unit": "index",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.de": {
+        "value": 0.3,
+        "unit": "fraction",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.financial_risk": {
+        "value": "safe",
+        "unit": "text",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.financial_risk_basis": {
+        "value": "Synthetic safe assessment for software testing, not real analysis.",
+        "unit": "text",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.graham_applicable": {
+        "value": true,
+        "unit": "boolean",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.graham_basis": {
+        "value": "Synthetic asset-based company assumption for software testing.",
+        "unit": "text",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2026-09-30",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "company.eps_avg_3y": {
+        "value": 10,
+        "unit": "VND/share",
+        "source": "https://example.com/mvp-synthetic-test",
+        "period": "2024-2026",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "market.benchmark.points.0": {
+        "value": 100.2,
+        "unit": "index",
+        "period": "2026-07-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-01",
+        "published_at": "2026-07-01"
+      },
+      "market.benchmark.points.1": {
+        "value": 100.0998,
+        "unit": "index",
+        "period": "2026-07-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-02",
+        "published_at": "2026-07-02"
+      },
+      "market.benchmark.points.2": {
+        "value": 100.40009939999999,
+        "unit": "index",
+        "period": "2026-07-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-03",
+        "published_at": "2026-07-03"
+      },
+      "market.benchmark.points.3": {
+        "value": 100.19929920119999,
+        "unit": "index",
+        "period": "2026-07-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-06",
+        "published_at": "2026-07-06"
+      },
+      "market.benchmark.points.4": {
+        "value": 100.3996977996024,
+        "unit": "index",
+        "period": "2026-07-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-07",
+        "published_at": "2026-07-07"
+      },
+      "market.benchmark.points.5": {
+        "value": 100.29929810180279,
+        "unit": "index",
+        "period": "2026-07-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-08",
+        "published_at": "2026-07-08"
+      },
+      "market.benchmark.points.6": {
+        "value": 100.60019599610818,
+        "unit": "index",
+        "period": "2026-07-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-09",
+        "published_at": "2026-07-09"
+      },
+      "market.benchmark.points.7": {
+        "value": 100.39899560411597,
+        "unit": "index",
+        "period": "2026-07-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-10",
+        "published_at": "2026-07-10"
+      },
+      "market.benchmark.points.8": {
+        "value": 100.5997935953242,
+        "unit": "index",
+        "period": "2026-07-13",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-13",
+        "published_at": "2026-07-13"
+      },
+      "market.benchmark.points.9": {
+        "value": 100.49919380172888,
+        "unit": "index",
+        "period": "2026-07-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-14",
+        "published_at": "2026-07-14"
+      },
+      "market.benchmark.points.10": {
+        "value": 100.80069138313405,
+        "unit": "index",
+        "period": "2026-07-15",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-15",
+        "published_at": "2026-07-15"
+      },
+      "market.benchmark.points.11": {
+        "value": 100.59909000036778,
+        "unit": "index",
+        "period": "2026-07-16",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-16",
+        "published_at": "2026-07-16"
+      },
+      "market.benchmark.points.12": {
+        "value": 100.80028818036851,
+        "unit": "index",
+        "period": "2026-07-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-17",
+        "published_at": "2026-07-17"
+      },
+      "market.benchmark.points.13": {
+        "value": 100.69948789218815,
+        "unit": "index",
+        "period": "2026-07-20",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-20",
+        "published_at": "2026-07-20"
+      },
+      "market.benchmark.points.14": {
+        "value": 101.0015863558647,
+        "unit": "index",
+        "period": "2026-07-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-21",
+        "published_at": "2026-07-21"
+      },
+      "market.benchmark.points.15": {
+        "value": 100.79958318315298,
+        "unit": "index",
+        "period": "2026-07-22",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-22",
+        "published_at": "2026-07-22"
+      },
+      "market.benchmark.points.16": {
+        "value": 101.00118234951928,
+        "unit": "index",
+        "period": "2026-07-23",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-23",
+        "published_at": "2026-07-23"
+      },
+      "market.benchmark.points.17": {
+        "value": 100.90018116716976,
+        "unit": "index",
+        "period": "2026-07-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-24",
+        "published_at": "2026-07-24"
+      },
+      "market.benchmark.points.18": {
+        "value": 101.20288171067126,
+        "unit": "index",
+        "period": "2026-07-27",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-27",
+        "published_at": "2026-07-27"
+      },
+      "market.benchmark.points.19": {
+        "value": 101.00047594724992,
+        "unit": "index",
+        "period": "2026-07-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-28",
+        "published_at": "2026-07-28"
+      },
+      "market.benchmark.points.20": {
+        "value": 101.20247689914443,
+        "unit": "index",
+        "period": "2026-07-29",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-29",
+        "published_at": "2026-07-29"
+      },
+      "market.benchmark.points.21": {
+        "value": 101.10127442224528,
+        "unit": "index",
+        "period": "2026-07-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-30",
+        "published_at": "2026-07-30"
+      },
+      "market.benchmark.points.22": {
+        "value": 101.40457824551201,
+        "unit": "index",
+        "period": "2026-07-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-07-31",
+        "published_at": "2026-07-31"
+      },
+      "market.benchmark.points.23": {
+        "value": 101.20176908902098,
+        "unit": "index",
+        "period": "2026-08-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-03",
+        "published_at": "2026-08-03"
+      },
+      "market.benchmark.points.24": {
+        "value": 101.40417262719903,
+        "unit": "index",
+        "period": "2026-08-04",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-04",
+        "published_at": "2026-08-04"
+      },
+      "market.benchmark.points.25": {
+        "value": 101.30276845457183,
+        "unit": "index",
+        "period": "2026-08-05",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-05",
+        "published_at": "2026-08-05"
+      },
+      "market.benchmark.points.26": {
+        "value": 101.60667675993554,
+        "unit": "index",
+        "period": "2026-08-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-06",
+        "published_at": "2026-08-06"
+      },
+      "market.benchmark.points.27": {
+        "value": 101.40346340641567,
+        "unit": "index",
+        "period": "2026-08-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-07",
+        "published_at": "2026-08-07"
+      },
+      "market.benchmark.points.28": {
+        "value": 101.6062703332285,
+        "unit": "index",
+        "period": "2026-08-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-10",
+        "published_at": "2026-08-10"
+      },
+      "market.benchmark.points.29": {
+        "value": 101.50466406289526,
+        "unit": "index",
+        "period": "2026-08-11",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-11",
+        "published_at": "2026-08-11"
+      },
+      "market.benchmark.points.30": {
+        "value": 101.80917805508393,
+        "unit": "index",
+        "period": "2026-08-12",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-12",
+        "published_at": "2026-08-12"
+      },
+      "market.benchmark.points.31": {
+        "value": 101.60555969897376,
+        "unit": "index",
+        "period": "2026-08-13",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-13",
+        "published_at": "2026-08-13"
+      },
+      "market.benchmark.points.32": {
+        "value": 101.80877081837171,
+        "unit": "index",
+        "period": "2026-08-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-14",
+        "published_at": "2026-08-14"
+      },
+      "market.benchmark.points.33": {
+        "value": 101.70696204755335,
+        "unit": "index",
+        "period": "2026-08-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-17",
+        "published_at": "2026-08-17"
+      },
+      "market.benchmark.points.34": {
+        "value": 102.01208293369599,
+        "unit": "index",
+        "period": "2026-08-18",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-18",
+        "published_at": "2026-08-18"
+      },
+      "market.benchmark.points.35": {
+        "value": 101.8080587678286,
+        "unit": "index",
+        "period": "2026-08-19",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-19",
+        "published_at": "2026-08-19"
+      },
+      "market.benchmark.points.36": {
+        "value": 102.01167488536426,
+        "unit": "index",
+        "period": "2026-08-20",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-20",
+        "published_at": "2026-08-20"
+      },
+      "market.benchmark.points.37": {
+        "value": 101.9096632104789,
+        "unit": "index",
+        "period": "2026-08-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-21",
+        "published_at": "2026-08-21"
+      },
+      "market.benchmark.points.38": {
+        "value": 102.21539220011032,
+        "unit": "index",
+        "period": "2026-08-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-24",
+        "published_at": "2026-08-24"
+      },
+      "market.benchmark.points.39": {
+        "value": 102.0109614157101,
+        "unit": "index",
+        "period": "2026-08-25",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-25",
+        "published_at": "2026-08-25"
+      },
+      "market.benchmark.points.40": {
+        "value": 102.21498333854151,
+        "unit": "index",
+        "period": "2026-08-26",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-26",
+        "published_at": "2026-08-26"
+      },
+      "market.benchmark.points.41": {
+        "value": 102.11276835520297,
+        "unit": "index",
+        "period": "2026-08-27",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-27",
+        "published_at": "2026-08-27"
+      },
+      "market.benchmark.points.42": {
+        "value": 102.41910666026857,
+        "unit": "index",
+        "period": "2026-08-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-28",
+        "published_at": "2026-08-28"
+      },
+      "market.benchmark.points.43": {
+        "value": 102.21426844694803,
+        "unit": "index",
+        "period": "2026-08-31",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-08-31",
+        "published_at": "2026-08-31"
+      },
+      "market.benchmark.points.44": {
+        "value": 102.41869698384193,
+        "unit": "index",
+        "period": "2026-09-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-01",
+        "published_at": "2026-09-01"
+      },
+      "market.benchmark.points.45": {
+        "value": 102.31627828685808,
+        "unit": "index",
+        "period": "2026-09-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-02",
+        "published_at": "2026-09-02"
+      },
+      "market.benchmark.points.46": {
+        "value": 102.62322712171864,
+        "unit": "index",
+        "period": "2026-09-03",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-03",
+        "published_at": "2026-09-03"
+      },
+      "market.benchmark.points.47": {
+        "value": 102.4179806674752,
+        "unit": "index",
+        "period": "2026-09-04",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-04",
+        "published_at": "2026-09-04"
+      },
+      "market.benchmark.points.48": {
+        "value": 102.62281662881016,
+        "unit": "index",
+        "period": "2026-09-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-07",
+        "published_at": "2026-09-07"
+      },
+      "market.benchmark.points.49": {
+        "value": 102.52019381218135,
+        "unit": "index",
+        "period": "2026-09-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-08",
+        "published_at": "2026-09-08"
+      },
+      "market.benchmark.points.50": {
+        "value": 102.82775439361788,
+        "unit": "index",
+        "period": "2026-09-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-09",
+        "published_at": "2026-09-09"
+      },
+      "market.benchmark.points.51": {
+        "value": 102.62209888483065,
+        "unit": "index",
+        "period": "2026-09-10",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-10",
+        "published_at": "2026-09-10"
+      },
+      "market.benchmark.points.52": {
+        "value": 102.82734308260031,
+        "unit": "index",
+        "period": "2026-09-11",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-11",
+        "published_at": "2026-09-11"
+      },
+      "market.benchmark.points.53": {
+        "value": 102.72451573951771,
+        "unit": "index",
+        "period": "2026-09-14",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-14",
+        "published_at": "2026-09-14"
+      },
+      "market.benchmark.points.54": {
+        "value": 103.03268928673626,
+        "unit": "index",
+        "period": "2026-09-15",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-15",
+        "published_at": "2026-09-15"
+      },
+      "market.benchmark.points.55": {
+        "value": 102.82662390816279,
+        "unit": "index",
+        "period": "2026-09-16",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-16",
+        "published_at": "2026-09-16"
+      },
+      "market.benchmark.points.56": {
+        "value": 103.03227715597912,
+        "unit": "index",
+        "period": "2026-09-17",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-17",
+        "published_at": "2026-09-17"
+      },
+      "market.benchmark.points.57": {
+        "value": 102.92924487882314,
+        "unit": "index",
+        "period": "2026-09-18",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-18",
+        "published_at": "2026-09-18"
+      },
+      "market.benchmark.points.58": {
+        "value": 103.2380326134596,
+        "unit": "index",
+        "period": "2026-09-21",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-21",
+        "published_at": "2026-09-21"
+      },
+      "market.benchmark.points.59": {
+        "value": 103.03155654823267,
+        "unit": "index",
+        "period": "2026-09-22",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-22",
+        "published_at": "2026-09-22"
+      },
+      "market.benchmark.points.60": {
+        "value": 103.23761966132913,
+        "unit": "index",
+        "period": "2026-09-23",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-23",
+        "published_at": "2026-09-23"
+      },
+      "market.benchmark.points.61": {
+        "value": 103.1343820416678,
+        "unit": "index",
+        "period": "2026-09-24",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-24",
+        "published_at": "2026-09-24"
+      },
+      "market.benchmark.points.62": {
+        "value": 103.4437851877928,
+        "unit": "index",
+        "period": "2026-09-25",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-25",
+        "published_at": "2026-09-25"
+      },
+      "market.benchmark.points.63": {
+        "value": 103.23689761741721,
+        "unit": "index",
+        "period": "2026-09-28",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-28",
+        "published_at": "2026-09-28"
+      },
+      "market.benchmark.points.64": {
+        "value": 103.44337141265204,
+        "unit": "index",
+        "period": "2026-09-29",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-29",
+        "published_at": "2026-09-29"
+      },
+      "market.benchmark.points.65": {
+        "value": 103.33992804123939,
+        "unit": "index",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "market.benchmark.points.66": {
+        "value": 103.6499478253631,
+        "unit": "index",
+        "period": "2026-10-01",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-01",
+        "published_at": "2026-10-01"
+      },
+      "market.benchmark.points.67": {
+        "value": 103.44264792971238,
+        "unit": "index",
+        "period": "2026-10-02",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-02",
+        "published_at": "2026-10-02"
+      },
+      "market.benchmark.points.68": {
+        "value": 103.6495332255718,
+        "unit": "index",
+        "period": "2026-10-05",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-05",
+        "published_at": "2026-10-05"
+      },
+      "market.benchmark.points.69": {
+        "value": 103.54588369234622,
+        "unit": "index",
+        "period": "2026-10-06",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-06",
+        "published_at": "2026-10-06"
+      },
+      "market.benchmark.points.70": {
+        "value": 103.85652134342325,
+        "unit": "index",
+        "period": "2026-10-07",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-07",
+        "published_at": "2026-10-07"
+      },
+      "market.benchmark.points.71": {
+        "value": 103.6488083007364,
+        "unit": "index",
+        "period": "2026-10-08",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-08",
+        "published_at": "2026-10-08"
+      },
+      "market.benchmark.points.72": {
+        "value": 103.85610591733789,
+        "unit": "index",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "market.benchmark_name": {
+        "value": "Synthetic benchmark",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "market.risk_free_annual": {
+        "value": 0.04,
+        "unit": "fraction",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "market.market_risk_premium_annual": {
+        "value": 0.06,
+        "unit": "fraction",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "news.coverage": {
+        "value": "Synthetic event set for software testing.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "news.items.0.title": {
+        "value": "Synthetic event requiring review",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "news.items.0.direction": {
+        "value": "negative",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "news.items.0.mechanism": {
+        "value": "Synthetic risk annotation, not real news.",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      },
+      "news.items.0.verification": {
+        "value": "unverified",
+        "unit": "text",
+        "period": "2026-09-30",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-09-30",
+        "published_at": "2026-09-30"
+      }
+    },
+    "conclusion": {
+      "label": "attractive",
+      "label_display": "MUA THEO CHÍNH SÁCH MVP",
+      "target_price": 125.67580015448901,
+      "target_price_unit": "VND/share",
+      "upside": 0.25675800154489004,
+      "margin_of_safety": 0.20430186338918566,
+      "rationale": "Upside đạt ngưỡng 15% theo chính sách MVP và đầu vào đánh giá rủi ro tài chính ở mức safe.",
+      "policy_version": "mvp-1.0",
+      "is_demo": true,
+      "real_data_verified": false,
+      "optional_missing_modules": [],
+      "conflicting_signals": []
+    },
+    "risks": {
+      "market_and_financial": {
+        "sample_return_count": 72,
+        "sample_start": "2026-07-01",
+        "sample_end": "2026-10-09",
+        "volatility_annualized": 0.03954695551039088,
+        "max_drawdown": -0.0024000000000000687,
+        "financial_flags": [],
+        "position_limit": null,
+        "limitation": "Ước lượng trên mẫu được cung cấp; chưa đo rủi ro danh mục, thanh khoản hoặc đặt tỷ trọng/stop-loss theo khẩu vị người dùng."
+      },
+      "event_risks": [
+        {
+          "title": "Synthetic event requiring review",
+          "direction": "negative",
+          "mechanism": "Synthetic risk annotation, not real news.",
+          "verification": "unverified",
+          "source": "https://example.com/synthetic-test-data",
+          "requires_review": true
+        }
+      ],
+      "methodological": [
+        "Sai lệch hoặc thiếu dữ liệu.",
+        "Sai giả định định giá.",
+        "Nhóm so sánh không tương thích.",
+        "Ước lượng beta/biến động phụ thuộc mẫu."
+      ],
+      "financial_assessment": {
+        "debt_to_equity": 0.3,
+        "status": "safe",
+        "basis": "Synthetic safe assessment for software testing, not real analysis.",
+        "limitation": "Đánh giá do module đầu vào cung cấp; cần kiểm chứng phương pháp và tính phù hợp với ngành."
+      },
+      "valuation": {
+        "method": "60% PE + 40% Graham screening reference",
+        "limitation": "Giá mục tiêu là tham chiếu theo phương pháp, không phải dự báo giá chắc chắn sau thời hạn đầu tư."
+      }
+    },
+    "mvp_policy": {
+      "version": "mvp-1.0",
+      "upside_threshold": 0.15,
+      "threshold_basis": "Group MVP policy; not a Graham/Dodd standard.",
+      "relative_weight": 0.6,
+      "graham_weight": 0.4,
+      "weight_basis": "Group experimental policy; not empirically validated.",
+      "minimum_peers": 3,
+      "dcf_role": "optional_reference",
+      "financial_risk_policy": "Attractive requires a sourced safe assessment with explicit rationale. No universal D/E or Altman threshold is assumed."
+    }
+  },
+  "sources": [
+    {
+      "ref_id": "macro.drivers.0.current",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "fraction"
+    },
+    {
+      "ref_id": "macro.drivers.0.previous",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "fraction"
+    },
+    {
+      "ref_id": "macro.drivers.0.effect_if_rises",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "macro.drivers.0.mechanism",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "industry.revenue_current",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "industry.revenue_previous",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "industry.peers.0.comparability_note",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "industry.peers.0.price",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.0.eps_ttm",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.0.bvps",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.0.earnings_normalized",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "boolean"
+    },
+    {
+      "ref_id": "industry.peers.1.comparability_note",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "industry.peers.1.price",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.1.eps_ttm",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.1.bvps",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.1.earnings_normalized",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "boolean"
+    },
+    {
+      "ref_id": "industry.peers.2.comparability_note",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "industry.peers.2.price",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.2.eps_ttm",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.2.bvps",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "industry.peers.2.earnings_normalized",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "boolean"
+    },
+    {
+      "ref_id": "industry.ind_pe_median",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "multiple"
+    },
+    {
+      "ref_id": "industry.ind_pb_median",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "multiple"
+    },
+    {
+      "ref_id": "industry.peer_count",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "count"
+    },
+    {
+      "ref_id": "industry.comparability_note",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "text"
+    },
+    {
+      "ref_id": "company.price",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.eps_ttm",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.bvps",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.earnings_normalized",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "boolean"
+    },
+    {
+      "ref_id": "company.valuation.low",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.valuation.high",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.financial.current.revenue",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.net_income",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.equity",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.assets",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.debt",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.current_assets",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.current_liabilities",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.ebit",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.interest_expense",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.cfo",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.current.capex",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.previous.revenue",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.previous.net_income",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.previous.equity",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.financial.previous.assets",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2025-09-30",
+      "published_at": "2025-09-30",
+      "observed_at": "2025-09-30",
+      "unit": "VND"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.0",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-03-31",
+      "published_at": "2026-03-31",
+      "observed_at": "2026-03-31",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.1",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-04-30",
+      "published_at": "2026-04-30",
+      "observed_at": "2026-04-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.2",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-05-31",
+      "published_at": "2026-05-31",
+      "observed_at": "2026-05-31",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.3",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-06-30",
+      "published_at": "2026-06-30",
+      "observed_at": "2026-06-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.4",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-31",
+      "published_at": "2026-07-31",
+      "observed_at": "2026-07-31",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.5",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-31",
+      "published_at": "2026-08-31",
+      "observed_at": "2026-08-31",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.monthly_prices.points.6",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "company.history.points.0",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-01",
+      "published_at": "2026-07-01",
+      "observed_at": "2026-07-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.1",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-02",
+      "published_at": "2026-07-02",
+      "observed_at": "2026-07-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.2",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-03",
+      "published_at": "2026-07-03",
+      "observed_at": "2026-07-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.3",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-06",
+      "published_at": "2026-07-06",
+      "observed_at": "2026-07-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.4",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-07",
+      "published_at": "2026-07-07",
+      "observed_at": "2026-07-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.5",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-08",
+      "published_at": "2026-07-08",
+      "observed_at": "2026-07-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.6",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-09",
+      "published_at": "2026-07-09",
+      "observed_at": "2026-07-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.7",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-10",
+      "published_at": "2026-07-10",
+      "observed_at": "2026-07-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.8",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-13",
+      "published_at": "2026-07-13",
+      "observed_at": "2026-07-13",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.9",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-14",
+      "published_at": "2026-07-14",
+      "observed_at": "2026-07-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.10",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-15",
+      "published_at": "2026-07-15",
+      "observed_at": "2026-07-15",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.11",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-16",
+      "published_at": "2026-07-16",
+      "observed_at": "2026-07-16",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.12",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-17",
+      "published_at": "2026-07-17",
+      "observed_at": "2026-07-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.13",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-20",
+      "published_at": "2026-07-20",
+      "observed_at": "2026-07-20",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.14",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-21",
+      "published_at": "2026-07-21",
+      "observed_at": "2026-07-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.15",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-22",
+      "published_at": "2026-07-22",
+      "observed_at": "2026-07-22",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.16",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-23",
+      "published_at": "2026-07-23",
+      "observed_at": "2026-07-23",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.17",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-24",
+      "published_at": "2026-07-24",
+      "observed_at": "2026-07-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.18",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-27",
+      "published_at": "2026-07-27",
+      "observed_at": "2026-07-27",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.19",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-28",
+      "published_at": "2026-07-28",
+      "observed_at": "2026-07-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.20",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-29",
+      "published_at": "2026-07-29",
+      "observed_at": "2026-07-29",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.21",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-30",
+      "published_at": "2026-07-30",
+      "observed_at": "2026-07-30",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.22",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-31",
+      "published_at": "2026-07-31",
+      "observed_at": "2026-07-31",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.23",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-03",
+      "published_at": "2026-08-03",
+      "observed_at": "2026-08-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.24",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-04",
+      "published_at": "2026-08-04",
+      "observed_at": "2026-08-04",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.25",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-05",
+      "published_at": "2026-08-05",
+      "observed_at": "2026-08-05",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.26",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-06",
+      "published_at": "2026-08-06",
+      "observed_at": "2026-08-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.27",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-07",
+      "published_at": "2026-08-07",
+      "observed_at": "2026-08-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.28",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-10",
+      "published_at": "2026-08-10",
+      "observed_at": "2026-08-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.29",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-11",
+      "published_at": "2026-08-11",
+      "observed_at": "2026-08-11",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.30",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-12",
+      "published_at": "2026-08-12",
+      "observed_at": "2026-08-12",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.31",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-13",
+      "published_at": "2026-08-13",
+      "observed_at": "2026-08-13",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.32",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-14",
+      "published_at": "2026-08-14",
+      "observed_at": "2026-08-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.33",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-17",
+      "published_at": "2026-08-17",
+      "observed_at": "2026-08-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.34",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-18",
+      "published_at": "2026-08-18",
+      "observed_at": "2026-08-18",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.35",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-19",
+      "published_at": "2026-08-19",
+      "observed_at": "2026-08-19",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.36",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-20",
+      "published_at": "2026-08-20",
+      "observed_at": "2026-08-20",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.37",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-21",
+      "published_at": "2026-08-21",
+      "observed_at": "2026-08-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.38",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-24",
+      "published_at": "2026-08-24",
+      "observed_at": "2026-08-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.39",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-25",
+      "published_at": "2026-08-25",
+      "observed_at": "2026-08-25",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.40",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-26",
+      "published_at": "2026-08-26",
+      "observed_at": "2026-08-26",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.41",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-27",
+      "published_at": "2026-08-27",
+      "observed_at": "2026-08-27",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.42",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-28",
+      "published_at": "2026-08-28",
+      "observed_at": "2026-08-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.43",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-31",
+      "published_at": "2026-08-31",
+      "observed_at": "2026-08-31",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.44",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-01",
+      "published_at": "2026-09-01",
+      "observed_at": "2026-09-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.45",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-02",
+      "published_at": "2026-09-02",
+      "observed_at": "2026-09-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.46",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-03",
+      "published_at": "2026-09-03",
+      "observed_at": "2026-09-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.47",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-04",
+      "published_at": "2026-09-04",
+      "observed_at": "2026-09-04",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.48",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-07",
+      "published_at": "2026-09-07",
+      "observed_at": "2026-09-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.49",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-08",
+      "published_at": "2026-09-08",
+      "observed_at": "2026-09-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.50",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-09",
+      "published_at": "2026-09-09",
+      "observed_at": "2026-09-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.51",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-10",
+      "published_at": "2026-09-10",
+      "observed_at": "2026-09-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.52",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-11",
+      "published_at": "2026-09-11",
+      "observed_at": "2026-09-11",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.53",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-14",
+      "published_at": "2026-09-14",
+      "observed_at": "2026-09-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.54",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-15",
+      "published_at": "2026-09-15",
+      "observed_at": "2026-09-15",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.55",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-16",
+      "published_at": "2026-09-16",
+      "observed_at": "2026-09-16",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.56",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-17",
+      "published_at": "2026-09-17",
+      "observed_at": "2026-09-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.57",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-18",
+      "published_at": "2026-09-18",
+      "observed_at": "2026-09-18",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.58",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-21",
+      "published_at": "2026-09-21",
+      "observed_at": "2026-09-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.59",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-22",
+      "published_at": "2026-09-22",
+      "observed_at": "2026-09-22",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.60",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-23",
+      "published_at": "2026-09-23",
+      "observed_at": "2026-09-23",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.61",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-24",
+      "published_at": "2026-09-24",
+      "observed_at": "2026-09-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.62",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-25",
+      "published_at": "2026-09-25",
+      "observed_at": "2026-09-25",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.63",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-28",
+      "published_at": "2026-09-28",
+      "observed_at": "2026-09-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.64",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-29",
+      "published_at": "2026-09-29",
+      "observed_at": "2026-09-29",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.65",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.66",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-01",
+      "published_at": "2026-10-01",
+      "observed_at": "2026-10-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.67",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-02",
+      "published_at": "2026-10-02",
+      "observed_at": "2026-10-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.68",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-05",
+      "published_at": "2026-10-05",
+      "observed_at": "2026-10-05",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.69",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-06",
+      "published_at": "2026-10-06",
+      "observed_at": "2026-10-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.70",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-07",
+      "published_at": "2026-10-07",
+      "observed_at": "2026-10-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.71",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-08",
+      "published_at": "2026-10-08",
+      "observed_at": "2026-10-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.history.points.72",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "company.de",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "fraction"
+    },
+    {
+      "ref_id": "company.financial_risk",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "text"
+    },
+    {
+      "ref_id": "company.financial_risk_basis",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "text"
+    },
+    {
+      "ref_id": "company.graham_applicable",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "boolean"
+    },
+    {
+      "ref_id": "company.graham_basis",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "text"
+    },
+    {
+      "ref_id": "company.eps_avg_3y",
+      "url": "https://example.com/mvp-synthetic-test",
+      "period": "2024-2026",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "VND/share"
+    },
+    {
+      "ref_id": "market.benchmark.points.0",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-01",
+      "published_at": "2026-07-01",
+      "observed_at": "2026-07-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.1",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-02",
+      "published_at": "2026-07-02",
+      "observed_at": "2026-07-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.2",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-03",
+      "published_at": "2026-07-03",
+      "observed_at": "2026-07-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.3",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-06",
+      "published_at": "2026-07-06",
+      "observed_at": "2026-07-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.4",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-07",
+      "published_at": "2026-07-07",
+      "observed_at": "2026-07-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.5",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-08",
+      "published_at": "2026-07-08",
+      "observed_at": "2026-07-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.6",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-09",
+      "published_at": "2026-07-09",
+      "observed_at": "2026-07-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.7",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-10",
+      "published_at": "2026-07-10",
+      "observed_at": "2026-07-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.8",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-13",
+      "published_at": "2026-07-13",
+      "observed_at": "2026-07-13",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.9",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-14",
+      "published_at": "2026-07-14",
+      "observed_at": "2026-07-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.10",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-15",
+      "published_at": "2026-07-15",
+      "observed_at": "2026-07-15",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.11",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-16",
+      "published_at": "2026-07-16",
+      "observed_at": "2026-07-16",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.12",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-17",
+      "published_at": "2026-07-17",
+      "observed_at": "2026-07-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.13",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-20",
+      "published_at": "2026-07-20",
+      "observed_at": "2026-07-20",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.14",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-21",
+      "published_at": "2026-07-21",
+      "observed_at": "2026-07-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.15",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-22",
+      "published_at": "2026-07-22",
+      "observed_at": "2026-07-22",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.16",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-23",
+      "published_at": "2026-07-23",
+      "observed_at": "2026-07-23",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.17",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-24",
+      "published_at": "2026-07-24",
+      "observed_at": "2026-07-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.18",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-27",
+      "published_at": "2026-07-27",
+      "observed_at": "2026-07-27",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.19",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-28",
+      "published_at": "2026-07-28",
+      "observed_at": "2026-07-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.20",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-29",
+      "published_at": "2026-07-29",
+      "observed_at": "2026-07-29",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.21",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-30",
+      "published_at": "2026-07-30",
+      "observed_at": "2026-07-30",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.22",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-07-31",
+      "published_at": "2026-07-31",
+      "observed_at": "2026-07-31",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.23",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-03",
+      "published_at": "2026-08-03",
+      "observed_at": "2026-08-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.24",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-04",
+      "published_at": "2026-08-04",
+      "observed_at": "2026-08-04",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.25",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-05",
+      "published_at": "2026-08-05",
+      "observed_at": "2026-08-05",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.26",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-06",
+      "published_at": "2026-08-06",
+      "observed_at": "2026-08-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.27",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-07",
+      "published_at": "2026-08-07",
+      "observed_at": "2026-08-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.28",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-10",
+      "published_at": "2026-08-10",
+      "observed_at": "2026-08-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.29",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-11",
+      "published_at": "2026-08-11",
+      "observed_at": "2026-08-11",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.30",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-12",
+      "published_at": "2026-08-12",
+      "observed_at": "2026-08-12",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.31",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-13",
+      "published_at": "2026-08-13",
+      "observed_at": "2026-08-13",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.32",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-14",
+      "published_at": "2026-08-14",
+      "observed_at": "2026-08-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.33",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-17",
+      "published_at": "2026-08-17",
+      "observed_at": "2026-08-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.34",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-18",
+      "published_at": "2026-08-18",
+      "observed_at": "2026-08-18",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.35",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-19",
+      "published_at": "2026-08-19",
+      "observed_at": "2026-08-19",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.36",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-20",
+      "published_at": "2026-08-20",
+      "observed_at": "2026-08-20",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.37",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-21",
+      "published_at": "2026-08-21",
+      "observed_at": "2026-08-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.38",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-24",
+      "published_at": "2026-08-24",
+      "observed_at": "2026-08-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.39",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-25",
+      "published_at": "2026-08-25",
+      "observed_at": "2026-08-25",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.40",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-26",
+      "published_at": "2026-08-26",
+      "observed_at": "2026-08-26",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.41",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-27",
+      "published_at": "2026-08-27",
+      "observed_at": "2026-08-27",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.42",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-28",
+      "published_at": "2026-08-28",
+      "observed_at": "2026-08-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.43",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-08-31",
+      "published_at": "2026-08-31",
+      "observed_at": "2026-08-31",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.44",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-01",
+      "published_at": "2026-09-01",
+      "observed_at": "2026-09-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.45",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-02",
+      "published_at": "2026-09-02",
+      "observed_at": "2026-09-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.46",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-03",
+      "published_at": "2026-09-03",
+      "observed_at": "2026-09-03",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.47",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-04",
+      "published_at": "2026-09-04",
+      "observed_at": "2026-09-04",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.48",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-07",
+      "published_at": "2026-09-07",
+      "observed_at": "2026-09-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.49",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-08",
+      "published_at": "2026-09-08",
+      "observed_at": "2026-09-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.50",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-09",
+      "published_at": "2026-09-09",
+      "observed_at": "2026-09-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.51",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-10",
+      "published_at": "2026-09-10",
+      "observed_at": "2026-09-10",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.52",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-11",
+      "published_at": "2026-09-11",
+      "observed_at": "2026-09-11",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.53",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-14",
+      "published_at": "2026-09-14",
+      "observed_at": "2026-09-14",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.54",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-15",
+      "published_at": "2026-09-15",
+      "observed_at": "2026-09-15",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.55",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-16",
+      "published_at": "2026-09-16",
+      "observed_at": "2026-09-16",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.56",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-17",
+      "published_at": "2026-09-17",
+      "observed_at": "2026-09-17",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.57",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-18",
+      "published_at": "2026-09-18",
+      "observed_at": "2026-09-18",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.58",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-21",
+      "published_at": "2026-09-21",
+      "observed_at": "2026-09-21",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.59",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-22",
+      "published_at": "2026-09-22",
+      "observed_at": "2026-09-22",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.60",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-23",
+      "published_at": "2026-09-23",
+      "observed_at": "2026-09-23",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.61",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-24",
+      "published_at": "2026-09-24",
+      "observed_at": "2026-09-24",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.62",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-25",
+      "published_at": "2026-09-25",
+      "observed_at": "2026-09-25",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.63",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-28",
+      "published_at": "2026-09-28",
+      "observed_at": "2026-09-28",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.64",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-29",
+      "published_at": "2026-09-29",
+      "observed_at": "2026-09-29",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.65",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.66",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-01",
+      "published_at": "2026-10-01",
+      "observed_at": "2026-10-01",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.67",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-02",
+      "published_at": "2026-10-02",
+      "observed_at": "2026-10-02",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.68",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-05",
+      "published_at": "2026-10-05",
+      "observed_at": "2026-10-05",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.69",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-06",
+      "published_at": "2026-10-06",
+      "observed_at": "2026-10-06",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.70",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-07",
+      "published_at": "2026-10-07",
+      "observed_at": "2026-10-07",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.71",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-08",
+      "published_at": "2026-10-08",
+      "observed_at": "2026-10-08",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark.points.72",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-10-09",
+      "published_at": "2026-10-09",
+      "observed_at": "2026-10-09",
+      "unit": "index"
+    },
+    {
+      "ref_id": "market.benchmark_name",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "market.risk_free_annual",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "fraction"
+    },
+    {
+      "ref_id": "market.market_risk_premium_annual",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "fraction"
+    },
+    {
+      "ref_id": "news.coverage",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "news.items.0.title",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "news.items.0.direction",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "news.items.0.mechanism",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    },
+    {
+      "ref_id": "news.items.0.verification",
+      "url": "https://example.com/synthetic-test-data",
+      "period": "2026-09-30",
+      "published_at": "2026-09-30",
+      "observed_at": "2026-09-30",
+      "unit": "text"
+    }
+  ],
+  "warnings": [
+    "Không khẳng định alpha; chưa kiểm định ngoài mẫu và chi phí giao dịch.",
+    "Chưa kiểm chứng dữ liệu thật với tài liệu gốc.",
+    "Không tối ưu danh mục trong phạm vi phân tích một mã.",
+    "Chưa đặt giới hạn vị thế vì thiếu danh mục và khẩu vị rủi ro.",
+    "Trang sách Graham/Dodd và đối chiếu chi tiết Fama còn cần bổ sung.",
+    "Schema cần được nhóm thống nhất trước khi tích hợp.",
+    "value: Module bị tắt theo cấu hình.",
+    "Cần kiểm chứng nhóm so sánh: Synthetic matched accounting, earnings periods, growth and risk.",
+    "Graham Number là mức sàng lọc tham chiếu; trọng số 60/40 là chính sách thử nghiệm của nhóm.",
+    "Nhãn được sinh theo chính sách MVP; chưa kiểm chứng hiệu quả đầu tư bằng dữ liệu thật.",
+    "Dữ liệu giả lập: không dùng nhãn này để ra quyết định thực tế."
+  ],
+  "errors": []
+}
