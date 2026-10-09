@@ -1,0 +1,363 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "module": {
+      "const": "company"
+    },
+    "ticker": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "as_of_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "ok",
+        "partial",
+        "error"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "price_series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "close": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "volume": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "adjustment_basis": {
+                "type": "string"
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "date",
+              "close",
+              "volume",
+              "adjustment_basis",
+              "source_refs"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "financials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "record_id": {
+                "type": "string",
+                "pattern": "^company_"
+              },
+              "item_id": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "enum": [
+                  "VND",
+                  "VND/share",
+                  "shares"
+                ]
+              },
+              "period_start": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "period_end": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "statement_scope": {
+                "enum": [
+                  "consolidated",
+                  "separate"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "frequency": {
+                "type": "string"
+              },
+              "verified": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "record_id",
+              "item_id",
+              "value",
+              "unit",
+              "period_start",
+              "period_end",
+              "statement_scope",
+              "source_refs",
+              "frequency",
+              "verified"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metric_id": {
+                "type": "string",
+                "pattern": "^company_"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "frequency": {
+                "type": "string"
+              },
+              "period_start": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "period_end": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "formula_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "metric_id",
+              "value",
+              "unit",
+              "frequency",
+              "period_start",
+              "period_end",
+              "source_refs",
+              "formula_id"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "finding_id": {
+                "type": "string",
+                "pattern": "^company_"
+              },
+              "text": {
+                "type": "string"
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "finding_id",
+              "text",
+              "evidence_refs"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "risk_id": {
+                "type": "string",
+                "pattern": "^company_"
+              },
+              "text": {
+                "type": "string"
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "risk_id",
+              "text",
+              "evidence_refs"
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "required": [
+        "price_series",
+        "financials",
+        "metrics",
+        "findings",
+        "risks"
+      ],
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "pattern": "^company_"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://"
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "publication_date_verified": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source_id",
+          "title",
+          "url",
+          "published_at",
+          "retrieved_at",
+          "locator",
+          "publication_date_verified"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "module",
+    "ticker",
+    "as_of_date",
+    "generated_at",
+    "status",
+    "data",
+    "sources",
+    "warnings",
+    "errors"
+  ],
+  "additionalProperties": true,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Company module envelope v1.0"
+}

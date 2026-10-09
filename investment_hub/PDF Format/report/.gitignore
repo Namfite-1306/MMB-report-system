@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+.env
+
+# Outputs (generated, not committed)
+outputs/*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

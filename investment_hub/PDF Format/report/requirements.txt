@@ -1,0 +1,3 @@
+reportlab>=4.0,<5
+# Optional: required by the PDF QA command, not by the renderer.
+pypdf>=4,<7

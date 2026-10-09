@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><title>MMB Analysis</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('hub-theme')==='light'?'light':'dark'}catch{document.documentElement.dataset.theme='dark'}</script><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/dashboard.css"><script src="/app.js" type="module"></script></head>
+<body>
+<a class="skip-link" href="#setup">Đến phần thiết lập</a>
+<header class="site-header">
+<a class="brand" href="#top" aria-label="MMB Analysis — đầu trang"><span class="mark" aria-hidden="true">✳</span><strong>MMB Analysis<span class="brand-dot">.</span></strong></a>
+<nav aria-label="Điều hướng chính"><a href="#setup">Thiết lập</a><a href="#data">Dữ liệu</a><a href="#dashboard">Dashboard</a><a href="#report">Báo cáo</a></nav>
+<div class="header-tools"><span class="local"><i aria-hidden="true"></i> LOCAL</span><button id="theme-toggle" type="button" aria-label="Chuyển sang giao diện sáng" aria-pressed="false">☀ Sáng</button></div>
+</header>
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-copy"><p class="eyebrow"><span aria-hidden="true">✳</span> KHÔNG GIAN PHÂN TÍCH ĐẦU TƯ</p>
+<h1 id="hero-title">MMB<br>Analysis<span>.</span></h1>
+<p class="hero-description">Kết nối dữ liệu. Định hình chiến lược.<br>Hoàn thiện báo cáo cùng nhóm của bạn.</p>
+<div class="hero-actions"><a class="button primary" href="#setup" id="start">Bắt đầu phân tích <span aria-hidden="true">↗</span></a><a class="text-link" href="#data">Khám phá workspace <span aria-hidden="true">↓</span></a></div></div>
+<div class="hero-art" aria-hidden="true"><div class="art-orbit"></div><div class="art-glow"></div>
+<div class="glass-card glass-data"><span class="art-index">01 / INPUT</span><span class="art-icon">▤</span><strong>Dữ liệu</strong><div class="art-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+<div class="glass-card glass-strategy"><span class="art-index">02 / INSIGHT</span><span class="art-icon">↗</span><strong>Chiến lược</strong><div class="art-line"></div></div>
+<div class="glass-card glass-report"><span class="art-index">03 / OUTPUT</span><span class="art-icon">◫</span><strong>Báo cáo</strong><div class="art-lines"><i></i><i></i><i></i></div></div>
+<div class="art-platform"></div><span class="art-caption">ONE WORKSPACE. CONNECTED INSIGHTS.</span></div>
+</section>
+<div class="workflow" aria-label="Quy trình phân tích">
+<a href="#setup"><span class="workflow-number">01</span><div><strong>Thống nhất input</strong><small>Mã, kỳ phân tích & ngày chốt</small></div><span aria-hidden="true">↗</span></a>
+<a href="#data"><span class="workflow-number">02</span><div><strong>Ghép dữ liệu & chiến lược</strong><small>Nhận output từ các thành viên</small></div><span aria-hidden="true">↗</span></a>
+<a href="#report"><span class="workflow-number">03</span><div><strong>Hoàn thiện báo cáo</strong><small>Kiểm tra kết quả & xuất PDF</small></div><span aria-hidden="true">↗</span></a>
+</div>
+<div id="notice" role="status" aria-live="polite" hidden><span id="notice-text"></span><button id="notice-close" aria-label="Đóng thông báo">×</button></div>
+<div class="workspace-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2>Không gian làm việc<span>.</span></h2></div><span id="progress" class="workspace-progress">0 / 4 đầu ra sẵn sàng</span></div>
+<div class="layout">
+<aside>
+<section class="panel input-panel" id="setup">
+<div class="section-title"><span class="step">01</span><h2>Thiết lập phân tích</h2></div><p class="section-description">Một input chung cho toàn bộ nhóm.</p>
+<form id="request-form">
+<div class="pair"><label>Mã cổ phiếu<input name="ticker" required placeholder="Nhập mã" maxlength="12" autocomplete="off" spellcheck="false"></label><label>Sàn<select name="exchange"><option>HOSE</option><option>HNX</option><option>UPCOM</option></select></label></div>
+<label>Tên ngành<input name="industry_name" placeholder="Tự tra theo mã cổ phiếu, hoặc nhập tên ngành"></label>
+<label>Ngày chốt dữ liệu<input type="date" name="as_of_date" required></label><div class="pair"><label>Từ ngày<input type="date" name="period_start" required></label><label>Đến ngày<input type="date" name="period_end" required></label></div>
+<div class="pair"><label>Thời hạn đầu tư<input name="investment_horizon" required placeholder="Ví dụ: Trung hạn"></label><label>Số tháng đầu tư<input name="investment_horizon_months" type="number" min="1" max="600" value="12" required></label></div>
+<div class="pair"><label>Kỳ BCTC<select name="financial_basis"><option value="annual">Năm</option><option value="ytd">Lũy kế (YTD)</option><option value="quarterly">Quý</option><option value="ttm">12 tháng (TTM)</option></select></label><label>Phạm vi BCTC<select name="statement_scope"><option value="consolidated">Hợp nhất</option><option value="separate">Riêng lẻ</option></select></label></div>
+<button class="primary wide" type="submit">Tạo lần phân tích <span aria-hidden="true">↗</span></button>
+</form>
+<div class="divider"></div><label>Mở lần phân tích đã lưu<select id="run-select"><option value="">Chọn lần phân tích</option></select></label><p class="hint">Đổi mã, kỳ hoặc ngày chốt bằng một lần phân tích mới. Gửi <code>request.json</code> cho nhóm trước khi nhận output.</p>
+</section>
+<section class="panel module-settings" id="module-settings"><details><summary>Cài module của nhóm <span aria-hidden="true">+</span></summary>
+<p class="hint">Gói <code>.module.json</code> chứa mã nguồn Python/JavaScript, chạy bằng quyền tài khoản trên máy này.</p><label class="check"><input id="trusted" type="checkbox"> Tôi tin cậy mã nguồn của thành viên bàn giao.</label>
+<button id="package-upload" class="wide">Chọn gói module <span aria-hidden="true">↑</span></button><input id="package-file" type="file" accept=".json" hidden>
+</details><p class="hint" id="installed">Đang tải danh sách module…</p></section>
+</aside>
+<div class="workspace">
+<section class="panel run-panel"><div class="run-head"><div><p class="eyebrow">LẦN PHÂN TÍCH HIỆN TẠI</p><h2 id="run-title">Chưa tạo input</h2></div><span id="overall" class="badge">Chờ input</span></div><p id="run-meta" class="hint"></p>
+<div class="toolbar"><button id="request-download" disabled>Tải request.json <span aria-hidden="true">↓</span></button><button id="pipeline" class="primary" disabled>Chạy workflow & tạo PDF <span aria-hidden="true">↗</span></button><button id="analysis-download" disabled>Tải analysis.json <span aria-hidden="true">↓</span></button></div><p id="next-action" class="next-action">Bắt đầu bằng việc tạo input ở bảng thiết lập.</p></section>
+<section id="data"><div class="section-title"><span class="step">02</span><h2>Dữ liệu & chiến lược</h2></div><p class="section-description">Tải lên JSON của nhóm hoặc chạy module đã cài.</p><div id="module-grid" class="module-grid"></div></section>
+<section id="dashboard" aria-labelledby="dashboard-title"><div class="section-title"><span class="step">↗</span><h2 id="dashboard-title">Dashboard phân tích</h2></div><p class="section-description">Diễn biến giá, giao dịch và tài chính từ dữ liệu bàn giao.</p><div id="dashboard-content"></div></section>
+<section class="panel report-panel" id="report"><div class="section-title"><span class="step">03</span><h2>Kết quả & báo cáo</h2></div><div id="conclusion" class="empty"></div><div id="strategy-results"></div><div id="metrics" class="table-scroll" tabindex="0" role="region" aria-label="Bảng chỉ số phân tích"></div>
+<div class="toolbar"><button id="preview" class="primary" disabled>Xem / In báo cáo <span aria-hidden="true">↗</span></button><button id="pdf-generate" disabled>Tạo PDF bằng module</button><button id="pdf-download" disabled>Tải PDF <span aria-hidden="true">↓</span></button></div><p id="pdf-hint" class="hint">Mở báo cáo rồi chọn In / Lưu PDF trong trình duyệt. Xuất PDF tự động cần module của người 6.</p></section>
+<section class="panel log-panel"><details><summary>Kiểm tra & nhật ký <span id="issue-count" class="badge">Chưa có dữ liệu</span></summary><ul id="issues"><li>Chưa có lần phân tích.</li></ul><pre id="execution" hidden></pre></details></section>
+</div></div>
+</main>
+<footer><a class="brand" href="#top"><span class="mark" aria-hidden="true">✳</span> MMB Analysis.</a><span>SCHEMA V1.0 · JSON UTF-8 · VND</span><span>Giữ nguyên nguồn & ngày công bố.</span></footer>
+</body></html>

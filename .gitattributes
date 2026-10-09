@@ -1,0 +1,6 @@
+# Stable source text across Windows and Linux.
+investment_hub/** text eol=lf
+# Preserve evidence bytes: the company module verifies original SHA256 hashes.
+investment_hub/MMB_company_module_nguoi3/company/examples/hpg_raw/** -text
+investment_hub/integrations/vendor/company/company/examples/hpg_raw/** -text
+investment_hub/**/*.pdf binary

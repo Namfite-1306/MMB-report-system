@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "run_id": null,
+  "request": {
+    "ticker": null,
+    "exchange": null,
+    "industry_code": null,
+    "industry_name": null,
+    "as_of_date": null,
+    "period_start": null,
+    "period_end": null,
+    "investment_horizon": null,
+    "language": "vi",
+    "currency": "VND"
+  },
+  "modules": {
+    "macro": {
+      "schema_version": "1.0",
+      "run_id": null,
+      "module": "macro",
+      "ticker": null,
+      "as_of_date": null,
+      "generated_at": null,
+      "status": "pending",
+      "data": {
+        "metrics": [],
+        "findings": [],
+        "risks": []
+      },
+      "sources": [],
+      "warnings": ["Chưa có dữ liệu thật"],
+      "errors": []
+    },
+    "industry": {
+      "schema_version": "1.0",
+      "run_id": null,
+      "module": "industry",
+      "ticker": null,
+      "as_of_date": null,
+      "generated_at": null,
+      "status": "pending",
+      "data": {
+        "industry_code": null,
+        "peers": [],
+        "metrics": [],
+        "findings": [],
+        "risks": []
+      },
+      "sources": [],
+      "warnings": ["Chưa có dữ liệu thật"],
+      "errors": []
+    },
+    "company": {
+      "schema_version": "1.0",
+      "run_id": null,
+      "module": "company",
+      "ticker": null,
+      "as_of_date": null,
+      "generated_at": null,
+      "status": "pending",
+      "data": {
+        "price_series": [],
+        "financials": [],
+        "metrics": [],
+        "findings": [],
+        "risks": []
+      },
+      "sources": [],
+      "warnings": ["Chưa có dữ liệu thật"],
+      "errors": []
+    },
+    "strategy": {
+      "schema_version": "1.0",
+      "run_id": null,
+      "module": "strategy",
+      "ticker": null,
+      "as_of_date": null,
+      "generated_at": null,
+      "status": "pending",
+      "data": {
+        "theory_sources": [],
+        "rules": [],
+        "evidence_refs": [],
+        "conclusion": {
+          "label": "insufficient_data",
+          "rationale": "Chưa đủ dữ liệu từ các module 1-3",
+          "evidence_refs": [],
+          "horizon": null
+        },
+        "risks": []
+      },
+      "sources": [],
+      "warnings": ["Chưa có dữ liệu thật"],
+      "errors": []
+    }
+  },
+  "overall_status": "pending",
+  "warnings": ["Tất cả module đang chờ dữ liệu thật"],
+  "errors": []
+}

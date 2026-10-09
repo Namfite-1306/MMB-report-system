@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo cáo Phân tích Cơ hội Đầu tư - {{ request.ticker or 'Chưa chốt mã' }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+            @bottom-center {
+                content: "Trang " counter(page) " / " counter(pages);
+                font-size: 9pt;
+                color: #888;
+            }
+        }
+        body {
+            font-family: 'DejaVu Sans', 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #222;
+        }
+        h1 {
+            color: #1a3c6e;
+            border-bottom: 3px solid #1a3c6e;
+            padding-bottom: 8px;
+            font-size: 20pt;
+        }
+        h2 {
+            color: #2c5f8a;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-size: 14pt;
+        }
+        h3 {
+            color: #3a7ca5;
+            font-size: 12pt;
+        }
+        .meta-box {
+            background: #f0f4f8;
+            border: 1px solid #d0d8e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+        .meta-box p {
+            margin: 4px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .warning-box strong {
+            color: #856404;
+        }
+        .error-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: white;
+        }
+        .status-ok { background: #28a745; }
+        .status-pending { background: #ffc107; color: #333; }
+        .status-partial { background: #fd7e14; }
+        .status-error { background: #dc3545; }
+        .status-insufficient_data { background: #6c757d; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        th {
+            background: #2c5f8a;
+            color: white;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+        }
+        tr:nth-child(even) td {
+            background: #f9f9f9;
+        }
+        .no-data {
+            color: #999;
+            font-style: italic;
+        }
+        .conclusion-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .conclusion-box.watchlist { border-color: #ff9800; background: #fff3e0; }
+        .conclusion-box.unattractive { border-color: #f44336; background: #ffebee; }
+        .conclusion-box.insufficient_data { border-color: #9e9e9e; background: #f5f5f5; }
+        .source-list {
+            font-size: 9pt;
+            color: #555;
+        }
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BÁO CÁO PHÂN TÍCH CƠ HỘI ĐẦU TƯ</h1>
+    <h2 style="border: none; margin-top: 5px; color: #1a3c6e;">{{ request.ticker or 'CHƯA CHỐT MÃ' }}</h2>
+
+    <!-- META -->
+    <div class="meta-box">
+        <p><strong>Mã cổ phiếu:</strong> {{ request.ticker or 'Chưa chốt' }} | <strong>Sàn:</strong> {{ request.exchange or 'N/A' }}</p>
+        <p><strong>Ngành:</strong> {{ request.industry_name or 'Chưa xác định' }} ({{ request.industry_code or 'N/A' }})</p>
+        <p><strong>Ngày chốt dữ liệu:</strong> {{ request.as_of_date or 'Chưa chốt' }}</p>
+        <p><strong>Khoảng phân tích:</strong> {{ request.period_start or '?' }} đến {{ request.period_end or '?' }}</p>
+        <p><strong>Thời hạn đầu tư:</strong> {{ request.investment_horizon or 'Chưa xác định' }}</p>
+        <p><strong>Trạng thái tổng:</strong>
+            <span class="status-badge status-{{ overall_status }}">{{ overall_status | upper }}</span>
+        </p>
+        <p><strong>Schema:</strong> v{{ schema_version }} | <strong>Run ID:</strong> {{ run_id or 'N/A' }}</p>
+    </div>
+
+    <!-- WARNINGS -->
+    {% if warnings %}
+    <div class="warning-box">
+        <strong>⚠ Cảnh báo chung:</strong>
+        <ul>
+        {% for w in warnings %}
+            <li>{{ w }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if errors %}
+    <div class="error-box">
+        <strong>❌ Lỗi:</strong>
+        <ul>
+        {% for e in errors %}
+            <li>{{ e }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- ===================== 1. VĨ MÔ ===================== -->
+    {% set macro = modules.macro %}
+    <h2>1. Tổng quan Vĩ mô
+        <span class="status-badge status-{{ macro.status }}">{{ macro.status }}</span>
+    </h2>
+
+    {% if macro.warnings %}
+    <div class="warning-box">
+        <strong>⚠</strong> {{ macro.warnings | join("; ") }}
+    </div>
+    {% endif %}
+
+    {% if macro.data.metrics %}
+    <h3>Chỉ số vĩ mô</h3>
+    <table>
+        <tr><th>Chỉ số</th><th>Giá trị</th><th>Đơn vị</th><th>Tần suất</th><th>Kỳ</th><th>Nguồn</th></tr>
+        {% for m in macro.data.metrics %}
+        <tr>
+            <td>{{ m.metric_id }}</td>
+            <td>{{ m.value if m.value is not none else '<span class="no-data">N/A</span>' }}</td>
+            <td>{{ m.unit or '' }}</td>
+            <td>{{ m.frequency or '' }}</td>
+            <td>{{ m.period_start or '' }} – {{ m.period_end or '' }}</td>
+            <td>{{ m.source_refs | join(", ") if m.source_refs else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="no-data">Dữ liệu vĩ mô đang cập nhật...</p>
+    {% endif %}
+
+    {% if macro.data.findings %}
+    <h3>Nhận định vĩ mô</h3>
+    <ul>
+    {% for f in macro.data.findings %}
+        <li><strong>{{ f.finding_id }}:</strong> {{ f.text }}
+            {% if f.evidence_refs %}<em>({{ f.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if macro.data.risks %}
+    <h3>Rủi ro vĩ mô</h3>
+    <ul>
+    {% for r in macro.data.risks %}
+        <li><strong>{{ r.risk_id }}:</strong> {{ r.text }}
+            {% if r.evidence_refs %}<em>({{ r.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- ===================== 2. NGÀNH ===================== -->
+    {% set industry = modules.industry %}
+    <h2>2. Phân tích Ngành
+        <span class="status-badge status-{{ industry.status }}">{{ industry.status }}</span>
+    </h2>
+
+    {% if industry.warnings %}
+    <div class="warning-box">
+        <strong>⚠</strong> {{ industry.warnings | join("; ") }}
+    </div>
+    {% endif %}
+
+    {% if industry.data.peers %}
+    <h3>Doanh nghiệp so sánh</h3>
+    <table>
+        <tr><th>Mã</th><th>Chỉ số so sánh</th></tr>
+        {% for p in industry.data.peers %}
+        <tr>
+            <td>{{ p.ticker }}</td>
+            <td>{{ p | tojson }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if industry.data.metrics %}
+    <h3>Chỉ số ngành</h3>
+    <table>
+        <tr><th>Chỉ số</th><th>Giá trị</th><th>Đơn vị</th><th>Kỳ</th><th>Nguồn</th></tr>
+        {% for m in industry.data.metrics %}
+        <tr>
+            <td>{{ m.metric_id }}</td>
+            <td>{{ m.value if m.value is not none else '<span class="no-data">N/A</span>' }}</td>
+            <td>{{ m.unit or '' }}</td>
+            <td>{{ m.period_start or '' }} – {{ m.period_end or '' }}</td>
+            <td>{{ m.source_refs | join(", ") if m.source_refs else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="no-data">Dữ liệu ngành đang cập nhật...</p>
+    {% endif %}
+
+    {% if industry.data.findings %}
+    <h3>Nhận định ngành</h3>
+    <ul>
+    {% for f in industry.data.findings %}
+        <li><strong>{{ f.finding_id }}:</strong> {{ f.text }}
+            {% if f.evidence_refs %}<em>({{ f.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if industry.data.risks %}
+    <h3>Rủi ro ngành</h3>
+    <ul>
+    {% for r in industry.data.risks %}
+        <li><strong>{{ r.risk_id }}:</strong> {{ r.text }}
+            {% if r.evidence_refs %}<em>({{ r.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- ===================== 3. DOANH NGHIỆP ===================== -->
+    {% set company = modules.company %}
+    <h2>3. Phân tích Doanh nghiệp
+        <span class="status-badge status-{{ company.status }}">{{ company.status }}</span>
+    </h2>
+
+    {% if company.warnings %}
+    <div class="warning-box">
+        <strong>⚠</strong> {{ company.warnings | join("; ") }}
+    </div>
+    {% endif %}
+
+    {% if company.data.price_series %}
+    <h3>Lịch sử giá ({{ company.data.price_series | length }} phiên)</h3>
+    <table>
+        <tr><th>Ngày</th><th>Đóng cửa</th><th>Khối lượng</th><th>Cơ sở điều chỉnh</th><th>Nguồn</th></tr>
+        {% for p in company.data.price_series[-10:] %}
+        <tr>
+            <td>{{ p.date }}</td>
+            <td>{{ '{:,.0f}'.format(p.close) if p.close is not none else '<span class="no-data">N/A</span>' }}</td>
+            <td>{{ '{:,.0f}'.format(p.volume) if p.volume is not none else '' }}</td>
+            <td>{{ p.adjustment_basis or '' }}</td>
+            <td>{{ p.source_refs | join(", ") if p.source_refs else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if company.data.price_series | length > 10 %}
+    <p class="no-data">(Hiển thị 10 phiên gần nhất trong tổng {{ company.data.price_series | length }} phiên)</p>
+    {% endif %}
+    {% else %}
+    <p class="no-data">Chưa có dữ liệu giá...</p>
+    {% endif %}
+
+    {% if company.data.financials %}
+    <h3>Báo cáo tài chính</h3>
+    <table>
+        <tr><th>Khoản mục</th><th>Giá trị</th><th>Đơn vị</th><th>Kỳ</th><th>Phạm vi</th><th>Nguồn</th></tr>
+        {% for f in company.data.financials %}
+        <tr>
+            <td>{{ f.item_id }}</td>
+            <td>{{ '{:,.0f}'.format(f.value) if f.value is not none else '<span class="no-data">N/A</span>' }}</td>
+            <td>{{ f.unit or '' }}</td>
+            <td>{{ f.period_start or '' }} – {{ f.period_end or '' }}</td>
+            <td>{{ f.statement_scope or '' }}</td>
+            <td>{{ f.source_refs | join(", ") if f.source_refs else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if company.data.metrics %}
+    <h3>Chỉ số doanh nghiệp</h3>
+    <table>
+        <tr><th>Chỉ số</th><th>Giá trị</th><th>Đơn vị</th><th>Kỳ</th><th>Công thức</th><th>Nguồn</th></tr>
+        {% for m in company.data.metrics %}
+        <tr>
+            <td>{{ m.metric_id }}</td>
+            <td>{{ m.value if m.value is not none else '<span class="no-data">N/A</span>' }}</td>
+            <td>{{ m.unit or '' }}</td>
+            <td>{{ m.period_start or '' }} – {{ m.period_end or '' }}</td>
+            <td>{{ m.formula_id or '' }}</td>
+            <td>{{ m.source_refs | join(", ") if m.source_refs else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="no-data">Chưa có chỉ số doanh nghiệp...</p>
+    {% endif %}
+
+    {% if company.data.findings %}
+    <h3>Nhận định doanh nghiệp</h3>
+    <ul>
+    {% for f in company.data.findings %}
+        <li><strong>{{ f.finding_id }}:</strong> {{ f.text }}
+            {% if f.evidence_refs %}<em>({{ f.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if company.data.risks %}
+    <h3>Rủi ro doanh nghiệp</h3>
+    <ul>
+    {% for r in company.data.risks %}
+        <li><strong>{{ r.risk_id }}:</strong> {{ r.text }}
+            {% if r.evidence_refs %}<em>({{ r.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- ===================== 4. CHIẾN LƯỢC ===================== -->
+    {% set strategy = modules.strategy %}
+    <h2>4. Chiến lược Đầu tư
+        <span class="status-badge status-{{ strategy.status }}">{{ strategy.status }}</span>
+    </h2>
+
+    {% if strategy.warnings %}
+    <div class="warning-box">
+        <strong>⚠</strong> {{ strategy.warnings | join("; ") }}
+    </div>
+    {% endif %}
+
+    {% if strategy.data.theory_sources %}
+    <h3>Cơ sở lý thuyết</h3>
+    <ul>
+    {% for t in strategy.data.theory_sources %}
+        <li>{{ t }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if strategy.data.rules %}
+    <h3>Quy tắc đánh giá</h3>
+    <table>
+        <tr><th>Rule ID</th><th>Lý thuyết</th><th>Đầu vào</th><th>Công thức</th><th>Ngưỡng</th></tr>
+        {% for rule in strategy.data.rules %}
+        <tr>
+            <td>{{ rule.rule_id or '' }}</td>
+            <td>{{ rule.theory_refs | join(", ") if rule.theory_refs else '' }}</td>
+            <td>{{ rule.input_metric_ids | join(", ") if rule.input_metric_ids else '' }}</td>
+            <td>{{ rule.formula or '' }}</td>
+            <td>{{ rule.thresholds | tojson if rule.thresholds else '' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <!-- CONCLUSION -->
+    {% set conc = strategy.data.conclusion %}
+    {% if conc %}
+    {% set label_vi = {'attractive': 'HẤP DẪN', 'watchlist': 'THEO DÕI', 'unattractive': 'KHÔNG HẤP DẪN', 'insufficient_data': 'CHƯA ĐỦ DỮ LIỆU'} %}
+    {% set box_class = conc.label if conc.label in ['watchlist', 'unattractive', 'insufficient_data'] else '' %}
+    <div class="conclusion-box {{ box_class }}">
+        <h2 style="border:none; margin:0;">KHUYẾN NGHỊ: {{ label_vi.get(conc.label, conc.label | upper) }}</h2>
+        <p><strong>Cơ sở:</strong> {{ conc.rationale or 'Chưa có' }}</p>
+        {% if conc.horizon %}
+        <p><strong>Thời hạn:</strong> {{ conc.horizon }}</p>
+        {% endif %}
+        {% if conc.evidence_refs %}
+        <p><em>Bằng chứng: {{ conc.evidence_refs | join(", ") }}</em></p>
+        {% endif %}
+    </div>
+    <p style="font-size: 9pt; color: #888; text-align: center;"><em>Nhãn là quy ước nhóm, không phải cam kết lợi nhuận.</em></p>
+    {% endif %}
+
+    {% if strategy.data.risks %}
+    <h3>Rủi ro chiến lược</h3>
+    <ul>
+    {% for r in strategy.data.risks %}
+        <li><strong>{{ r.risk_id }}:</strong> {{ r.text }}
+            {% if r.evidence_refs %}<em>({{ r.evidence_refs | join(", ") }})</em>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- ===================== 5. NGUỒN THAM KHẢO ===================== -->
+    <h2>5. Danh mục Nguồn tham khảo</h2>
+    {% set all_sources = [] %}
+    {% for mod_name in ['macro', 'industry', 'company', 'strategy'] %}
+        {% for s in modules[mod_name].sources %}
+            {% if all_sources.append(s) %}{% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    {% if all_sources %}
+    <div class="source-list">
+    <table>
+        <tr><th>ID</th><th>Tiêu đề</th><th>URL</th><th>Ngày công bố</th><th>Ngày truy cập</th><th>Đã xác minh</th></tr>
+        {% for s in all_sources %}
+        <tr>
+            <td>{{ s.source_id }}</td>
+            <td>{{ s.title or '' }}</td>
+            <td>{{ s.url or '' }}</td>
+            <td>{{ s.published_at or '<span class="no-data">Chưa rõ</span>' }}</td>
+            <td>{{ s.retrieved_at or '' }}</td>
+            <td>{{ '✓' if s.publication_date_verified else '✗' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    {% else %}
+    <p class="no-data">Chưa có nguồn tham khảo được ghi nhận.</p>
+    {% endif %}
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Báo cáo được tạo tự động bởi hệ thống phân tích cơ hội đầu tư.</p>
+        <p>Schema v{{ schema_version }} | Run: {{ run_id or 'N/A' }} | Ngày chốt: {{ request.as_of_date or 'N/A' }}</p>
+        <p><em>Lưu ý: Báo cáo này chỉ mang tính tham khảo, không phải khuyến nghị đầu tư chính thức.</em></p>
+    </div>
+
+</body>
+</html>

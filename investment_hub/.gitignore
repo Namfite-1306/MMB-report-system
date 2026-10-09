@@ -1,0 +1,16 @@
+storage/
+modules/*/versions/
+modules/registry.json
+*.log
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+!.env.example
+PDF Format/report/outputs/*
+!PDF Format/report/outputs/.gitkeep
+MMB_company_module_nguoi3/company/raw/
