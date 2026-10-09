@@ -1,0 +1,1277 @@
+{
+  "ticker": "HPG",
+  "rows": [
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_current_assets",
+      "item_id": "current_assets",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 103659402759724,
+      "api_value_normalized": 103659402759724.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_cash",
+      "item_id": "cash",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 8300890304205,
+      "api_value_normalized": 8300890304205.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_inventory",
+      "item_id": "inventory",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 52828227344442,
+      "api_value_normalized": 52828227344442.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_current_assets",
+      "item_id": "current_assets",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 86674276272995,
+      "api_value_normalized": 86674276272995.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_cash",
+      "item_id": "cash",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 6887646139852,
+      "api_value_normalized": 6887646139852.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_inventory",
+      "item_id": "inventory",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 46091222189472,
+      "api_value_normalized": 46091222189472.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_assets",
+      "item_id": "assets",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 257899200817547,
+      "api_value_normalized": 257899200817547.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_assets"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_assets",
+      "item_id": "assets",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 224489707553981,
+      "api_value_normalized": 224489707553981.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_assets"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_liabilities",
+      "item_id": "liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 126679189940972,
+      "api_value_normalized": 126679189940972.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_current_liabilities",
+      "item_id": "current_liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 94186268324508,
+      "api_value_normalized": 94186268324508.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_short_debt",
+      "item_id": "short_debt",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 64694957245143,
+      "api_value_normalized": 64694957245143.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_long_debt",
+      "item_id": "long_debt",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 27479194057074,
+      "api_value_normalized": 27479194057074.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_equity_total",
+      "item_id": "equity_total",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 131220010876575,
+      "api_value_normalized": 131220010876575.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "pdf_value": 2039012776403,
+      "api_value_normalized": 2039012776403.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_liabilities",
+      "item_id": "liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 109842249570282,
+      "api_value_normalized": 109842249570282.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_current_liabilities",
+      "item_id": "current_liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 75225243262689,
+      "api_value_normalized": 75225243262689.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_short_debt",
+      "item_id": "short_debt",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 55882686213459,
+      "api_value_normalized": 55882686213459.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_long_debt",
+      "item_id": "long_debt",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 27080443256096,
+      "api_value_normalized": 27080443256096.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_equity_total",
+      "item_id": "equity_total",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 114647457983699,
+      "api_value_normalized": 114647457983699.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "pdf_value": 290990632368,
+      "api_value_normalized": 290990632368.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_revenue",
+      "item_id": "revenue",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 156116094618482,
+      "api_value_normalized": 156116094618482.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_gross_profit",
+      "item_id": "gross_profit",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 24497788183182,
+      "api_value_normalized": 24497788183182.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_interest_expense",
+      "item_id": "interest_expense",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 3114855868974,
+      "api_value_normalized": 3114855868974.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": "Chuẩn hóa dấu chi phí lãi vay API (âm) sang magnitude PDF (dương)"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_pretax_profit",
+      "item_id": "pretax_profit",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 18040591977880,
+      "api_value_normalized": 18040591977880.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_net_profit",
+      "item_id": "net_profit",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 15514931571606,
+      "api_value_normalized": 15514931571606.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_parent_profit",
+      "item_id": "parent_profit",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 15453174006223,
+      "api_value_normalized": 15453174006223.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_basic_eps",
+      "item_id": "basic_eps",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 1973,
+      "api_value_normalized": 1973.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_revenue",
+      "item_id": "revenue",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 138855112131387,
+      "api_value_normalized": 138855112131387.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_gross_profit",
+      "item_id": "gross_profit",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 18497549127684,
+      "api_value_normalized": 18497549127684.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_interest_expense",
+      "item_id": "interest_expense",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 2287360810880,
+      "api_value_normalized": 2287360810880.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": "Chuẩn hóa dấu chi phí lãi vay API (âm) sang magnitude PDF (dương)"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_pretax_profit",
+      "item_id": "pretax_profit",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 13693502261178,
+      "api_value_normalized": 13693502261178.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_net_profit",
+      "item_id": "net_profit",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 12020023621271,
+      "api_value_normalized": 12020023621271.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_parent_profit",
+      "item_id": "parent_profit",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 12021443836074,
+      "api_value_normalized": 12021443836074.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_basic_eps",
+      "item_id": "basic_eps",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 1505,
+      "api_value_normalized": 1505.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_cfo",
+      "item_id": "cfo",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": 17365859056591,
+      "api_value_normalized": 17365859056591.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_capex_cash",
+      "item_id": "capex_cash",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "pdf_value": -25748320476719,
+      "api_value_normalized": -25748320476719.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2026-03-30"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_cfo",
+      "item_id": "cfo",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": 6608320655215,
+      "api_value_normalized": 6608320655215.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_capex_cash",
+      "item_id": "capex_cash",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "pdf_value": -35495026797327,
+      "api_value_normalized": -35495026797327.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-03-27",
+      "api_public_dates": [
+        "2025-03-27"
+      ],
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_current_assets",
+      "item_id": "current_assets",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 119968988853207,
+      "api_value_normalized": 119968988853207.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_cash",
+      "item_id": "cash",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 9782057360909,
+      "api_value_normalized": 9782057360909.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_inventory",
+      "item_id": "inventory",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 55607877088316,
+      "api_value_normalized": 55607877088316.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_assets",
+      "item_id": "assets",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 278929786247772,
+      "api_value_normalized": 278929786247772.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_assets"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_liabilities",
+      "item_id": "liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 137413759457075,
+      "api_value_normalized": 137413759457075.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_current_liabilities",
+      "item_id": "current_liabilities",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 105037075079739,
+      "api_value_normalized": 105037075079739.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_short_debt",
+      "item_id": "short_debt",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 71433383400905,
+      "api_value_normalized": 71433383400905.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_long_debt",
+      "item_id": "long_debt",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 27096593831648,
+      "api_value_normalized": 27096593831648.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_equity_total",
+      "item_id": "equity_total",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 141516026790697,
+      "api_value_normalized": 141516026790697.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "pdf_value": 859680276468,
+      "api_value_normalized": 859680276468.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "note": null
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_revenue",
+      "item_id": "revenue",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 108059749601554,
+      "api_value_normalized": 108059749601554.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_gross_profit",
+      "item_id": "gross_profit",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 18852855801426,
+      "api_value_normalized": 18852855801426.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_interest_expense",
+      "item_id": "interest_expense",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 2853028567414,
+      "api_value_normalized": 2853028567414.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố; Chuẩn hóa dấu chi phí lãi vay API (âm) sang magnitude PDF (dương)"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_pretax_profit",
+      "item_id": "pretax_profit",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 17946868046971,
+      "api_value_normalized": 17946868046971.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_net_profit",
+      "item_id": "net_profit",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 15480392467117,
+      "api_value_normalized": 15480392467117.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_parent_profit",
+      "item_id": "parent_profit",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 15365022248705,
+      "api_value_normalized": 15365022248705.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_basic_eps",
+      "item_id": "basic_eps",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 1781,
+      "api_value_normalized": null,
+      "difference_api_minus_pdf": null,
+      "numeric_match": null,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "EPS không cộng quý; API quarterly có thể đang trả EPS YTD"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_revenue",
+      "item_id": "revenue",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 73532193664787,
+      "api_value_normalized": 73532193664787.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_gross_profit",
+      "item_id": "gross_profit",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 12013876410841,
+      "api_value_normalized": 12013876410841.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_interest_expense",
+      "item_id": "interest_expense",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 1066136992112,
+      "api_value_normalized": 1066136992112.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố; Chuẩn hóa dấu chi phí lãi vay API (âm) sang magnitude PDF (dương)"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_pretax_profit",
+      "item_id": "pretax_profit",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 8812148842683,
+      "api_value_normalized": 8812148842683.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_net_profit",
+      "item_id": "net_profit",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 7614329521616,
+      "api_value_normalized": 7614329521616.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_parent_profit",
+      "item_id": "parent_profit",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 7600771906152,
+      "api_value_normalized": 7600771906152.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_basic_eps",
+      "item_id": "basic_eps",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 880,
+      "api_value_normalized": null,
+      "difference_api_minus_pdf": null,
+      "numeric_match": null,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [],
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "note": "EPS không cộng quý; API quarterly có thể đang trả EPS YTD"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_cfo",
+      "item_id": "cfo",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": 12641697117285,
+      "api_value_normalized": 12641697117285.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_capex_cash",
+      "item_id": "capex_cash",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "pdf_value": -12523577829074,
+      "api_value_normalized": -12523577829074.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2026-05-04",
+        "2026-09-03"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_cfo",
+      "item_id": "cfo",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": 507162083475,
+      "api_value_normalized": 507162083475.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_capex_cash",
+      "item_id": "capex_cash",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "pdf_value": -10688184320479,
+      "api_value_normalized": -10688184320479.0,
+      "difference_api_minus_pdf": 0.0,
+      "numeric_match": true,
+      "issuer_published_at": "2026-08-28",
+      "api_public_dates": [
+        "2025-04-29",
+        "2025-08-29"
+      ],
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "note": "Đối chiếu tổng Q1..Qn API với YTD PDF; phép đối chiếu này không xác minh bản hồi tố"
+    }
+  ],
+  "summary": {
+    "compared": 64,
+    "exact_matches": 64,
+    "mismatches": 0
+  },
+  "warning": "Số API khớp không tự chứng minh ngày công bố, scope hoặc bản dữ liệu đã biết ở ngày chốt. PDF là nguồn của verified bundle."
+}
