@@ -1,0 +1,1809 @@
+{
+  "schema_version": "1.0",
+  "run_id": "mvp-demo-001",
+  "ticker": "TEST",
+  "exchange": "HOSE",
+  "sector": "Demo sector",
+  "as_of": "2026-10-09",
+  "analysis_period": {
+    "start": "2025-01-01",
+    "end": "2026-10-09"
+  },
+  "investment_horizon_months": 12,
+  "is_demo": true,
+  "macro": {
+    "drivers": [
+      {
+        "name": "Demo borrowing rate",
+        "current": {
+          "value": 0.06,
+          "unit": "fraction",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "previous": {
+          "value": 0.07,
+          "unit": "fraction",
+          "period": "2025-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2025-09-30",
+          "published_at": "2025-09-30"
+        },
+        "effect_if_rises": {
+          "value": "headwind",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "mechanism": {
+          "value": "Conditional assumption: higher rates raise financing costs.",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      }
+    ]
+  },
+  "industry": {
+    "revenue_current": {
+      "value": 11000,
+      "unit": "VND",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "revenue_previous": {
+      "value": 10000,
+      "unit": "VND",
+      "period": "2025-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2025-09-30",
+      "published_at": "2025-09-30"
+    },
+    "comparable_periods": true,
+    "peers": [
+      {
+        "ticker": "PEER1",
+        "sector": "Demo sector",
+        "business_type": "nonfinancial",
+        "accounting_basis": "consolidated_VAS",
+        "comparability_note": {
+          "value": "Synthetic peers with matched growth and risk assumptions.",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "price": {
+          "value": 100,
+          "unit": "VND/share",
+          "period": "2026-10-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-09",
+          "published_at": "2026-10-09"
+        },
+        "eps_ttm": {
+          "value": 10,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "bvps": {
+          "value": 50,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "earnings_normalized": {
+          "value": true,
+          "unit": "boolean",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      },
+      {
+        "ticker": "PEER2",
+        "sector": "Demo sector",
+        "business_type": "nonfinancial",
+        "accounting_basis": "consolidated_VAS",
+        "comparability_note": {
+          "value": "Synthetic peers with matched growth and risk assumptions.",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "price": {
+          "value": 110,
+          "unit": "VND/share",
+          "period": "2026-10-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-09",
+          "published_at": "2026-10-09"
+        },
+        "eps_ttm": {
+          "value": 10,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "bvps": {
+          "value": 50,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "earnings_normalized": {
+          "value": true,
+          "unit": "boolean",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      },
+      {
+        "ticker": "PEER3",
+        "sector": "Demo sector",
+        "business_type": "nonfinancial",
+        "accounting_basis": "consolidated_VAS",
+        "comparability_note": {
+          "value": "Synthetic peers with matched growth and risk assumptions.",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "price": {
+          "value": 120,
+          "unit": "VND/share",
+          "period": "2026-10-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-09",
+          "published_at": "2026-10-09"
+        },
+        "eps_ttm": {
+          "value": 10,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "bvps": {
+          "value": 50,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "earnings_normalized": {
+          "value": true,
+          "unit": "boolean",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      }
+    ],
+    "sector": "Demo sector",
+    "accounting_basis": "consolidated_VAS",
+    "ind_pe_median": {
+      "value": 11,
+      "unit": "multiple",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "ind_pb_median": {
+      "value": 2.2,
+      "unit": "multiple",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "peer_count": {
+      "value": 3,
+      "unit": "count",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "comparability_note": {
+      "value": "Synthetic matched accounting, earnings periods, growth and risk.",
+      "unit": "text",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    }
+  },
+  "company": {
+    "business_type": "nonfinancial",
+    "accounting_basis": "consolidated_VAS",
+    "price": {
+      "value": 100,
+      "unit": "VND/share",
+      "period": "2026-10-09",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "eps_ttm": {
+      "value": 12,
+      "unit": "VND/share",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "bvps": {
+      "value": 60,
+      "unit": "VND/share",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "earnings_normalized": {
+      "value": true,
+      "unit": "boolean",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "valuation": {
+      "method": "asset_based",
+      "assumptions": {
+        "note": "Synthetic scenario, not a real valuation."
+      },
+      "limitations": [
+        "Synthetic test assumptions only."
+      ],
+      "low": {
+        "value": 125,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      },
+      "high": {
+        "value": 150,
+        "unit": "VND/share",
+        "period": "2026-10-09",
+        "source": "https://example.com/synthetic-test-data",
+        "observed_at": "2026-10-09",
+        "published_at": "2026-10-09"
+      }
+    },
+    "financial": {
+      "period_type": "TTM",
+      "comparable_periods": true,
+      "current": {
+        "revenue": {
+          "value": 1200,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "net_income": {
+          "value": 120,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "equity": {
+          "value": 600,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "assets": {
+          "value": 1000,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "debt": {
+          "value": 180,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "current_assets": {
+          "value": 400,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "current_liabilities": {
+          "value": 200,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "ebit": {
+          "value": 160,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "interest_expense": {
+          "value": 20,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "cfo": {
+          "value": 140,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "capex": {
+          "value": 40,
+          "unit": "VND",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      },
+      "previous": {
+        "revenue": {
+          "value": 1000,
+          "unit": "VND",
+          "period": "2025-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2025-09-30",
+          "published_at": "2025-09-30"
+        },
+        "net_income": {
+          "value": 100,
+          "unit": "VND",
+          "period": "2025-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2025-09-30",
+          "published_at": "2025-09-30"
+        },
+        "equity": {
+          "value": 500,
+          "unit": "VND",
+          "period": "2025-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2025-09-30",
+          "published_at": "2025-09-30"
+        },
+        "assets": {
+          "value": 900,
+          "unit": "VND",
+          "period": "2025-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2025-09-30",
+          "published_at": "2025-09-30"
+        }
+      }
+    },
+    "monthly_prices": {
+      "unit": "VND/share",
+      "adjusted": true,
+      "frequency": "month_end",
+      "points": [
+        {
+          "value": 100,
+          "unit": "VND/share",
+          "period": "2026-03-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-03-31",
+          "published_at": "2026-03-31"
+        },
+        {
+          "value": 101,
+          "unit": "VND/share",
+          "period": "2026-04-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-04-30",
+          "published_at": "2026-04-30"
+        },
+        {
+          "value": 102,
+          "unit": "VND/share",
+          "period": "2026-05-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-05-31",
+          "published_at": "2026-05-31"
+        },
+        {
+          "value": 103,
+          "unit": "VND/share",
+          "period": "2026-06-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-06-30",
+          "published_at": "2026-06-30"
+        },
+        {
+          "value": 104,
+          "unit": "VND/share",
+          "period": "2026-07-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-31",
+          "published_at": "2026-07-31"
+        },
+        {
+          "value": 105,
+          "unit": "VND/share",
+          "period": "2026-08-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-31",
+          "published_at": "2026-08-31"
+        },
+        {
+          "value": 106,
+          "unit": "VND/share",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      ]
+    },
+    "history": {
+      "unit": "index",
+      "adjusted": true,
+      "return_basis": "total_return",
+      "frequency": "daily",
+      "periods_per_year": 252,
+      "calendar": "DEMO_WEEKDAYS",
+      "currency": "VND",
+      "points": [
+        {
+          "value": 100.24,
+          "unit": "index",
+          "period": "2026-07-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-01",
+          "published_at": "2026-07-01"
+        },
+        {
+          "value": 100.11971199999999,
+          "unit": "index",
+          "period": "2026-07-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-02",
+          "published_at": "2026-07-02"
+        },
+        {
+          "value": 100.4801429632,
+          "unit": "index",
+          "period": "2026-07-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-03",
+          "published_at": "2026-07-03"
+        },
+        {
+          "value": 100.23899062008832,
+          "unit": "index",
+          "period": "2026-07-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-06",
+          "published_at": "2026-07-06"
+        },
+        {
+          "value": 100.47956419757652,
+          "unit": "index",
+          "period": "2026-07-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-07",
+          "published_at": "2026-07-07"
+        },
+        {
+          "value": 100.35898872053943,
+          "unit": "index",
+          "period": "2026-07-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-08",
+          "published_at": "2026-07-08"
+        },
+        {
+          "value": 100.72028107993337,
+          "unit": "index",
+          "period": "2026-07-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-09",
+          "published_at": "2026-07-09"
+        },
+        {
+          "value": 100.47855240534153,
+          "unit": "index",
+          "period": "2026-07-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-10",
+          "published_at": "2026-07-10"
+        },
+        {
+          "value": 100.71970093111435,
+          "unit": "index",
+          "period": "2026-07-13",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-13",
+          "published_at": "2026-07-13"
+        },
+        {
+          "value": 100.59883728999701,
+          "unit": "index",
+          "period": "2026-07-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-14",
+          "published_at": "2026-07-14"
+        },
+        {
+          "value": 100.960993104241,
+          "unit": "index",
+          "period": "2026-07-15",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-15",
+          "published_at": "2026-07-15"
+        },
+        {
+          "value": 100.71868672079083,
+          "unit": "index",
+          "period": "2026-07-16",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-16",
+          "published_at": "2026-07-16"
+        },
+        {
+          "value": 100.96041156892072,
+          "unit": "index",
+          "period": "2026-07-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-17",
+          "published_at": "2026-07-17"
+        },
+        {
+          "value": 100.83925907503802,
+          "unit": "index",
+          "period": "2026-07-20",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-20",
+          "published_at": "2026-07-20"
+        },
+        {
+          "value": 101.20228040770816,
+          "unit": "index",
+          "period": "2026-07-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-21",
+          "published_at": "2026-07-21"
+        },
+        {
+          "value": 100.95939493472966,
+          "unit": "index",
+          "period": "2026-07-22",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-22",
+          "published_at": "2026-07-22"
+        },
+        {
+          "value": 101.20169748257301,
+          "unit": "index",
+          "period": "2026-07-23",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-23",
+          "published_at": "2026-07-23"
+        },
+        {
+          "value": 101.08025544559392,
+          "unit": "index",
+          "period": "2026-07-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-24",
+          "published_at": "2026-07-24"
+        },
+        {
+          "value": 101.44414436519806,
+          "unit": "index",
+          "period": "2026-07-27",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-27",
+          "published_at": "2026-07-27"
+        },
+        {
+          "value": 101.20067841872158,
+          "unit": "index",
+          "period": "2026-07-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-28",
+          "published_at": "2026-07-28"
+        },
+        {
+          "value": 101.4435600469265,
+          "unit": "index",
+          "period": "2026-07-29",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-29",
+          "published_at": "2026-07-29"
+        },
+        {
+          "value": 101.3218277748702,
+          "unit": "index",
+          "period": "2026-07-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-30",
+          "published_at": "2026-07-30"
+        },
+        {
+          "value": 101.68658635485974,
+          "unit": "index",
+          "period": "2026-07-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-31",
+          "published_at": "2026-07-31"
+        },
+        {
+          "value": 101.44253854760808,
+          "unit": "index",
+          "period": "2026-08-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-03",
+          "published_at": "2026-08-03"
+        },
+        {
+          "value": 101.68600064012233,
+          "unit": "index",
+          "period": "2026-08-04",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-04",
+          "published_at": "2026-08-04"
+        },
+        {
+          "value": 101.56397743935419,
+          "unit": "index",
+          "period": "2026-08-05",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-05",
+          "published_at": "2026-08-05"
+        },
+        {
+          "value": 101.92960775813587,
+          "unit": "index",
+          "period": "2026-08-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-06",
+          "published_at": "2026-08-06"
+        },
+        {
+          "value": 101.68497669951635,
+          "unit": "index",
+          "period": "2026-08-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-07",
+          "published_at": "2026-08-07"
+        },
+        {
+          "value": 101.9290206435952,
+          "unit": "index",
+          "period": "2026-08-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-10",
+          "published_at": "2026-08-10"
+        },
+        {
+          "value": 101.80670581882288,
+          "unit": "index",
+          "period": "2026-08-11",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-11",
+          "published_at": "2026-08-11"
+        },
+        {
+          "value": 102.17320995977065,
+          "unit": "index",
+          "period": "2026-08-12",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-12",
+          "published_at": "2026-08-12"
+        },
+        {
+          "value": 101.9279942558672,
+          "unit": "index",
+          "period": "2026-08-13",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-13",
+          "published_at": "2026-08-13"
+        },
+        {
+          "value": 102.17262144208128,
+          "unit": "index",
+          "period": "2026-08-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-14",
+          "published_at": "2026-08-14"
+        },
+        {
+          "value": 102.05001429635078,
+          "unit": "index",
+          "period": "2026-08-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-17",
+          "published_at": "2026-08-17"
+        },
+        {
+          "value": 102.41739434781765,
+          "unit": "index",
+          "period": "2026-08-18",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-18",
+          "published_at": "2026-08-18"
+        },
+        {
+          "value": 102.17159260138288,
+          "unit": "index",
+          "period": "2026-08-19",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-19",
+          "published_at": "2026-08-19"
+        },
+        {
+          "value": 102.4168044236262,
+          "unit": "index",
+          "period": "2026-08-20",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-20",
+          "published_at": "2026-08-20"
+        },
+        {
+          "value": 102.29390425831785,
+          "unit": "index",
+          "period": "2026-08-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-21",
+          "published_at": "2026-08-21"
+        },
+        {
+          "value": 102.6621623136478,
+          "unit": "index",
+          "period": "2026-08-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-24",
+          "published_at": "2026-08-24"
+        },
+        {
+          "value": 102.41577312409505,
+          "unit": "index",
+          "period": "2026-08-25",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-25",
+          "published_at": "2026-08-25"
+        },
+        {
+          "value": 102.66157097959288,
+          "unit": "index",
+          "period": "2026-08-26",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-26",
+          "published_at": "2026-08-26"
+        },
+        {
+          "value": 102.53837709441737,
+          "unit": "index",
+          "period": "2026-08-27",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-27",
+          "published_at": "2026-08-27"
+        },
+        {
+          "value": 102.90751525195728,
+          "unit": "index",
+          "period": "2026-08-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-28",
+          "published_at": "2026-08-28"
+        },
+        {
+          "value": 102.66053721535259,
+          "unit": "index",
+          "period": "2026-08-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-31",
+          "published_at": "2026-08-31"
+        },
+        {
+          "value": 102.90692250466944,
+          "unit": "index",
+          "period": "2026-09-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-01",
+          "published_at": "2026-09-01"
+        },
+        {
+          "value": 102.78343419766384,
+          "unit": "index",
+          "period": "2026-09-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-02",
+          "published_at": "2026-09-02"
+        },
+        {
+          "value": 103.15345456077543,
+          "unit": "index",
+          "period": "2026-09-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-03",
+          "published_at": "2026-09-03"
+        },
+        {
+          "value": 102.90588626982958,
+          "unit": "index",
+          "period": "2026-09-04",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-04",
+          "published_at": "2026-09-04"
+        },
+        {
+          "value": 103.15286039687717,
+          "unit": "index",
+          "period": "2026-09-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-07",
+          "published_at": "2026-09-07"
+        },
+        {
+          "value": 103.02907696440093,
+          "unit": "index",
+          "period": "2026-09-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-08",
+          "published_at": "2026-09-08"
+        },
+        {
+          "value": 103.39998164147278,
+          "unit": "index",
+          "period": "2026-09-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-09",
+          "published_at": "2026-09-09"
+        },
+        {
+          "value": 103.15182168553325,
+          "unit": "index",
+          "period": "2026-09-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-10",
+          "published_at": "2026-09-10"
+        },
+        {
+          "value": 103.39938605757852,
+          "unit": "index",
+          "period": "2026-09-11",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-11",
+          "published_at": "2026-09-11"
+        },
+        {
+          "value": 103.27530679430943,
+          "unit": "index",
+          "period": "2026-09-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-14",
+          "published_at": "2026-09-14"
+        },
+        {
+          "value": 103.64709789876895,
+          "unit": "index",
+          "period": "2026-09-15",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-15",
+          "published_at": "2026-09-15"
+        },
+        {
+          "value": 103.3983448638119,
+          "unit": "index",
+          "period": "2026-09-16",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-16",
+          "published_at": "2026-09-16"
+        },
+        {
+          "value": 103.64650089148505,
+          "unit": "index",
+          "period": "2026-09-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-17",
+          "published_at": "2026-09-17"
+        },
+        {
+          "value": 103.52212509041527,
+          "unit": "index",
+          "period": "2026-09-18",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-18",
+          "published_at": "2026-09-18"
+        },
+        {
+          "value": 103.89480474074077,
+          "unit": "index",
+          "period": "2026-09-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-21",
+          "published_at": "2026-09-21"
+        },
+        {
+          "value": 103.64545720936299,
+          "unit": "index",
+          "period": "2026-09-22",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-22",
+          "published_at": "2026-09-22"
+        },
+        {
+          "value": 103.89420630666545,
+          "unit": "index",
+          "period": "2026-09-23",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-23",
+          "published_at": "2026-09-23"
+        },
+        {
+          "value": 103.76953325909746,
+          "unit": "index",
+          "period": "2026-09-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-24",
+          "published_at": "2026-09-24"
+        },
+        {
+          "value": 104.1431035788302,
+          "unit": "index",
+          "period": "2026-09-25",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-25",
+          "published_at": "2026-09-25"
+        },
+        {
+          "value": 103.89316013024101,
+          "unit": "index",
+          "period": "2026-09-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-28",
+          "published_at": "2026-09-28"
+        },
+        {
+          "value": 104.14250371455358,
+          "unit": "index",
+          "period": "2026-09-29",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-29",
+          "published_at": "2026-09-29"
+        },
+        {
+          "value": 104.01753271009612,
+          "unit": "index",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        {
+          "value": 104.39199582785247,
+          "unit": "index",
+          "period": "2026-10-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-01",
+          "published_at": "2026-10-01"
+        },
+        {
+          "value": 104.14145503786563,
+          "unit": "index",
+          "period": "2026-10-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-02",
+          "published_at": "2026-10-02"
+        },
+        {
+          "value": 104.3913945299565,
+          "unit": "index",
+          "period": "2026-10-05",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-05",
+          "published_at": "2026-10-05"
+        },
+        {
+          "value": 104.26612485652055,
+          "unit": "index",
+          "period": "2026-10-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-06",
+          "published_at": "2026-10-06"
+        },
+        {
+          "value": 104.64148290600403,
+          "unit": "index",
+          "period": "2026-10-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-07",
+          "published_at": "2026-10-07"
+        },
+        {
+          "value": 104.39034334702963,
+          "unit": "index",
+          "period": "2026-10-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-08",
+          "published_at": "2026-10-08"
+        },
+        {
+          "value": 104.64088017106249,
+          "unit": "index",
+          "period": "2026-10-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-09",
+          "published_at": "2026-10-09"
+        }
+      ]
+    },
+    "de": {
+      "value": 0.3,
+      "unit": "fraction",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "financial_risk": {
+      "value": "safe",
+      "unit": "text",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "financial_risk_basis": {
+      "value": "Synthetic safe assessment for software testing, not real analysis.",
+      "unit": "text",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "graham_applicable": {
+      "value": true,
+      "unit": "boolean",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "graham_basis": {
+      "value": "Synthetic asset-based company assumption for software testing.",
+      "unit": "text",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2026-09-30",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    },
+    "eps_avg_3y": {
+      "value": 10,
+      "unit": "VND/share",
+      "source": "https://example.com/mvp-synthetic-test",
+      "period": "2024-2026",
+      "observed_at": "2026-10-09",
+      "published_at": "2026-10-09"
+    }
+  },
+  "market": {
+    "benchmark": {
+      "unit": "index",
+      "adjusted": true,
+      "return_basis": "total_return",
+      "frequency": "daily",
+      "periods_per_year": 252,
+      "calendar": "DEMO_WEEKDAYS",
+      "currency": "VND",
+      "points": [
+        {
+          "value": 100.2,
+          "unit": "index",
+          "period": "2026-07-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-01",
+          "published_at": "2026-07-01"
+        },
+        {
+          "value": 100.0998,
+          "unit": "index",
+          "period": "2026-07-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-02",
+          "published_at": "2026-07-02"
+        },
+        {
+          "value": 100.40009939999999,
+          "unit": "index",
+          "period": "2026-07-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-03",
+          "published_at": "2026-07-03"
+        },
+        {
+          "value": 100.19929920119999,
+          "unit": "index",
+          "period": "2026-07-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-06",
+          "published_at": "2026-07-06"
+        },
+        {
+          "value": 100.3996977996024,
+          "unit": "index",
+          "period": "2026-07-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-07",
+          "published_at": "2026-07-07"
+        },
+        {
+          "value": 100.29929810180279,
+          "unit": "index",
+          "period": "2026-07-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-08",
+          "published_at": "2026-07-08"
+        },
+        {
+          "value": 100.60019599610818,
+          "unit": "index",
+          "period": "2026-07-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-09",
+          "published_at": "2026-07-09"
+        },
+        {
+          "value": 100.39899560411597,
+          "unit": "index",
+          "period": "2026-07-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-10",
+          "published_at": "2026-07-10"
+        },
+        {
+          "value": 100.5997935953242,
+          "unit": "index",
+          "period": "2026-07-13",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-13",
+          "published_at": "2026-07-13"
+        },
+        {
+          "value": 100.49919380172888,
+          "unit": "index",
+          "period": "2026-07-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-14",
+          "published_at": "2026-07-14"
+        },
+        {
+          "value": 100.80069138313405,
+          "unit": "index",
+          "period": "2026-07-15",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-15",
+          "published_at": "2026-07-15"
+        },
+        {
+          "value": 100.59909000036778,
+          "unit": "index",
+          "period": "2026-07-16",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-16",
+          "published_at": "2026-07-16"
+        },
+        {
+          "value": 100.80028818036851,
+          "unit": "index",
+          "period": "2026-07-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-17",
+          "published_at": "2026-07-17"
+        },
+        {
+          "value": 100.69948789218815,
+          "unit": "index",
+          "period": "2026-07-20",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-20",
+          "published_at": "2026-07-20"
+        },
+        {
+          "value": 101.0015863558647,
+          "unit": "index",
+          "period": "2026-07-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-21",
+          "published_at": "2026-07-21"
+        },
+        {
+          "value": 100.79958318315298,
+          "unit": "index",
+          "period": "2026-07-22",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-22",
+          "published_at": "2026-07-22"
+        },
+        {
+          "value": 101.00118234951928,
+          "unit": "index",
+          "period": "2026-07-23",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-23",
+          "published_at": "2026-07-23"
+        },
+        {
+          "value": 100.90018116716976,
+          "unit": "index",
+          "period": "2026-07-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-24",
+          "published_at": "2026-07-24"
+        },
+        {
+          "value": 101.20288171067126,
+          "unit": "index",
+          "period": "2026-07-27",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-27",
+          "published_at": "2026-07-27"
+        },
+        {
+          "value": 101.00047594724992,
+          "unit": "index",
+          "period": "2026-07-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-28",
+          "published_at": "2026-07-28"
+        },
+        {
+          "value": 101.20247689914443,
+          "unit": "index",
+          "period": "2026-07-29",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-29",
+          "published_at": "2026-07-29"
+        },
+        {
+          "value": 101.10127442224528,
+          "unit": "index",
+          "period": "2026-07-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-30",
+          "published_at": "2026-07-30"
+        },
+        {
+          "value": 101.40457824551201,
+          "unit": "index",
+          "period": "2026-07-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-07-31",
+          "published_at": "2026-07-31"
+        },
+        {
+          "value": 101.20176908902098,
+          "unit": "index",
+          "period": "2026-08-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-03",
+          "published_at": "2026-08-03"
+        },
+        {
+          "value": 101.40417262719903,
+          "unit": "index",
+          "period": "2026-08-04",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-04",
+          "published_at": "2026-08-04"
+        },
+        {
+          "value": 101.30276845457183,
+          "unit": "index",
+          "period": "2026-08-05",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-05",
+          "published_at": "2026-08-05"
+        },
+        {
+          "value": 101.60667675993554,
+          "unit": "index",
+          "period": "2026-08-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-06",
+          "published_at": "2026-08-06"
+        },
+        {
+          "value": 101.40346340641567,
+          "unit": "index",
+          "period": "2026-08-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-07",
+          "published_at": "2026-08-07"
+        },
+        {
+          "value": 101.6062703332285,
+          "unit": "index",
+          "period": "2026-08-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-10",
+          "published_at": "2026-08-10"
+        },
+        {
+          "value": 101.50466406289526,
+          "unit": "index",
+          "period": "2026-08-11",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-11",
+          "published_at": "2026-08-11"
+        },
+        {
+          "value": 101.80917805508393,
+          "unit": "index",
+          "period": "2026-08-12",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-12",
+          "published_at": "2026-08-12"
+        },
+        {
+          "value": 101.60555969897376,
+          "unit": "index",
+          "period": "2026-08-13",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-13",
+          "published_at": "2026-08-13"
+        },
+        {
+          "value": 101.80877081837171,
+          "unit": "index",
+          "period": "2026-08-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-14",
+          "published_at": "2026-08-14"
+        },
+        {
+          "value": 101.70696204755335,
+          "unit": "index",
+          "period": "2026-08-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-17",
+          "published_at": "2026-08-17"
+        },
+        {
+          "value": 102.01208293369599,
+          "unit": "index",
+          "period": "2026-08-18",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-18",
+          "published_at": "2026-08-18"
+        },
+        {
+          "value": 101.8080587678286,
+          "unit": "index",
+          "period": "2026-08-19",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-19",
+          "published_at": "2026-08-19"
+        },
+        {
+          "value": 102.01167488536426,
+          "unit": "index",
+          "period": "2026-08-20",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-20",
+          "published_at": "2026-08-20"
+        },
+        {
+          "value": 101.9096632104789,
+          "unit": "index",
+          "period": "2026-08-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-21",
+          "published_at": "2026-08-21"
+        },
+        {
+          "value": 102.21539220011032,
+          "unit": "index",
+          "period": "2026-08-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-24",
+          "published_at": "2026-08-24"
+        },
+        {
+          "value": 102.0109614157101,
+          "unit": "index",
+          "period": "2026-08-25",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-25",
+          "published_at": "2026-08-25"
+        },
+        {
+          "value": 102.21498333854151,
+          "unit": "index",
+          "period": "2026-08-26",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-26",
+          "published_at": "2026-08-26"
+        },
+        {
+          "value": 102.11276835520297,
+          "unit": "index",
+          "period": "2026-08-27",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-27",
+          "published_at": "2026-08-27"
+        },
+        {
+          "value": 102.41910666026857,
+          "unit": "index",
+          "period": "2026-08-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-28",
+          "published_at": "2026-08-28"
+        },
+        {
+          "value": 102.21426844694803,
+          "unit": "index",
+          "period": "2026-08-31",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-08-31",
+          "published_at": "2026-08-31"
+        },
+        {
+          "value": 102.41869698384193,
+          "unit": "index",
+          "period": "2026-09-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-01",
+          "published_at": "2026-09-01"
+        },
+        {
+          "value": 102.31627828685808,
+          "unit": "index",
+          "period": "2026-09-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-02",
+          "published_at": "2026-09-02"
+        },
+        {
+          "value": 102.62322712171864,
+          "unit": "index",
+          "period": "2026-09-03",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-03",
+          "published_at": "2026-09-03"
+        },
+        {
+          "value": 102.4179806674752,
+          "unit": "index",
+          "period": "2026-09-04",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-04",
+          "published_at": "2026-09-04"
+        },
+        {
+          "value": 102.62281662881016,
+          "unit": "index",
+          "period": "2026-09-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-07",
+          "published_at": "2026-09-07"
+        },
+        {
+          "value": 102.52019381218135,
+          "unit": "index",
+          "period": "2026-09-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-08",
+          "published_at": "2026-09-08"
+        },
+        {
+          "value": 102.82775439361788,
+          "unit": "index",
+          "period": "2026-09-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-09",
+          "published_at": "2026-09-09"
+        },
+        {
+          "value": 102.62209888483065,
+          "unit": "index",
+          "period": "2026-09-10",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-10",
+          "published_at": "2026-09-10"
+        },
+        {
+          "value": 102.82734308260031,
+          "unit": "index",
+          "period": "2026-09-11",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-11",
+          "published_at": "2026-09-11"
+        },
+        {
+          "value": 102.72451573951771,
+          "unit": "index",
+          "period": "2026-09-14",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-14",
+          "published_at": "2026-09-14"
+        },
+        {
+          "value": 103.03268928673626,
+          "unit": "index",
+          "period": "2026-09-15",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-15",
+          "published_at": "2026-09-15"
+        },
+        {
+          "value": 102.82662390816279,
+          "unit": "index",
+          "period": "2026-09-16",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-16",
+          "published_at": "2026-09-16"
+        },
+        {
+          "value": 103.03227715597912,
+          "unit": "index",
+          "period": "2026-09-17",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-17",
+          "published_at": "2026-09-17"
+        },
+        {
+          "value": 102.92924487882314,
+          "unit": "index",
+          "period": "2026-09-18",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-18",
+          "published_at": "2026-09-18"
+        },
+        {
+          "value": 103.2380326134596,
+          "unit": "index",
+          "period": "2026-09-21",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-21",
+          "published_at": "2026-09-21"
+        },
+        {
+          "value": 103.03155654823267,
+          "unit": "index",
+          "period": "2026-09-22",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-22",
+          "published_at": "2026-09-22"
+        },
+        {
+          "value": 103.23761966132913,
+          "unit": "index",
+          "period": "2026-09-23",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-23",
+          "published_at": "2026-09-23"
+        },
+        {
+          "value": 103.1343820416678,
+          "unit": "index",
+          "period": "2026-09-24",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-24",
+          "published_at": "2026-09-24"
+        },
+        {
+          "value": 103.4437851877928,
+          "unit": "index",
+          "period": "2026-09-25",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-25",
+          "published_at": "2026-09-25"
+        },
+        {
+          "value": 103.23689761741721,
+          "unit": "index",
+          "period": "2026-09-28",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-28",
+          "published_at": "2026-09-28"
+        },
+        {
+          "value": 103.44337141265204,
+          "unit": "index",
+          "period": "2026-09-29",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-29",
+          "published_at": "2026-09-29"
+        },
+        {
+          "value": 103.33992804123939,
+          "unit": "index",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        {
+          "value": 103.6499478253631,
+          "unit": "index",
+          "period": "2026-10-01",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-01",
+          "published_at": "2026-10-01"
+        },
+        {
+          "value": 103.44264792971238,
+          "unit": "index",
+          "period": "2026-10-02",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-02",
+          "published_at": "2026-10-02"
+        },
+        {
+          "value": 103.6495332255718,
+          "unit": "index",
+          "period": "2026-10-05",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-05",
+          "published_at": "2026-10-05"
+        },
+        {
+          "value": 103.54588369234622,
+          "unit": "index",
+          "period": "2026-10-06",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-06",
+          "published_at": "2026-10-06"
+        },
+        {
+          "value": 103.85652134342325,
+          "unit": "index",
+          "period": "2026-10-07",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-07",
+          "published_at": "2026-10-07"
+        },
+        {
+          "value": 103.6488083007364,
+          "unit": "index",
+          "period": "2026-10-08",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-08",
+          "published_at": "2026-10-08"
+        },
+        {
+          "value": 103.85610591733789,
+          "unit": "index",
+          "period": "2026-10-09",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-10-09",
+          "published_at": "2026-10-09"
+        }
+      ]
+    },
+    "benchmark_name": {
+      "value": "Synthetic benchmark",
+      "unit": "text",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "risk_free_annual": {
+      "value": 0.04,
+      "unit": "fraction",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "market_risk_premium_annual": {
+      "value": 0.06,
+      "unit": "fraction",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    }
+  },
+  "news": {
+    "coverage": {
+      "value": "Synthetic event set for software testing.",
+      "unit": "text",
+      "period": "2026-09-30",
+      "source": "https://example.com/synthetic-test-data",
+      "observed_at": "2026-09-30",
+      "published_at": "2026-09-30"
+    },
+    "items": [
+      {
+        "ticker": "TEST",
+        "title": {
+          "value": "Synthetic event requiring review",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "direction": {
+          "value": "negative",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "mechanism": {
+          "value": "Synthetic risk annotation, not real news.",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        },
+        "verification": {
+          "value": "unverified",
+          "unit": "text",
+          "period": "2026-09-30",
+          "source": "https://example.com/synthetic-test-data",
+          "observed_at": "2026-09-30",
+          "published_at": "2026-09-30"
+        }
+      }
+    ]
+  }
+}
