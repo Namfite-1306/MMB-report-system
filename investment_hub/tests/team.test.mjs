@@ -53,4 +53,29 @@ test('all member packages run with a common request and export HPG PDF without f
   assert.ok(old.analysis.modules.industry.data.metrics.every(m=>m.period_end<='2025-01-06'));
   assert.ok(old.analysis.modules.company.data.financials.every(m=>m.period_end<='2025-01-06'));
   assert.equal(old.analysis.conclusion_usable,false);
+  // Missing quarterly/TTM/separate observations can have null native periods.
+  // They must not crash the adapter or acquire invented observation dates.
+  for(const options of [
+    {financial_basis:'quarterly',statement_scope:'consolidated'},
+    {financial_basis:'ttm',statement_scope:'consolidated'},
+    {financial_basis:'annual',statement_scope:'separate'}
+  ]) {
+    const missing=await post('/api/runs',{ticker:'HPG',exchange:'HOSE',industry_name:'Ngành',
+      as_of_date:'2025-12-31',period_start:'2023-01-01',period_end:'2025-12-31',
+      investment_horizon:'Ngắn hạn',investment_horizon_months:12,...options});
+    const replay=await post(`/api/runs/${missing.analysis.run_id}/pipeline`,{confirm_execution:true});
+    assert.ok(replay.execution.every(e=>e.status==='saved'),JSON.stringify(replay.execution));
+    assert.deepEqual(replay.analysis.errors,[]);
+    const company=replay.analysis.modules.company;
+    assert.equal(company.status,'partial');
+    assert.ok(company.data.price_series.length>100);
+    const undated=company.native_output.data.metrics.filter(m=>m.period_start===null || m.period_end===null);
+    assert.ok(undated.length>0);
+    assert.ok(undated.every(m=>m.value===null));
+    assert.ok(company.data.metrics.every(m=>m.period_start && m.period_end));
+    assert.ok(company.warnings.some(w=>w.includes('chưa xác định kỳ')));
+    assert.equal(replay.analysis.conclusion_usable,false);
+    const report=await post(`/api/runs/${missing.analysis.run_id}/pdf`,{confirm_execution:true});
+    assert.equal(report.manifest.overall_status,'partial');
+  }
 });

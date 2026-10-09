@@ -26,6 +26,10 @@ Source và metric ID chuyển sang prefix `macro:`, `industry:`, `company:`, `st
 tham chiếu đổi theo cùng bảng id_map. `native_output` giữ bản gốc trước chuyển đổi.
 Các dòng có kỳ sau ngày chốt không vào bảng sử dụng; bản gốc vẫn được giữ để đối chiếu.
 Các giá trị thiếu giữ null, không thay bằng 0.
+Chỉ số gốc chưa tính được có thể thiếu kỳ (null). Adapter giữ chúng trong native_output
+và ghi cảnh báo; không đưa vào bảng chỉ số có kỳ của hub hoặc gán ngày quan sát giả.
+Chọn Quý/TTM/Riêng lẻ khi chưa có BCTC phù hợp vẫn giữ được chuỗi giá và dữ liệu hợp lệ,
+xuất PDF với trạng thái partial, không phát sinh lỗi so sánh null với ngày.
 
 Người 4 dùng strategy_v2 và strategy_rules_v2 thực tế, giữ 9 trụ cột và 6 tài liệu lý thuyết.
 Các fact BCTC chỉ lấy từ dòng verified, cùng phạm vi, nguồn có ngày công bố đủ điều kiện.

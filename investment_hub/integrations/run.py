@@ -52,9 +52,16 @@ def canonical(request, name, native):
     # Preserve records outside cutoff in native_output; omit them from usable tables.
     for key in ("metrics", "financials"):
         records = out["data"].get(key, [])
-        kept = [r for r in records if r["period_end"] <= request["as_of_date"]]
-        if len(kept) != len(records):
-            out["warnings"].append(f"{key}: đã loại {len(records)-len(kept)} dòng sau ngày chốt; giữ trong native_output.")
+        # Member 3 permits null periods for unavailable metrics. The hub needs
+        # dated records; keep missing-period records in the untouched handoff,
+        # rather than inventing observation dates or comparing None to a date.
+        dated = [r for r in records if isinstance(r.get("period_start"), str)
+                 and r["period_start"] and isinstance(r.get("period_end"), str) and r["period_end"]]
+        kept = [r for r in dated if r["period_end"] <= request["as_of_date"]]
+        if len(dated) != len(records):
+            out["warnings"].append(f"{key}: {len(records)-len(dated)} dòng chưa xác định kỳ do thiếu dữ liệu phù hợp; không gán ngày giả, giữ trong native_output.")
+        if len(kept) != len(dated):
+            out["warnings"].append(f"{key}: đã loại {len(dated)-len(kept)} dòng sau ngày chốt; giữ trong native_output.")
         if key in out["data"]:
             out["data"][key] = kept
     valid_ids = {s["source_id"] for s in out["sources"]} | {m["metric_id"] for m in out["data"]["metrics"]}
