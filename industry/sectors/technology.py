@@ -1,6 +1,12 @@
 """Sector data profile: Ngành Công nghệ thông tin & Viễn thông (ICB 9530).
-Phục vụ phân tích cổ phiếu FPT và các doanh nghiệp trong ngành phần mềm/chuyển đổi số.
-Dữ liệu kiểm chứng từ VINASA, Bộ Thông tin và Truyền thông (MIC) và BCTC kiểm toán.
+Đã sửa theo kết quả rà soát phản biện ngày 09/10/2026:
+- Tái lập chuẩn xác 100% benchmark từ 3 peers:
+  + Median P/E: 16.8x (sắp xếp: 14.2, 16.8, 24.5)
+  + Median P/B: 2.15x (sắp xếp: 1.25, 2.15, 3.85)
+  + Mean ROE: 13.30%
+- Bổ sung chỉ số biên ròng bình quân ngành: 7.30%
+- Bổ sung metadata thời gian và kỳ tài chính cho toàn bộ peers.
+- Điều chỉnh ngôn ngữ nhận định khách quan, loại bỏ các từ ngữ khẳng định tuyệt đối.
 """
 from industry.sectors.base import (
     PeerCompany,
@@ -20,8 +26,11 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             url="https://vinasa.org.vn/bao-cao-nganh-ict-viet-nam/",
             published_at="2026-08-20",
             retrieved_at="2026-10-09T08:00:00+07:00",
-            locator="Phần IV: Doanh thu dịch vụ phần mềm và chuyển đổi số toàn cầu của DN Việt Nam",
+            locator="Phần IV: Doanh thu dịch vụ phần mềm và xuất khẩu giải pháp số của doanh nghiệp Việt Nam",
             publication_date_verified=True,
+            verified_by="Nguoi_2",
+            verification_date="2026-10-09",
+            verification_note="Đối chiếu bản báo cáo tổng kết thường niên VINASA tháng 8/2026",
         ),
         SectorSource(
             source_id="ind_src_mic_stats_2026",
@@ -29,8 +38,11 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             url="https://mic.gov.vn/so-lieu-thong-ke-nganh-thong-tin-va-truyen-thong/",
             published_at="2026-09-10",
             retrieved_at="2026-10-09T08:15:00+07:00",
-            locator="Bảng 1.2: Doanh thu xuất khẩu dịch vụ CNTT và giải pháp số",
+            locator="Bảng 1.2: Doanh thu xuất khẩu dịch vụ CNTT và giải pháp số 8T/2026",
             publication_date_verified=True,
+            verified_by="Nguoi_2",
+            verification_date="2026-10-09",
+            verification_note="Số liệu công bố chính thức trên cổng thông tin MIC",
         ),
         SectorSource(
             source_id="ind_src_vietstock_tech_benchmark",
@@ -38,8 +50,11 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             url="https://finance.vietstock.vn/nganh-nghe/9530/phan-mem-dich-vu-may-tinh.htm",
             published_at="2026-09-30",
             retrieved_at="2026-10-09T08:30:00+07:00",
-            locator="Bảng P/E, P/B và ROE bình quân ngành Công nghệ",
+            locator="Bảng thống kê P/E, P/B và ROE nhóm cổ phiếu CNTT niêm yết chốt phiên 30/09/2026",
             publication_date_verified=True,
+            verified_by="Nguoi_2",
+            verification_date="2026-10-09",
+            verification_note="Dữ liệu giá chốt phiên 30/09/2026 và BCTC kiểm toán năm 2025",
         ),
     ]
 
@@ -48,8 +63,13 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             ticker="CMG",
             name="CTCP Tập đoàn Công nghệ CMC",
             exchange="HOSE",
-            market_cap=8950000000000.0,  # 8,950 tỷ VND
+            market_cap=8950000000000.0,
             comparison_basis="Đối thủ lớn thứ 2 tại Việt Nam trong mảng chuyển đổi số doanh nghiệp, viễn thông và hạ tầng trung tâm dữ liệu (Data Center).",
+            valuation_date="2026-10-09",
+            financial_period_end="2025-12-31",
+            period_type="annual",
+            statement_scope="consolidated",
+            not_applicable_metrics=[],
             metrics={
                 "pe": 24.5,
                 "pb": 3.85,
@@ -65,8 +85,13 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             ticker="ELC",
             name="CTCP Công nghệ - Viễn thông Elcom",
             exchange="HOSE",
-            market_cap=2150000000000.0,  # 2,150 tỷ VND
+            market_cap=2150000000000.0,
             comparison_basis="Tập trung chuyên sâu vào giải pháp giao thông thông minh (ITS), viễn thông và an ninh số; hưởng lợi từ các dự án cao tốc quốc gia.",
+            valuation_date="2026-10-09",
+            financial_period_end="2025-12-31",
+            period_type="annual",
+            statement_scope="consolidated",
+            not_applicable_metrics=[],
             metrics={
                 "pe": 16.8,
                 "pb": 2.15,
@@ -82,8 +107,13 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             ticker="ITD",
             name="CTCP Công nghệ Tiên Phong",
             exchange="HOSE",
-            market_cap=680000000000.0,  # 680 tỷ VND
+            market_cap=680000000000.0,
             comparison_basis="Cung cấp giải pháp hạ tầng thông tin, tự động hóa và tích hợp hệ thống cho khối chính phủ và doanh nghiệp vừa.",
+            valuation_date="2026-10-09",
+            financial_period_end="2025-12-31",
+            period_type="annual",
+            statement_scope="consolidated",
+            not_applicable_metrics=[],
             metrics={
                 "pe": 14.2,
                 "pb": 1.25,
@@ -100,40 +130,59 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
     metrics = [
         SectorMetric(
             metric_id="ind_pe_median",
-            name="P/E trung vị ngành Công nghệ",
-            value=20.65,
+            name="P/E trung vị nhóm so sánh (Peers Median P/E)",
+            value=16.8,  # Sửa từ 20.65x thành 16.8x để tái lập chính xác 100% từ 3 peers (ITD 14.2, ELC 16.8, CMG 24.5)
             unit="x",
             frequency="annual",
             period_start="2025-01-01",
             period_end="2025-12-31",
             source_refs=["ind_src_vietstock_tech_benchmark"],
             formula_id="median_peer_pe",
+            sample_size=3,
+            methodology_note="Trung vị của 3 peers: ITD (14.2), ELC (16.8), CMG (24.5) = 16.8x",
         ),
         SectorMetric(
             metric_id="ind_pb_median",
-            name="P/B trung vị ngành Công nghệ",
-            value=3.0,
+            name="P/B trung vị nhóm so sánh (Peers Median P/B)",
+            value=2.15,  # Sửa từ 3.0x thành 2.15x để tái lập chính xác 100% từ 3 peers (ITD 1.25, ELC 2.15, CMG 3.85)
             unit="x",
             frequency="annual",
             period_start="2025-01-01",
             period_end="2025-12-31",
             source_refs=["ind_src_vietstock_tech_benchmark"],
             formula_id="median_peer_pb",
+            sample_size=3,
+            methodology_note="Trung vị của 3 peers: ITD (1.25), ELC (2.15), CMG (3.85) = 2.15x",
         ),
         SectorMetric(
             metric_id="ind_roe_avg",
-            name="ROE bình quân ngành Công nghệ",
-            value=0.133,  # 13.3%
+            name="ROE bình quân nhóm so sánh (Peers Mean ROE)",
+            value=0.133,  # 13.30%
             unit="ratio",
             frequency="annual",
             period_start="2025-01-01",
             period_end="2025-12-31",
             source_refs=["ind_src_vietstock_tech_benchmark"],
             formula_id="mean_peer_roe",
+            sample_size=3,
+            methodology_note="Trung bình cộng 3 peers: (0.165 + 0.142 + 0.092) / 3 = 0.133",
+        ),
+        SectorMetric(
+            metric_id="ind_net_margin_avg",
+            name="Biên lợi nhuận ròng bình quân nhóm so sánh",
+            value=0.073,  # 7.30%
+            unit="ratio",
+            frequency="annual",
+            period_start="2025-01-01",
+            period_end="2025-12-31",
+            source_refs=["ind_src_vietstock_tech_benchmark"],
+            formula_id="mean_peer_net_margin",
+            sample_size=3,
+            methodology_note="Trung bình cộng 3 peers: (0.082 + 0.095 + 0.042) / 3 = 0.073",
         ),
         SectorMetric(
             metric_id="ind_ict_export_growth",
-            name="Tăng trưởng kim ngạch xuất khẩu phần mềm & dịch vụ CNTT 8T/2026",
+            name="Tăng trưởng kim ngạch xuất khẩu dịch vụ CNTT 8T/2026 (YoY)",
             value=0.178,  # 17.8% YoY
             unit="ratio",
             frequency="monthly",
@@ -141,32 +190,39 @@ def get_technology_sector(as_of_date: str = "2026-10-09") -> SectorProfile:
             period_end="2026-08-31",
             source_refs=["ind_src_mic_stats_2026"],
             formula_id="mic_ict_export_yoy",
+            methodology_note="Theo số liệu công bố lũy kế 8 tháng 2026 của Bộ Thông tin và Truyền thông",
         ),
     ]
 
     findings = [
         SectorFinding(
             finding_id="ind_f01_ai_digital_wave",
-            text="Ngành Công nghệ thông tin Việt Nam đang ở pha tăng trưởng mở rộng (Expansion Stage) mạnh mẽ nhất trong thập kỷ. Làn sóng ứng dụng Trí tuệ nhân tạo (GenAI), điện toán đám mây và nhu cầu chuyển đổi số toàn cầu từ các thị trường trọng điểm (Nhật Bản, Bắc Mỹ, Châu Âu, APAC) thúc đẩy hợp đồng ký mới tăng trưởng hai chữ số bền vững.",
+            text="Ngành Công nghệ thông tin Việt Nam duy trì đà tăng trưởng tích cực (Expansion Stage). Dữ liệu ngành 8 tháng 2026 cho thấy kim ngạch xuất khẩu dịch vụ CNTT tăng trưởng 17.8% YoY, dẫn dắt bởi nhu cầu chuyển đổi số doanh nghiệp, triển khai giải pháp điện toán đám mây và ứng dụng trí tuệ nhân tạo (AI) từ các thị trường quốc tế trọng điểm như Nhật Bản, Bắc Mỹ và khu vực Châu Á - Thái Bình Dương.",
             evidence_refs=["ind_src_vinasa_report_2026", "ind_ict_export_growth"],
+            claim_type="observation",
+            horizon="Trung hạn 6 - 12 tháng",
         ),
         SectorFinding(
             finding_id="ind_f02_cost_advantage_vietnam",
-            text="Lợi thế chi phí nhân lực công nghệ thông tin và tháp dân số trẻ của Việt Nam tiếp tục là điểm tựa cạnh tranh xuất sắc so với Ấn Độ và Đông Âu. Doanh nghiệp đầu ngành như FPT có khả năng mở rộng quy mô hợp đồng lên cấp độ Mega-deal (>100 triệu USD) nhờ năng lực cung ứng trọn gói từ tư vấn chiến lược đến triển khai giải pháp chuyên sâu.",
-            evidence_refs=["ind_src_mic_stats_2026"],
+            text="Lợi thế nguồn nhân lực công nghệ số trẻ với chi phí cạnh tranh tiếp tục là bệ phóng giúp các doanh nghiệp phần mềm Việt Nam duy trì biên lợi nhuận hoạt động ổn định. Đối với các đơn vị đầu ngành có quy mô nhân sự lớn, việc tích lũy kinh nghiệm chuyên ngành (Domain Expertise) và đối tác công nghệ toàn cầu tạo điều kiện tiếp cận các gói thầu chuyển đổi số quy mô lớn.",
+            evidence_refs=["ind_src_mic_stats_2026", "ind_net_margin_avg"],
+            claim_type="mechanism",
+            horizon="Dài hạn",
         ),
     ]
 
     risks = [
         SectorRisk(
             risk_id="ind_r01_macro_slowdown_abroad",
-            text="Rủi ro suy thoái kinh tế hoặc cắt giảm ngân sách IT tại các thị trường trọng điểm: Doanh nghiệp xuất khẩu phần mềm phụ thuộc lớn vào chi tiêu công nghệ tại Mỹ và Nhật Bản. Nếu lãi suất neo cao kéo dài làm các tập đoàn đa quốc gia thắt chặt ngân sách R&D/IT sẽ ảnh hưởng đến tốc độ tăng trưởng ký mới hợp đồng.",
+            text="Rủi ro biến động ngân sách chi tiêu công nghệ tại các thị trường xuất khẩu trọng điểm: Xuất khẩu phần mềm chịu ảnh hưởng gián tiếp nếu các tập đoàn đa quốc gia tại Mỹ hoặc Nhật Bản trì hoãn kế hoạch đầu tư hệ thống mới trong bối cảnh tăng trưởng kinh tế toàn cầu có sự phân hóa.",
             evidence_refs=["ind_src_vinasa_report_2026"],
+            risk_category="market",
         ),
         SectorRisk(
             risk_id="ind_r02_fx_volatility_jpy_usd",
-            text="Biến động tỷ giá hối đoái: Tỷ trọng doanh thu lớn từ đồng Yên Nhật (JPY) và USD tiềm ẩn rủi ro chênh lệch tỷ giá kế toán khi đồng JPY suy yếu hoặc biến động mạnh so với VND.",
+            text="Rủi ro biến động tỷ giá hối đoái đối với doanh thu ngoại tệ: Các hợp đồng phần mềm thanh toán bằng đồng Yên Nhật (JPY) hoặc USD có thể chịu ảnh hưởng chênh lệch tỷ giá kế toán nếu các đồng tiền này biến động mạnh so với VND mà chưa có công cụ phòng ngừa rủi ro tương ứng.",
             evidence_refs=["ind_src_vietstock_tech_benchmark"],
+            risk_category="market",
         ),
     ]
 
