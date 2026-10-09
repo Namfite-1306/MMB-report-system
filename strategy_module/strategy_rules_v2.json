@@ -1,0 +1,87 @@
+{
+  "version": "2.0",
+  "schema_version": "1.0",
+  "schema_status": "proposed_pending_team_agreement",
+  "minimum_peers": 3,
+  "minimum_peers_rationale": "Design choice for comparison coverage; not an investment threshold.",
+  "required_margin": null,
+  "threshold_rationale": null,
+  "modules": {
+    "macro": {
+      "enabled": true,
+      "formula": "change = current - previous; effect follows sourced mechanism"
+    },
+    "industry": {
+      "enabled": true,
+      "formula": "industry_growth = revenue_current / revenue_previous - 1"
+    },
+    "fundamental": {
+      "enabled": true,
+      "formula": "growth, margins, ROE, ROA, leverage, liquidity, CFO"
+    },
+    "value": {
+      "enabled": true,
+      "formula": "margin_of_safety = 1 - price / intrinsic_value"
+    },
+    "relative_valuation": {
+      "enabled": true,
+      "formula": "relative_value = EPS or BVPS * peer_median_multiple"
+    },
+    "momentum": {
+      "enabled": true,
+      "formula": "adjusted_month_end_price / adjusted_start_price - 1"
+    },
+    "risk": {
+      "enabled": true,
+      "formula": "sample_volatility; max_drawdown; data-based financial flags"
+    },
+    "capm": {
+      "enabled": true,
+      "formula": "E(Ri) = Rf + beta * market_risk_premium"
+    },
+    "news": {
+      "enabled": true,
+      "formula": "review sourced, dated event annotations"
+    }
+  },
+  "theory_sources": [
+    {
+      "id": "value",
+      "title": "Graham and Dodd, Security Analysis (1934)",
+      "pages": null,
+      "verification": "Edition-specific pages pending",
+      "url": "https://www.mheducation.com/highered/mhp/product/security-analysis-seventh-edition.html"
+    },
+    {
+      "id": "valuation",
+      "title": "Aswath Damodaran, Valuation teaching materials",
+      "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm"
+    },
+    {
+      "id": "momentum",
+      "title": "Jegadeesh and Titman (1993)",
+      "pages": "65-91; sample p.67; portfolio construction p.68",
+      "url": "https://doi.org/10.1111/j.1540-6261.1993.tb04702.x"
+    },
+    {
+      "id": "capm",
+      "title": "Sharpe (1964); Lintner (1965)",
+      "pages": "Sharpe 425-442; Lintner 13-37",
+      "url": "https://doi.org/10.1111/j.1540-6261.1964.tb02865.x",
+      "supporting_url": "https://www.aea.ru/data/pdf/lintner1965.pdf"
+    },
+    {
+      "id": "portfolio",
+      "title": "Markowitz (1952), Portfolio Selection",
+      "pages": "77-91",
+      "url": "https://doi.org/10.1111/j.1540-6261.1952.tb01525.x"
+    },
+    {
+      "id": "emh",
+      "title": "Fama (1970), Efficient Capital Markets",
+      "pages": "383-417",
+      "verification": "Detailed full-text review pending",
+      "url": "https://doi.org/10.1111/j.1540-6261.1970.tb00518.x"
+    }
+  ]
+}
