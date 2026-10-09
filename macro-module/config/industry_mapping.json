@@ -1,0 +1,50 @@
+{
+  "mapping_version": "1.0.0",
+  "groups": {
+    "technology": {
+      "label": "Công nghệ thông tin",
+      "aliases": [
+        "Công nghệ thông tin",
+        "Công nghệ",
+        "Phần mềm và dịch vụ CNTT",
+        "Information Technology"
+      ]
+    },
+    "banking": {
+      "label": "Ngân hàng",
+      "aliases": [
+        "Ngân hàng",
+        "Ngân hàng thương mại",
+        "Banks"
+      ]
+    },
+    "real_estate": {
+      "label": "Bất động sản",
+      "aliases": [
+        "Bất động sản",
+        "Phát triển bất động sản",
+        "Real Estate"
+      ]
+    },
+    "export_manufacturing": {
+      "label": "Sản xuất xuất khẩu",
+      "aliases": [
+        "Sản xuất xuất khẩu",
+        "Dệt may",
+        "Thủy sản",
+        "Gỗ và nội thất",
+        "Export Manufacturing"
+      ]
+    },
+    "consumer": {
+      "label": "Tiêu dùng và bán lẻ",
+      "aliases": [
+        "Bán lẻ",
+        "Hàng tiêu dùng",
+        "Tiêu dùng",
+        "Tiêu dùng và bán lẻ",
+        "Consumer"
+      ]
+    }
+  }
+}

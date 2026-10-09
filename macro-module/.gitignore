@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+macro.local.json
+macro_data.local.xlsx
+node_modules/
+qa_previews/
+*.macro-result.json

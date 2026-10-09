@@ -1,0 +1,519 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "sample-run-20250106-001",
+  "ticker": "FPT",
+  "as_of_date": "2025-01-06",
+  "status": "partial",
+  "data": {
+    "metadata": {
+      "collected_at": "2026-10-09",
+      "output_generated_at": "2026-10-09T08:05:26+00:00",
+      "input": {
+        "schema_version": "1.0.0",
+        "run_id": "sample-run-20250106-001",
+        "ticker": "FPT",
+        "exchange": "HOSE",
+        "industry": "Công nghệ thông tin",
+        "as_of_date": "2025-01-06",
+        "analysis_period": {
+          "start_date": "2024-01-01",
+          "end_date": "2025-01-06"
+        },
+        "investment_horizon": {
+          "label": "trung_han",
+          "months": 18
+        }
+      },
+      "actual_data_periods": {
+        "gdp": {
+          "data_period": "2024",
+          "period_start": "2024-01-01",
+          "period_end": "2024-12-31",
+          "publication_date": "2025-01-06"
+        },
+        "cpi": {
+          "data_period": "2024",
+          "period_start": "2024-01-01",
+          "period_end": "2024-12-31",
+          "publication_date": "2025-01-06"
+        },
+        "policy_rate": {
+          "data_period": "Hiệu lực từ 2023-06-19",
+          "period_start": "2023-06-19",
+          "period_end": "2023-06-19",
+          "publication_date": "2023-06-16"
+        },
+        "exchange_rate": {
+          "data_period": "2025-01-06",
+          "period_start": "2025-01-06",
+          "period_end": "2025-01-06",
+          "publication_date": "2025-01-06"
+        }
+      },
+      "dataset": {
+        "dataset_id": "vn_macro_verified_local",
+        "dataset_version": "2025-01-06.1",
+        "verified_through": "2025-01-06",
+        "snapshot_kind": "static_verified_snapshot",
+        "snapshot_compiled_at": "2026-10-09",
+        "refresh_behavior": "local_snapshot_only_no_network_fetch",
+        "network_fetch_performed": false,
+        "collection_method": "verified_local_file",
+        "cache_key": "macro:2025-01-06:vn_macro_verified_local:2025-01-06.1"
+      },
+      "industry_mapping": {
+        "matched_group_id": "technology",
+        "matched_group_label": "Công nghệ thông tin",
+        "input_preserved": "Công nghệ thông tin"
+      },
+      "investment_horizon_focus": "trung hạn",
+      "status_details": {
+        "reason_codes": [
+          "SOURCE_QUALITY_POLICY"
+        ],
+        "meaning": "partial phản ánh cảnh báo có affects_status=true; cảnh báo thông tin không tự động làm giảm status."
+      }
+    },
+    "indicators": [
+      {
+        "indicator_id": "vn_real_gdp_growth_annual_yoy_2024",
+        "group": "gdp",
+        "name": "Tăng trưởng GDP thực Việt Nam năm 2024",
+        "value": 0.0709,
+        "unit": "ratio",
+        "data_period": "2024",
+        "period_start": "2024-01-01",
+        "period_end": "2024-12-31",
+        "frequency": "annual",
+        "measurement": "Tăng trưởng GDP thực cả năm so với năm trước",
+        "publication_date": "2025-01-06",
+        "source_id": "NSO_SES_Q4_2024",
+        "comparison": null,
+        "data_kind": "observed",
+        "collection_method": "verified_local_file"
+      },
+      {
+        "indicator_id": "vn_cpi_average_growth_annual_yoy_2024",
+        "group": "cpi",
+        "name": "Tăng CPI bình quân Việt Nam năm 2024",
+        "value": 0.0363,
+        "unit": "ratio",
+        "data_period": "2024",
+        "period_start": "2024-01-01",
+        "period_end": "2024-12-31",
+        "frequency": "annual",
+        "measurement": "Tăng CPI bình quân cả năm so với bình quân năm trước",
+        "publication_date": "2025-01-06",
+        "source_id": "NSO_SES_Q4_2024",
+        "comparison": null,
+        "data_kind": "observed",
+        "collection_method": "verified_local_file"
+      },
+      {
+        "indicator_id": "vn_sbv_refinancing_rate_effective_2023_06_19",
+        "group": "policy_rate",
+        "name": "Lãi suất tái cấp vốn của Ngân hàng Nhà nước",
+        "value": 0.045,
+        "unit": "ratio_per_year",
+        "data_period": "Hiệu lực từ 2023-06-19",
+        "period_start": "2023-06-19",
+        "period_end": "2023-06-19",
+        "valid_from": "2023-06-19",
+        "effective_date": "2023-06-19",
+        "valid_to": null,
+        "frequency": "event",
+        "measurement": "Lãi suất điều hành - tái cấp vốn; không phải lãi suất huy động hoặc cho vay thương mại",
+        "publication_date": "2023-06-16",
+        "source_id": "SBV_POLICY_RATE_2023_06_16",
+        "comparison": {
+          "value": 0.05,
+          "period": "Trước ngày hiệu lực 2023-06-19",
+          "basis": "Cùng công cụ lãi suất tái cấp vốn, mức trước quyết định"
+        },
+        "data_kind": "observed",
+        "collection_method": "verified_local_file"
+      },
+      {
+        "indicator_id": "vn_sbv_central_usd_vnd_2025_01_06",
+        "group": "exchange_rate",
+        "name": "Tỷ giá trung tâm VND/USD",
+        "value": 24337,
+        "unit": "VND/USD",
+        "data_period": "2025-01-06",
+        "period_start": "2025-01-06",
+        "period_end": "2025-01-06",
+        "frequency": "daily",
+        "measurement": "Tỷ giá trung tâm do Ngân hàng Nhà nước công bố; không phải tỷ giá mua hoặc bán",
+        "publication_date": "2025-01-06",
+        "source_id": "VNA_CENTRAL_FX_2025_01_06",
+        "comparison": null,
+        "data_kind": "observed",
+        "value_note": "Giá trị số là 24337 VND/USD; dấu chấm trong tiêu đề 24.337 là phân cách hàng nghìn, không phải dấu thập phân.",
+        "collection_method": "verified_local_file"
+      }
+    ],
+    "macro_summary": {
+      "observations": [
+        {
+          "statement": "GDP thực 2024 tăng 7,09% so với năm trước.",
+          "nature": "observed",
+          "indicator_ids": [
+            "vn_real_gdp_growth_annual_yoy_2024"
+          ],
+          "source_ids": [
+            "NSO_SES_Q4_2024"
+          ]
+        },
+        {
+          "statement": "CPI bình quân 2024 tăng 3,63% so với năm trước.",
+          "nature": "observed",
+          "indicator_ids": [
+            "vn_cpi_average_growth_annual_yoy_2024"
+          ],
+          "source_ids": [
+            "NSO_SES_Q4_2024"
+          ]
+        },
+        {
+          "statement": "Lãi suất tái cấp vốn được quan sát ở mức 4,50%/năm, hiệu lực từ 19/06/2023; đây không phải lãi suất huy động hay cho vay thương mại.",
+          "nature": "observed",
+          "indicator_ids": [
+            "vn_sbv_refinancing_rate_effective_2023_06_19"
+          ],
+          "source_ids": [
+            "SBV_POLICY_RATE_2023_06_16"
+          ]
+        },
+        {
+          "statement": "Tỷ giá trung tâm ngày 2025-01-06 là 24.337 VND/USD; đây không phải tỷ giá mua hoặc bán.",
+          "nature": "observed",
+          "indicator_ids": [
+            "vn_sbv_central_usd_vnd_2025_01_06"
+          ],
+          "source_ids": [
+            "VNA_CENTRAL_FX_2025_01_06"
+          ]
+        }
+      ],
+      "calculated_results": [
+        {
+          "calculation_id": "change_vn_sbv_refinancing_rate_effective_2023_06_19",
+          "name": "Chênh lệch với giá trị so sánh tương thích",
+          "value": -0.0050000000000000044,
+          "unit": "ratio_point",
+          "formula": "current_value - comparison.value",
+          "nature": "calculated",
+          "indicator_ids": [
+            "vn_sbv_refinancing_rate_effective_2023_06_19"
+          ],
+          "source_ids": [
+            "SBV_POLICY_RATE_2023_06_16"
+          ]
+        }
+      ],
+      "assessment": {
+        "statement": "Các số liệu là ảnh chụp theo kỳ thực tế khác nhau. Không gán nhãn vĩ mô thuận lợi/bất lợi và không suy ra xu hướng chung chỉ từ các quan sát này.",
+        "direction": "chưa xác định",
+        "nature": "interpretation",
+        "assumptions": [
+          "Chỉ sử dụng dữ liệu có ngày công bố không muộn hơn ngày chốt.",
+          "Mỗi chỉ tiêu giữ nguyên tần suất và cách đo của nguồn."
+        ],
+        "indicator_ids": [
+          "vn_real_gdp_growth_annual_yoy_2024",
+          "vn_cpi_average_growth_annual_yoy_2024",
+          "vn_sbv_refinancing_rate_effective_2023_06_19",
+          "vn_sbv_central_usd_vnd_2025_01_06"
+        ],
+        "source_ids": [
+          "NSO_SES_Q4_2024",
+          "NSO_SES_Q4_2024",
+          "SBV_POLICY_RATE_2023_06_16",
+          "VNA_CENTRAL_FX_2025_01_06"
+        ]
+      }
+    },
+    "industry_impacts": [
+      {
+        "impact_id": "impact_01_policy_rate",
+        "nature": "interpretation",
+        "industry_input": "Công nghệ thông tin",
+        "industry_group": "Công nghệ thông tin",
+        "direction": "hỗn hợp",
+        "mechanism": "Lãi suất tái cấp vốn là tín hiệu chính sách; tác động tới chi phí vốn doanh nghiệp chỉ xảy ra qua truyền dẫn sang lãi suất huy động và cho vay thực tế.",
+        "conditions": [
+          "Doanh nghiệp có nợ vay lãi suất thả nổi",
+          "Ngân hàng thương mại truyền dẫn thay đổi chính sách"
+        ],
+        "company_checks": [
+          "Cơ cấu nợ",
+          "Lãi suất vay thực trả",
+          "Lịch tái định giá khoản vay"
+        ],
+        "investment_horizon_focus": "trung hạn",
+        "evidence": [
+          {
+            "indicator_id": "vn_sbv_refinancing_rate_effective_2023_06_19",
+            "source_id": "SBV_POLICY_RATE_2023_06_16",
+            "value": 0.045,
+            "unit": "ratio_per_year",
+            "data_period": "Hiệu lực từ 2023-06-19"
+          }
+        ],
+        "opportunity_statement": "Chi phí vốn có thể giảm nếu lãi suất cho vay thực tế giảm và doanh nghiệp cần tái cấp vốn.",
+        "risk_statement": "Không được giả định lãi suất vay doanh nghiệp bằng lãi suất tái cấp vốn của NHNN."
+      },
+      {
+        "impact_id": "impact_02_cpi",
+        "nature": "interpretation",
+        "industry_input": "Công nghệ thông tin",
+        "industry_group": "Công nghệ thông tin",
+        "direction": "hỗn hợp",
+        "mechanism": "Lạm phát có thể làm tăng chi phí đầu vào và lương, trong khi khả năng chuyển giá quyết định ảnh hưởng lên biên lợi nhuận và sức mua.",
+        "conditions": [
+          "Chi phí đầu vào nhạy với giá",
+          "Doanh nghiệp có hoặc không có quyền định giá"
+        ],
+        "company_checks": [
+          "Biên lợi nhuận gộp",
+          "Điều khoản điều chỉnh giá",
+          "Cơ cấu chi phí"
+        ],
+        "investment_horizon_focus": "trung hạn",
+        "evidence": [
+          {
+            "indicator_id": "vn_cpi_average_growth_annual_yoy_2024",
+            "source_id": "NSO_SES_Q4_2024",
+            "value": 0.0363,
+            "unit": "ratio",
+            "data_period": "2024"
+          }
+        ],
+        "opportunity_statement": "Doanh nghiệp có quyền định giá và kiểm soát chi phí có thể bảo vệ biên lợi nhuận tốt hơn.",
+        "risk_statement": "Biên lợi nhuận có thể chịu áp lực nếu chi phí tăng nhanh hơn giá bán."
+      },
+      {
+        "impact_id": "impact_03_gdp",
+        "nature": "interpretation",
+        "industry_input": "Công nghệ thông tin",
+        "industry_group": "Công nghệ thông tin",
+        "direction": "hỗ trợ",
+        "mechanism": "Tăng trưởng hoạt động kinh tế có thể hỗ trợ ngân sách công nghệ và nhu cầu chuyển đổi số, nhưng không đại diện trực tiếp cho doanh thu từng doanh nghiệp.",
+        "conditions": [
+          "Chi tiêu CNTT tăng cùng hoạt động kinh tế",
+          "Doanh nghiệp duy trì năng lực ký hợp đồng"
+        ],
+        "company_checks": [
+          "Giá trị hợp đồng ký mới",
+          "Backlog",
+          "Tỷ trọng khách hàng trong nước"
+        ],
+        "investment_horizon_focus": "trung hạn",
+        "evidence": [
+          {
+            "indicator_id": "vn_real_gdp_growth_annual_yoy_2024",
+            "source_id": "NSO_SES_Q4_2024",
+            "value": 0.0709,
+            "unit": "ratio",
+            "data_period": "2024"
+          }
+        ],
+        "opportunity_statement": "Nhu cầu dịch vụ CNTT có thể mở rộng nếu ngân sách chuyển đổi số tăng thực tế.",
+        "risk_statement": null
+      },
+      {
+        "impact_id": "impact_04_exchange_rate",
+        "nature": "interpretation",
+        "industry_input": "Công nghệ thông tin",
+        "industry_group": "Công nghệ thông tin",
+        "direction": "hỗn hợp",
+        "mechanism": "Tỷ giá VND/USD có thể tăng giá trị quy đổi doanh thu USD nhưng đồng thời làm tăng chi phí phần cứng, bản quyền hoặc nợ USD.",
+        "conditions": [
+          "Có doanh thu hoặc chi phí định danh USD",
+          "Mức phòng hộ ngoại tệ hữu hiệu"
+        ],
+        "company_checks": [
+          "Cơ cấu doanh thu theo tiền tệ",
+          "Chi phí nhập khẩu",
+          "Nợ và hợp đồng phòng hộ USD"
+        ],
+        "investment_horizon_focus": "trung hạn",
+        "evidence": [
+          {
+            "indicator_id": "vn_sbv_central_usd_vnd_2025_01_06",
+            "source_id": "VNA_CENTRAL_FX_2025_01_06",
+            "value": 24337,
+            "unit": "VND/USD",
+            "data_period": "2025-01-06"
+          }
+        ],
+        "opportunity_statement": "Doanh thu USD có thể tạo lợi ích quy đổi nếu chi phí USD thấp hơn doanh thu USD.",
+        "risk_statement": "Chi phí nhập khẩu hoặc nợ USD có thể tăng nếu vị thế ngoại tệ ròng âm."
+      }
+    ],
+    "opportunities": [
+      {
+        "id": "opportunity_01",
+        "statement": "Chi phí vốn có thể giảm nếu lãi suất cho vay thực tế giảm và doanh nghiệp cần tái cấp vốn.",
+        "nature": "interpretation",
+        "conditions": [
+          "Doanh nghiệp có nợ vay lãi suất thả nổi",
+          "Ngân hàng thương mại truyền dẫn thay đổi chính sách"
+        ],
+        "indicator_ids": [
+          "vn_sbv_refinancing_rate_effective_2023_06_19"
+        ],
+        "source_ids": [
+          "SBV_POLICY_RATE_2023_06_16"
+        ]
+      },
+      {
+        "id": "opportunity_02",
+        "statement": "Doanh nghiệp có quyền định giá và kiểm soát chi phí có thể bảo vệ biên lợi nhuận tốt hơn.",
+        "nature": "interpretation",
+        "conditions": [
+          "Chi phí đầu vào nhạy với giá",
+          "Doanh nghiệp có hoặc không có quyền định giá"
+        ],
+        "indicator_ids": [
+          "vn_cpi_average_growth_annual_yoy_2024"
+        ],
+        "source_ids": [
+          "NSO_SES_Q4_2024"
+        ]
+      },
+      {
+        "id": "opportunity_03",
+        "statement": "Nhu cầu dịch vụ CNTT có thể mở rộng nếu ngân sách chuyển đổi số tăng thực tế.",
+        "nature": "interpretation",
+        "conditions": [
+          "Chi tiêu CNTT tăng cùng hoạt động kinh tế",
+          "Doanh nghiệp duy trì năng lực ký hợp đồng"
+        ],
+        "indicator_ids": [
+          "vn_real_gdp_growth_annual_yoy_2024"
+        ],
+        "source_ids": [
+          "NSO_SES_Q4_2024"
+        ]
+      },
+      {
+        "id": "opportunity_04",
+        "statement": "Doanh thu USD có thể tạo lợi ích quy đổi nếu chi phí USD thấp hơn doanh thu USD.",
+        "nature": "interpretation",
+        "conditions": [
+          "Có doanh thu hoặc chi phí định danh USD",
+          "Mức phòng hộ ngoại tệ hữu hiệu"
+        ],
+        "indicator_ids": [
+          "vn_sbv_central_usd_vnd_2025_01_06"
+        ],
+        "source_ids": [
+          "VNA_CENTRAL_FX_2025_01_06"
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "id": "risk_01",
+        "statement": "Không được giả định lãi suất vay doanh nghiệp bằng lãi suất tái cấp vốn của NHNN.",
+        "nature": "interpretation",
+        "conditions": [
+          "Doanh nghiệp có nợ vay lãi suất thả nổi",
+          "Ngân hàng thương mại truyền dẫn thay đổi chính sách"
+        ],
+        "indicator_ids": [
+          "vn_sbv_refinancing_rate_effective_2023_06_19"
+        ],
+        "source_ids": [
+          "SBV_POLICY_RATE_2023_06_16"
+        ]
+      },
+      {
+        "id": "risk_02",
+        "statement": "Biên lợi nhuận có thể chịu áp lực nếu chi phí tăng nhanh hơn giá bán.",
+        "nature": "interpretation",
+        "conditions": [
+          "Chi phí đầu vào nhạy với giá",
+          "Doanh nghiệp có hoặc không có quyền định giá"
+        ],
+        "indicator_ids": [
+          "vn_cpi_average_growth_annual_yoy_2024"
+        ],
+        "source_ids": [
+          "NSO_SES_Q4_2024"
+        ]
+      },
+      {
+        "id": "risk_03",
+        "statement": "Chi phí nhập khẩu hoặc nợ USD có thể tăng nếu vị thế ngoại tệ ròng âm.",
+        "nature": "interpretation",
+        "conditions": [
+          "Có doanh thu hoặc chi phí định danh USD",
+          "Mức phòng hộ ngoại tệ hữu hiệu"
+        ],
+        "indicator_ids": [
+          "vn_sbv_central_usd_vnd_2025_01_06"
+        ],
+        "source_ids": [
+          "VNA_CENTRAL_FX_2025_01_06"
+        ]
+      }
+    ],
+    "limitations": [
+      "Mỗi nhóm chỉ tiêu trong bộ mẫu có một quan sát mới nhất; không suy ra xu hướng lịch sử từ một điểm dữ liệu.",
+      "GDP và CPI năm 2024 là số ước tính tại công bố ngày 06/01/2025; module không thay bằng bản điều chỉnh công bố sau ngày chốt.",
+      "Lãi suất sử dụng là lãi suất tái cấp vốn của NHNN, không phải lãi suất huy động hoặc cho vay của ngân hàng thương mại.",
+      "Tác động ngành là cơ chế có điều kiện; cần kiểm tra dữ liệu tài chính và mức phơi nhiễm của doanh nghiệp.",
+      "Module không dự báo giá cổ phiếu, không chấm điểm doanh nghiệp và không đưa khuyến nghị mua/bán.",
+      "Quan sát tỷ giá dùng nguồn thứ cấp; cần thay bằng nguồn NHNN trực tiếp khi có endpoint lịch sử ổn định."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "NSO_SES_Q4_2024",
+      "publisher": "Tổng cục Thống kê (General Statistics Office of Vietnam)",
+      "title": "Thông cáo báo chí tình hình kinh tế – xã hội quý IV và năm 2024",
+      "url": "https://www.nso.gov.vn/du-lieu-va-so-lieu-thong-ke/2025/01/thong-cao-bao-chi-tinh-hinh-kinh-te-xa-hoi-quy-iv-va-nam-2024/",
+      "data_period": "Quý IV và năm 2024",
+      "publication_date": "2025-01-06",
+      "access_date": "2026-10-09",
+      "classification": "official",
+      "quality_treatment": "accepted_primary",
+      "quality_note": "Nguồn chính thức."
+    },
+    {
+      "source_id": "SBV_POLICY_RATE_2023_06_16",
+      "publisher": "Ngân hàng Nhà nước Việt Nam",
+      "title": "Ngân hàng Nhà nước Việt Nam điều chỉnh lãi suất điều hành",
+      "url": "https://sbv.gov.vn/vi/w/sbv570036",
+      "data_period": "Quyết định ngày 2023-06-16, hiệu lực 2023-06-19",
+      "publication_date": "2023-06-16",
+      "access_date": "2026-10-09",
+      "classification": "official",
+      "quality_treatment": "accepted_primary",
+      "quality_note": "Nguồn chính thức."
+    },
+    {
+      "source_id": "VNA_CENTRAL_FX_2025_01_06",
+      "publisher": "Thông tấn xã Việt Nam",
+      "title": "(Interactive) Tỷ giá trung tâm ngày 6/1/2025: 1 USD = 24.337 VND",
+      "url": "https://infographics.vn/interactive-ty-gia-trung-tam-ngay-6-1-2025-1-usd-24337-vnd/214098.vna",
+      "data_period": "2025-01-06",
+      "publication_date": "2025-01-06",
+      "access_date": "2026-10-09",
+      "classification": "secondary",
+      "quality_treatment": "partial_until_primary_verified",
+      "quality_note": "TTXVN dẫn đúng mức NHNN công bố; quy ước status=partial cho đến khi có URL lịch sử trực tiếp ổn định từ NHNN. Giá trị số không bị thiếu."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "SOURCE_QUALITY_POLICY",
+      "category": "source_quality",
+      "affects_status": true,
+      "message": "Giá trị tỷ giá 24.337 VND/USD đã được xác minh từ TTXVN dẫn mức NHNN công bố; status=partial theo quy ước chất lượng vì chưa có URL lịch sử trực tiếp ổn định từ NHNN, không phải vì thiếu giá trị số."
+    }
+  ],
+  "errors": []
+}

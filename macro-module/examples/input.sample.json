@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "sample-run-20250106-001",
+  "ticker": "FPT",
+  "exchange": "HOSE",
+  "industry": "Công nghệ thông tin",
+  "as_of_date": "2025-01-06",
+  "analysis_period": {
+    "start_date": "2024-01-01",
+    "end_date": "2025-01-06"
+  },
+  "investment_horizon": {
+    "label": "trung_han",
+    "months": 18
+  }
+}
