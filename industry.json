@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run_cli_1791528920",
+  "module": "industry",
+  "ticker": "HPG",
+  "as_of_date": "2026-10-09",
+  "generated_at": "2026-10-09T13:55:20.402873+07:00",
+  "status": "ok",
+  "data": {
+    "industry_code": "1750",
+    "industry_name": "Sản xuất Thép & Kim loại",
+    "sector_cycle_stage": "recovery",
+    "peers": [
+      {
+        "ticker": "NKG",
+        "name": "CTCP Thép Nam Kim",
+        "exchange": "HOSE",
+        "market_cap": 5820000000000.0,
+        "comparison_basis": "Cùng phân khúc tôn mạ và thép cuộn xuất khẩu; biên lợi nhuận phụ thuộc lớn vào giá HRC đầu vào.",
+        "metrics": {
+          "pe": 12.8,
+          "pb": 1.12,
+          "roe": 0.089,
+          "roa": 0.041,
+          "net_margin": 0.028,
+          "gross_margin": 0.075,
+          "debt_to_equity": 0.95,
+          "revenue_growth_yoy": 0.142
+        }
+      },
+      {
+        "ticker": "HSG",
+        "name": "CTCP Tập đoàn Hoa Sen",
+        "exchange": "HOSE",
+        "market_cap": 12450000000000.0,
+        "comparison_basis": "Doanh nghiệp chiếm thị phần tôn mạ số 1 Việt Nam (khoảng 28-30%); hệ thống phân phối bán lẻ Hoa Sen Home rộng khắp.",
+        "metrics": {
+          "pe": 14.5,
+          "pb": 1.25,
+          "roe": 0.098,
+          "roa": 0.048,
+          "net_margin": 0.032,
+          "gross_margin": 0.112,
+          "debt_to_equity": 0.72,
+          "revenue_growth_yoy": 0.115
+        }
+      },
+      {
+        "ticker": "VGS",
+        "name": "CTCP Ống thép Việt Đức",
+        "exchange": "HNX",
+        "market_cap": 3120000000000.0,
+        "comparison_basis": "Chuyên về sản phẩm ống thép xây dựng và kết cấu thép miền Bắc; hưởng lợi lớn từ sóng giải ngân đầu tư công hạ tầng.",
+        "metrics": {
+          "pe": 15.2,
+          "pb": 1.48,
+          "roe": 0.115,
+          "roa": 0.052,
+          "net_margin": 0.038,
+          "gross_margin": 0.089,
+          "debt_to_equity": 0.88,
+          "revenue_growth_yoy": 0.168
+        }
+      },
+      {
+        "ticker": "TVN",
+        "name": "Tổng Công ty Thép Việt Nam - CTCP",
+        "exchange": "UPCOM",
+        "market_cap": 6150000000000.0,
+        "comparison_basis": "Tập đoàn quốc doanh sản xuất phôi thép và thép xây dựng truyền thống; năng lực công nghệ và biên lợi nhuận thấp hơn khối tư nhân.",
+        "metrics": {
+          "pe": 18.6,
+          "pb": 0.65,
+          "roe": 0.035,
+          "roa": 0.014,
+          "net_margin": 0.012,
+          "gross_margin": 0.045,
+          "debt_to_equity": 1.15,
+          "revenue_growth_yoy": 0.062
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "metric_id": "ind_pe_median",
+        "name": "P/E trung vị ngành Thép",
+        "value": 14.85,
+        "unit": "x",
+        "frequency": "annual",
+        "period_start": "2025-01-01",
+        "period_end": "2025-12-31",
+        "source_refs": [
+          "ind_src_vietstock_steel_benchmark"
+        ],
+        "formula_id": "median_peer_pe"
+      },
+      {
+        "metric_id": "ind_pb_median",
+        "name": "P/B trung vị ngành Thép",
+        "value": 1.185,
+        "unit": "x",
+        "frequency": "annual",
+        "period_start": "2025-01-01",
+        "period_end": "2025-12-31",
+        "source_refs": [
+          "ind_src_vietstock_steel_benchmark"
+        ],
+        "formula_id": "median_peer_pb"
+      },
+      {
+        "metric_id": "ind_roe_avg",
+        "name": "ROE bình quân ngành Thép",
+        "value": 0.084,
+        "unit": "ratio",
+        "frequency": "annual",
+        "period_start": "2025-01-01",
+        "period_end": "2025-12-31",
+        "source_refs": [
+          "ind_src_vietstock_steel_benchmark"
+        ],
+        "formula_id": "mean_peer_roe"
+      },
+      {
+        "metric_id": "ind_net_margin_avg",
+        "name": "Biên lợi nhuận ròng bình quân ngành",
+        "value": 0.0275,
+        "unit": "ratio",
+        "frequency": "annual",
+        "period_start": "2025-01-01",
+        "period_end": "2025-12-31",
+        "source_refs": [
+          "ind_src_vietstock_steel_benchmark"
+        ],
+        "formula_id": "mean_peer_net_margin"
+      },
+      {
+        "metric_id": "ind_crude_steel_consumption_growth",
+        "name": "Tăng trưởng tiêu thụ thép toàn quốc 8T/2026 (YoY)",
+        "value": 0.118,
+        "unit": "ratio",
+        "frequency": "monthly",
+        "period_start": "2026-01-01",
+        "period_end": "2026-08-31",
+        "source_refs": [
+          "ind_src_vsa_report_2026"
+        ],
+        "formula_id": "vsa_yoy_sales_growth"
+      },
+      {
+        "metric_id": "ind_iip_metal_growth",
+        "name": "Chỉ số IIP sản xuất kim loại 9 tháng 2026 (YoY)",
+        "value": 0.106,
+        "unit": "ratio",
+        "frequency": "quarterly",
+        "period_start": "2026-01-01",
+        "period_end": "2026-09-30",
+        "source_refs": [
+          "ind_src_gso_industry_q3_2026"
+        ],
+        "formula_id": "gso_iip_metal_yoy"
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "ind_f01_steel_recovery",
+        "text": "Ngành thép đang bước vào pha phục hồi vững chắc của chu kỳ (Early Expansion). Động lực tiêu thụ đến từ 2 mũi nhọn: tiến độ giải ngân đầu tư công các dự án đại hạ tầng (Sân bay Long Thành, cao tốc Bắc - Nam) và thị trường bất động sản dân cư ấm dần trở lại theo đà tháo gỡ pháp lý của 3 bộ luật sửa đổi (Luật Đất đai, Nhà ở, Kinh doanh BĐS).",
+        "evidence_refs": [
+          "ind_src_vsa_report_2026",
+          "ind_crude_steel_consumption_growth",
+          "ind_iip_metal_growth"
+        ]
+      },
+      {
+        "finding_id": "ind_f02_trade_defense",
+        "text": "Bộ Công Thương thụ lý điều tra chống bán phá giá sản phẩm HRC nhập khẩu từ Trung Quốc và Ấn Độ là 'lá chắn' chính sách mang tính bước ngoặt, tạo tiền đề nâng cao tỷ trọng tiêu thụ thép HRC tự chủ nội địa và bảo vệ biên lợi nhuận của các nhà sản xuất có chu trình khép kín như Hòa Phát.",
+        "evidence_refs": [
+          "ind_src_moit_trade_defense_2026"
+        ]
+      },
+      {
+        "finding_id": "ind_f03_competitive_moat",
+        "text": "Phân hóa vị thế cạnh tranh cực kỳ sâu sắc trong ngành: Doanh nghiệp sở hữu công nghệ lò cao liên hợp BOF khép kín quy mô lớn (như Hòa Phát với cụm Dung Quất) đạt giá thành sản xuất phôi và HRC thấp hơn từ 15-20% so với lò điện EAF phế liệu của các đối thủ nhỏ lẻ, tạo rào cản chi phí vững chắc.",
+        "evidence_refs": [
+          "ind_src_vietstock_steel_benchmark",
+          "ind_net_margin_avg"
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "risk_id": "ind_r01_raw_material_volatility",
+        "text": "Biến động giá nguyên vật liệu đầu vào toàn cầu: Giá quặng sắt (Iron Ore 62% Fe) và than mỡ luyện cốc (Coking Coal) chiếm 65-70% giá thành phôi thép. Nếu giá hàng hóa thế giới biến động bất thường do biến động cung ứng tại Úc/Brazil sẽ gây áp lực trực tiếp lên biên lợi nhuận gộp.",
+        "evidence_refs": [
+          "ind_src_vsa_report_2026"
+        ]
+      },
+      {
+        "risk_id": "ind_r02_dumping_pressure",
+        "text": "Áp lực dư thừa công suất từ thị trường thép Trung Quốc: Ngành bất động sản Trung Quốc tăng trưởng chậm làm gia tăng áp lực đẩy thép giá rẻ xuất khẩu sang khu vực Đông Nam Á, tạo sức ép cạnh tranh giá bán nội địa trong ngắn hạn nếu rào cản phòng vệ thương mại chưa kịp áp thuế tạm thời.",
+        "evidence_refs": [
+          "ind_src_moit_trade_defense_2026"
+        ]
+      },
+      {
+        "risk_id": "ind_r03_carbon_green_transition",
+        "text": "Yêu cầu chuyển đổi xanh và cơ chế CBAM của Liên minh Châu Âu: Tiêu chuẩn phát thải carbon khắt khe đối với thép nhập khẩu vào EU đặt ra thách thức về chi phí đầu tư công nghệ giảm phát thải (Green Steel) đối với các đơn hàng xuất khẩu chất lượng cao.",
+        "evidence_refs": [
+          "ind_src_vietstock_steel_benchmark"
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "ind_src_vsa_report_2026",
+      "title": "Hiệp hội Thép Việt Nam (VSA) - Báo cáo tổng kết tình hình sản xuất và bán hàng thép xây dựng, HRC 8 tháng đầu năm 2026",
+      "url": "http://vsa.com.vn/tinh-hinh-san-xuat-va-tieu-thu-thep-viet-nam/",
+      "published_at": "2026-09-15",
+      "retrieved_at": "2026-10-09T08:00:00+07:00",
+      "locator": "Mục 2.1 & 2.3: Sản lượng bán hàng HRC và thép xây dựng toàn ngành",
+      "publication_date_verified": true
+    },
+    {
+      "source_id": "ind_src_gso_industry_q3_2026",
+      "title": "Tổng cục Thống kê (GSO) - Báo cáo Tình hình kinh tế - xã hội 9 tháng năm 2026 (Chỉ số sản xuất công nghiệp IIP ngành kim loại)",
+      "url": "https://www.gso.gov.vn/du-lieu-va-so-lieu-thong-ke/2026/09/tinh-hinh-kinh-te-xa-hoi-9-thang-nam-2026/",
+      "published_at": "2026-09-29",
+      "retrieved_at": "2026-10-09T08:15:00+07:00",
+      "locator": "Biểu số 4: Chỉ số sản xuất ngành sản xuất kim loại đúc sẵn",
+      "publication_date_verified": true
+    },
+    {
+      "source_id": "ind_src_moit_trade_defense_2026",
+      "title": "Cục Phòng vệ thương mại - Bộ Công Thương: Thông báo quyết định điều tra chống bán phá giá đối với một số sản phẩm thép cuộn cán nóng (HRC) từ Trung Quốc và Ấn Độ",
+      "url": "http://trav.gov.vn/thong-bao-dieu-tra-chong-ban-pha-gia-hrc.html",
+      "published_at": "2026-07-26",
+      "retrieved_at": "2026-10-09T08:30:00+07:00",
+      "locator": "Quyết định số 1985/QĐ-BCT",
+      "publication_date_verified": true
+    },
+    {
+      "source_id": "ind_src_vietstock_steel_benchmark",
+      "title": "Vietstock Finance - Báo cáo Tổng quan định giá và chỉ số tài chính ngành Vật liệu xây dựng & Thép năm 2025-2026",
+      "url": "https://finance.vietstock.vn/nganh-nghe/1750/san-xuat-thep.htm",
+      "published_at": "2026-09-30",
+      "retrieved_at": "2026-10-09T08:45:00+07:00",
+      "locator": "Bảng thống kê P/E, P/B và ROE bình quân ngành Thép",
+      "publication_date_verified": true
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}
