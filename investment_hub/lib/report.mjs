@@ -1,11 +1,12 @@
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 import {dashboardMarkup} from '../public/dashboard.js';
+import {metricPresentation} from '../public/presentation.js';
 const names = {macro:'Vĩ mô',industry:'Ngành',company:'Doanh nghiệp',strategy:'Chiến lược'};
 const labels = {attractive:'Có cơ hội',watchlist:'Theo dõi',unattractive:'Chưa hấp dẫn',insufficient_data:'Chưa đủ dữ liệu'};
 export function renderReport(analysis) {
   const r = analysis.request;
   const sections = Object.entries(analysis.modules).map(([key,m]) => {
-    const metrics = (m.data.metrics || []).map(v => `<tr><td>${escape(v.metric_id)}</td><td>${v.value === null ? 'Chưa có' : escape(v.value)}</td><td>${escape(v.unit)}</td><td>${escape(v.period_start)} — ${escape(v.period_end)}</td></tr>`).join('');
+    const metrics = (m.data.metrics || []).map(v => {const p=metricPresentation(v);return `<tr><td>${escape(p.label)}<br><small>${escape(v.metric_id)} · gốc: ${escape(v.value ?? 'Chưa có')} ${escape(v.unit)}</small></td><td>${escape(p.value)}</td><td>${escape(p.unit)}</td><td>${escape(p.period)}</td></tr>`;}).join('');
     const sources = m.sources.map(v => `<li>${escape(v.source_id)}: <a href="${escape(v.url)}">${escape(v.title)}</a> — công bố: ${escape(v.published_at || 'Chưa xác minh')} ${escape(v.locator || '')}</li>`).join('');
     const strategy = key === 'strategy' ? `<h3>Cơ sở lý thuyết</h3><ul>${(m.data.theory_sources || []).map(t=>`<li>${escape(t.title)} — ${escape(t.pages || 'Chưa xác minh trang')} — ${escape(t.url)}</li>`).join('')}</ul><h3>Quy tắc và kết quả</h3>${(m.data.rules || []).map(rule=>`<h4>${escape(rule.rule_id)} · ${escape(rule.status)}</h4><p>${escape(rule.formula)}</p><p>${escape(rule.explanation)}</p><pre>${escape(JSON.stringify(rule.values ?? {},null,2))}</pre>`).join('')}` : '';
     return `<section><h2>${names[key]}</h2><p>Trạng thái: ${escape(m.status)}</p>${metrics ? `<table><thead><tr><th>Chỉ số</th><th>Giá trị</th><th>Đơn vị</th><th>Kỳ</th></tr></thead><tbody>${metrics}</tbody></table>` : key==='strategy' ? '' : '<p>Chưa có bảng chỉ số.</p>'}${strategy}

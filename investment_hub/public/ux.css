@@ -1,0 +1,43 @@
+.setup-help,.form-feedback { font-size:12px; line-height:1.7; margin:12px 0; color:var(--muted) }
+.form-feedback:not(:empty) { padding:12px; border:1px solid var(--line); border-left:3px solid var(--green); border-radius:8px }
+.quick-start { margin:14px 0; text-align:left; justify-content:space-between; width:100% }
+.run-links { display:flex; flex-wrap:wrap; gap:18px; margin-top:16px; font-size:13px; color:var(--green) }
+#busy-status { margin:14px 0; font-size:13px; color:var(--green) }
+.investor-overview { margin-top:20px }
+.coverage-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:14px 0 }
+.coverage-card { padding:16px; border:1px solid var(--line); border-radius:12px; min-width:0 }
+.coverage-card span,.coverage-card small { display:block; font-size:12px; color:var(--muted); line-height:1.7 }
+.coverage-card strong { display:block; font-size:15px; line-height:1.6; margin:9px 0; overflow-wrap:anywhere }
+.coverage-reasons { padding:16px 20px; border:1px solid var(--line); border-radius:12px; background:var(--panel) }
+.coverage-reasons h3 { font-size:15px; margin-bottom:8px }
+.coverage-reasons ul { margin:0; padding-left:18px; font-size:13px; line-height:1.8; color:var(--muted) }
+.coverage-reasons button { margin-top:12px }
+.module-tools { margin-top:14px }
+.module-tools>summary { font-size:12px; color:var(--muted) }
+.module-tools .toolbar { margin-top:14px }
+.report-actions { margin:18px 0; padding:16px 0; border-bottom:1px solid var(--line) }
+.metric-name strong { display:block; font-size:13px }
+.metric-table { font-size:14px }
+.metric-table th { font-size:12px }
+.metric-name small { color:var(--muted); line-height:1.7; display:block; margin-top:5px }
+.metric-source { font-size:12px; max-width:340px }
+.metric-source>summary { color:var(--green); cursor:pointer }
+.metric-source ul { padding-left:15px; margin:10px 0; line-height:1.7 }
+.metric-source a { text-decoration:underline; overflow-wrap:anywhere }
+.metric-source p { color:var(--muted); line-height:1.7; margin:8px 0; overflow-wrap:anywhere }
+.metric-source code { font-size:10px; overflow-wrap:anywhere }
+.rule-values summary { font-size:12px; margin-top:12px; color:var(--muted) }
+.chart-plot { overflow-x:auto }
+.chart-plot:focus-visible { outline:2px solid var(--green); outline-offset:3px }
+.chart-scroll-hint { display:none }
+.price-table { margin-top:16px; font-size:12px }
+.price-table summary { color:var(--green) }
+.price-table table { border-collapse:collapse; width:100%; min-width:450px; margin:12px 0 }
+.price-table th,.price-table td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap }
+.price-table th:first-child,.price-table td:first-child { text-align:left }
+.chart-point.single-point { opacity:1 }
+#notice { position:relative; top:auto; z-index:1; margin-bottom:24px }
+@media(max-width:850px){.coverage-grid{grid-template-columns:1fr}.metric-table{min-width:680px}}
+@media(max-width:650px){.chart-plot svg{min-width:520px}.chart-plot .chart-label{font-size:14px}.dashboard-range button{min-height:44px;font-size:12px}.coverage-reasons{padding:14px}.report-actions button{min-height:44px}}
+@media(max-width:650px){.chart-scroll-hint{display:block;font-size:12px;color:var(--muted)}}
+@media print{.price-table,.chart-scroll-hint{display:none}}

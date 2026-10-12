@@ -26,7 +26,7 @@ export async function createApp({root=here}={}) {
       const url=new URL(req.url,`http://${host}`), route=url.pathname;
       if(req.headers.origin)assert(req.headers.origin===`http://${host}`,'Không cho phép yêu cầu từ website khác.');
       res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('X-Frame-Options','DENY');
-      if(req.method==='GET' && ['/','/app.js','/style.css','/dashboard.js','/dashboard.css'].includes(route)) {
+      if(req.method==='GET' && ['/','/app.js','/style.css','/dashboard.js','/dashboard.css','/presentation.js','/ux.css'].includes(route)) {
         const file=route==='/'?'index.html':route.slice(1);res.setHeader('Content-Type',file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8');res.end(await readFile(path.join(here,'public',file)));return;
       }
       if(req.method==='GET'&&route==='/api/modules')return json(res,200,{registry:await readJSON(path.join(plugins,'registry.json'),{}),python_configured:!!process.env.PYTHON_BIN});

@@ -1,4 +1,5 @@
 import {dashboardMarkup} from './dashboard.js';
+import {metricPresentation,investorOverview,displayDate,RULE_NAMES,RULE_STATUS} from './presentation.js';
 const $ = id => document.getElementById(id);
 const names = {macro:'Vĩ mô', industry:'Ngành', company:'Doanh nghiệp', strategy:'Chiến lược'};
 const descriptions = {
@@ -12,10 +13,58 @@ const statusNames = {pending:'Đang chờ', ok:'Đã nhận', partial:'Chưa ho�
 const labels = {attractive:'Có cơ hội', watchlist:'Theo dõi', unattractive:'Chưa hấp dẫn', insufficient_data:'Chưa đủ dữ liệu'};
 let analysis = null, registry = {}, busy = false, pdfAvailable = false;
 let chartRange = 'all';
+let busyText='';
+function draftChanged() {
+  if(!analysis)return false;
+  const draft=Object.fromEntries(new FormData($('request-form')));
+  return Object.entries(draft).some(([key,value])=>String(value).trim().toUpperCase()!==String(analysis.request[key] ?? '').trim().toUpperCase());
+}
+function renderDraftState() {
+  const changed=draftChanged();
+  $('form-feedback').textContent=changed?'Cấu hình đã đổi nhưng kết quả bên phải vẫn thuộc lần đã lưu. Bấm Tạo lần phân tích để áp dụng cấu hình mới.':'';
+  availability($('pipeline'),!!analysis && !changed && Object.keys(names).some(k=>registry[k]),changed?'Tạo lần phân tích mới để áp dụng cấu hình.':'Tạo input và cài module trước.');
+  availability($('pdf-generate'),!!analysis && !changed && !!registry.pdf);
+  if($('use-annual'))availability($('use-annual'),!changed,'Tạo lần phân tích mới để áp dụng cấu hình đang sửa.');
+  for(const button of document.querySelectorAll('[data-run-module]'))availability(button,!!analysis && !changed && !!registry[button.dataset.runModule]);
+}
+function rememberRun() { try{localStorage.setItem('mmb-last-run',analysis.run_id);}catch{} }
+function syncForm() {
+  for(const [key,value] of Object.entries(analysis.request)) {
+    const field=$('request-form').elements.namedItem(key);if(field)field.value=value;
+  }
+}
+async function openRun(id) {
+  const result=await api('/api/runs/'+id);
+  analysis=result.analysis;pdfAvailable=result.pdf_available;chartRange='all';$('execution').hidden=true;
+  syncForm();rememberRun();
+}
+async function createAnalysis(request) {
+  if(request.period_start>request.period_end || request.period_end>request.as_of_date)throw Error('Cần Từ ngày ≤ Đến ngày ≤ Ngày chốt. Kiểm tra lại ba ngày trong thiết lập.');
+  const result=await api('/api/runs',request);
+  analysis=result.analysis;pdfAvailable=false;chartRange='all';$('execution').hidden=true;
+  syncForm();rememberRun();await loadRuns();
+}
+function renderOverview() {
+  const host=$('investor-overview');host.replaceChildren();
+  const overview=investorOverview(analysis);if(!overview)return;
+  const grid=element('div','coverage-grid');
+  const cards=[['Dữ liệu giá thực có',overview.pricePeriod,overview.data.summary.count+' phiên có giá · Kỳ yêu cầu '+displayDate(analysis.request.period_start)+' – '+displayDate(analysis.request.period_end)],
+    ['BCTC đúng lựa chọn',overview.financialPeriod,overview.financialLabel+' · '+overview.data.periods.length+' kỳ đã xác minh'],
+    ['Khả năng dùng kết luận',analysis.conclusion_usable?'Đủ điều kiện của hệ thống':'Chưa thể dùng kết luận',overview.pending.length?'Đang chờ xử lý':overview.missingRules+' trụ cột chiến lược thiếu đầu vào']];
+  for(const [label,value,note] of cards){const card=element('article','coverage-card');card.append(element('span','',label),element('strong','',value),element('small','',note));grid.append(card);}
+  host.append(grid);
+  if(overview.reasons.length){const box=element('div','coverage-reasons'),list=element('ul');
+    box.append(element('h3','',overview.blocked.length?'Cần xử lý để tiếp tục':'Điều gì còn thiếu?'));
+    for(const reason of overview.reasons)list.append(element('li','',reason));box.append(list);
+    if(overview.annualAvailable){const use=element('button','','Tạo phân tích mới với BCTC Năm');use.id='use-annual';availability(use,!draftChanged());
+      use.onclick=()=>task(async()=>{await createAnalysis({...analysis.request,financial_basis:'annual'});message('Đã tạo lần phân tích BCTC Năm, giữ nguyên ngày chốt và kỳ giá. Bấm Phân tích & tạo báo cáo để chạy.');});box.append(use);}
+    host.append(box);
+  }
+}
 function renderDashboard() {
   $('dashboard-content').innerHTML = dashboardMarkup(analysis,{range:chartRange});
   for (const button of $('dashboard-content').querySelectorAll('[data-range]')) {
-    button.onclick = () => { chartRange = button.dataset.range; renderDashboard(); };
+    button.onclick = () => { chartRange = button.dataset.range; renderDashboard(); $('dashboard-content').querySelector(`[data-range="${chartRange}"]`)?.focus({preventScroll:true}); };
   }
 }
 
@@ -29,6 +78,9 @@ function message(text, error = false) {
   $('notice').hidden = false;
   $('notice-text').textContent = text;
   $('notice').className = error ? 'error' : '';
+  $('notice').setAttribute('role',error?'alert':'status');
+  $('notice').setAttribute('aria-live',error?'assertive':'polite');
+  if(error)$('notice').scrollIntoView({block:'start'});
 }
 function availability(node, enabled, reason = '') {
   node.disabled = !enabled || busy;
@@ -54,6 +106,7 @@ async function task(fn) {
     busy = false;
     document.body.classList.remove('busy');
     document.querySelector('.workspace').setAttribute('aria-busy', 'false');
+    busyText='';
     render();
   }
 }
@@ -68,10 +121,11 @@ async function parseFile(file) {
 }
 function render() {
   renderDashboard();
+  renderOverview();
   $('run-title').textContent = analysis
     ? analysis.request.ticker + ' · ' + analysis.request.industry_name : 'Chưa tạo input';
   $('run-meta').textContent = analysis
-    ? 'Ngày chốt ' + analysis.request.as_of_date + ' · ' + analysis.request.investment_horizon + ' · Run ' + analysis.run_id
+    ? 'Ngày chốt ' + displayDate(analysis.request.as_of_date) + ' · ' + analysis.request.investment_horizon + ' (' + (analysis.request.investment_horizon_months || 'Chưa có') + ' tháng)'
     : 'Thiết lập mã cổ phiếu, ngành và kỳ phân tích để nhận dữ liệu của nhóm.';
   $('overall').textContent = analysis ? statusNames[analysis.overall_status] : 'Chờ input';
   $('overall').className = 'badge ' + (analysis?.overall_status || '');
@@ -80,8 +134,11 @@ function render() {
   $('progress').textContent = processed + ' / 4 module đã xử lý · ' + ready + ' hoàn chỉnh';
   $('next-action').textContent = !analysis
     ? 'Bước tiếp theo: tạo input ở bảng thiết lập.'
-    : ready === 4 ? 'Đã nhận đủ 4 đầu ra. Kiểm tra cảnh báo và kết quả trước khi xuất báo cáo.'
-    : 'Bước tiếp theo: bấm Chạy workflow & tạo PDF, hoặc tải lên JSON mới từ nhóm. Trạng thái Một phần vẫn có thể xuất báo cáo với cảnh báo.';
+    : pdfAvailable ? 'Báo cáo đã sẵn sàng tải. Đọc phạm vi dữ liệu và phần còn thiếu trước khi sử dụng kết luận.'
+    : processed===4 ? 'Đã xử lý đủ 4 phần. Xem phạm vi dữ liệu và cảnh báo; bạn có thể xuất báo cáo với các giới hạn được ghi rõ.'
+    : 'Bấm Phân tích & tạo báo cáo để nhận dữ liệu, đánh giá chiến lược và xuất PDF.';
+  $('busy-status').hidden=!busy;
+  $('busy-status').textContent=busyText || 'Đang xử lý yêu cầu…';
   for (const id of ['request-download', 'analysis-download', 'preview']) {
     availability($(id), !!analysis, 'Tạo hoặc mở một lần phân tích trước.');
   }
@@ -90,13 +147,15 @@ function render() {
   availability($('pdf-generate'), !!analysis && !!registry.pdf,
     registry.pdf ? 'Tạo input trước.' : 'Cần cài module PDF của người 6.');
   availability($('pdf-download'), !!analysis && pdfAvailable, 'Chưa có PDF được tạo cho lần phân tích này.');
+  availability($('download-top'),!!analysis && pdfAvailable,'Chưa có PDF cho lần phân tích này.');
+  availability($('hpg-preset'),true);
   availability($('package-upload'), true);
   $('trusted').disabled = busy;
   $('package-file').disabled = busy;
   $('request-form').querySelector('button').disabled = busy;
   $('run-select').disabled = busy;
-  $('pdf-hint').textContent = registry.pdf
-    ? 'Module PDF đã cài. Bấm Tạo PDF bằng module, sau đó tải file. Bạn cũng có thể xem / in báo cáo.'
+  $('pdf-hint').textContent = pdfAvailable ? 'PDF thuộc đúng lần phân tích đang mở. Dữ liệu thay đổi sẽ làm PDF cũ hết hiệu lực.' : registry.pdf
+    ? 'Có thể xuất PDF cả khi thiếu dữ liệu; báo cáo sẽ ghi rõ giới hạn và chưa có kết luận đủ điều kiện.'
     : 'Mở báo cáo rồi chọn In / Lưu PDF trong trình duyệt. Xuất PDF tự động cần module của người 6.';
 
   $('module-grid').replaceChildren();
@@ -135,6 +194,7 @@ function render() {
     availability(upload, !!analysis, 'Tạo input để nhận output.');
     upload.onclick = () => input.click();
     const run = element('button', '', 'Chạy module');
+    run.dataset.runModule=key;
     run.setAttribute('aria-label', 'Chạy module ' + names[key]);
     availability(run, !!analysis && !!registry[key], registry[key] ? 'Tạo input trước.' : 'Chưa cài module ' + names[key] + '.');
     run.onclick = () => execute(key);
@@ -143,7 +203,8 @@ function render() {
     availability(sample, !!analysis, 'Tạo input để tải cấu trúc đúng mã và kỳ.');
     sample.onclick = () => download(key + '.json');
     toolbar.append(upload, run, sample, input);
-    card.append(top, title, desc, summary, mode, toolbar);
+    const tools=element('details','module-tools');tools.append(element('summary','','Công cụ của nhóm: chạy riêng / nhận JSON'),mode,toolbar);
+    card.append(top, title, desc, summary, tools);
     if (m?.warnings.length || m?.errors.length) card.append(element('p', 'hint module-warning', (m.errors[0] || m.warnings[0])));
     $('module-grid').append(card);
   }
@@ -163,27 +224,37 @@ function render() {
     details.append(element('summary', '', 'Chi tiết ' + rules.length + ' trụ cột chiến lược'));
     for (const rule of rules) {
       const item = element('div', 'strategy-rule');
-      item.append(element('strong', '', (rule.rule_id || rule.id) + ' · ' + (rule.status || '')),
-        element('p', 'hint', rule.explanation || ''),
-        element('pre', '', JSON.stringify(rule.values ?? {}, null, 2)));
+      item.append(element('strong', '', (RULE_NAMES[rule.id] || rule.rule_id || rule.id) + ' · ' + (RULE_STATUS[rule.status] || rule.status || '')),
+        element('p', 'hint', rule.explanation || ''));
+      const values=element('details','rule-values');values.append(element('summary','','Xem dữ liệu và định danh quy tắc'),element('p','hint',rule.rule_id || rule.id),element('pre','',JSON.stringify(rule.values ?? {},null,2)));item.append(values);
       details.append(item);
     }
     $('strategy-results').append(details);
   }
   $('metrics').replaceChildren();
   if (analysis) {
-    const rows = Object.values(analysis.modules).flatMap(m => (m.data.metrics || []).map(v =>
-      [v.metric_id, v.value === null ? 'Chưa có' : String(v.value), v.unit]));
+    const rows = Object.entries(analysis.modules).flatMap(([key,m]) => (m.data.metrics || []).map(metric=>({key,module:m,metric,presentation:metricPresentation(metric)})));
     if (rows.length) {
       const table = element('table', 'metric-table');
       const head = element('thead'), header = element('tr'), body = element('tbody');
-      for (const title of ['Chỉ số', 'Giá trị', 'Đơn vị']) {
+      for (const title of ['Chỉ số & kỳ dữ liệu', 'Giá trị', 'Đơn vị', 'Nguồn & phương pháp']) {
         const th = element('th', '', title); th.scope = 'col'; header.append(th);
       }
       head.append(header);
       for (const row of rows) {
         const tr = element('tr');
-        for (const value of row) tr.append(element('td', '', value));
+        const name=element('td','metric-name');name.append(element('strong','',row.presentation.label),element('small','',names[row.key]+' · '+row.presentation.period));
+        const sourceCell=element('td'),details=element('details','metric-source');details.append(element('summary','','Xem nguồn ('+row.metric.source_refs.length+')'));
+        details.append(element('p','',row.metric.value===null?(row.metric.missing_reason || 'Chưa đủ đầu vào để tính.'):'Giá trị gốc: '+String(row.metric.value)+' '+row.metric.unit));
+        details.append(element('code','',row.metric.metric_id));
+        if(row.metric.formula_id)details.append(element('p','', 'Công thức: '+row.metric.formula_id));
+        const list=element('ul');
+        for(const ref of row.metric.source_refs){const s=row.module.sources.find(source=>source.source_id===ref);if(!s)continue;
+          const li=element('li'),link=element('a','',s.title);link.href=s.url;link.target='_blank';link.rel='noopener noreferrer';
+          const eligible=s.publication_date_verified && s.published_at && s.published_at.slice(0,10)<=analysis.request.as_of_date;
+          li.append(link,element('p','', 'Công bố: '+displayDate(s.published_at)+' · '+(eligible?'Đủ điều kiện ngày chốt':'Chưa đủ điều kiện ngày chốt')));list.append(li);}
+        details.append(list);sourceCell.append(details);
+        tr.append(name,element('td','',row.presentation.value),element('td','',row.presentation.unit),sourceCell);
         body.append(tr);
       }
       table.append(head, body); $('metrics').append(table);
@@ -200,6 +271,7 @@ function render() {
   $('installed').textContent = Object.keys(registry).length
     ? 'Đã cài: ' + Object.keys(registry).map(k => names[k] || (k === 'pdf' ? 'PDF' : k)).join(', ')
     : 'Chưa cài module. Bạn vẫn có thể nhận JSON và xem / in báo cáo.';
+  renderDraftState();
 }
 async function loadRuns() {
   const result = await api('/api/runs');
@@ -211,47 +283,39 @@ async function loadRuns() {
 }
 async function execute(module) {
   await task(async () => {
+    busyText=module?'Đang xử lý '+names[module]+'…':'Đang lấy Vĩ mô, Ngành, Doanh nghiệp song song; sau đó đánh giá chiến lược…';render();
     const result = await api(runUrl(module ? 'execute' : 'pipeline'), {module, confirm_execution:true});
     analysis = result.analysis;
     // Re-read PDF state because a failed execution can retain the previous artifact.
     const current = await api(runUrl());
     pdfAvailable = current.pdf_available;
     $('execution').hidden = false;
-    $('execution').textContent = result.execution.map(e => e.module + ': ' + e.status + (e.message ? ' — ' + e.message : '')).join('\n');
-    $('execution').closest('details').open = true;
+    $('execution').textContent = result.execution.map(e => names[e.module] + ': ' + ({saved:'Đã xử lý',skipped:'Chưa cài',error:'Có lỗi'}[e.status] || e.status) + (e.message ? ' — ' + e.message : '')).join('\n');
     const failed = result.execution.some(e => e.status === 'error')
       || Object.values(analysis.modules).some(m => m.status === 'error');
     if (!module && !failed && registry.pdf) {
+      busyText='Đã nhận dữ liệu và đánh giá chiến lược. Đang tạo báo cáo PDF…';render();
       message('Đã ghép dữ liệu và chiến lược. Đang tạo PDF…');
       await api(runUrl('pdf'), {confirm_execution:true});
       pdfAvailable = true;
     }
-    message(failed ? 'Có module chạy lỗi; xem nhật ký. Output hợp lệ trước đó được giữ lại.'
-      : !module && pdfAvailable ? 'Workflow đã hoàn tất. PDF sẵn sàng tải; kiểm tra các cảnh báo chất lượng dữ liệu.' : 'Đã xử lý module.', failed);
+    if(failed)$('execution').closest('details').open=true;
+    message(failed ? 'Có phần chạy lỗi: xem nhật ký và thử chạy lại phần đó.'
+      : !module && pdfAvailable ? 'Đã tạo báo cáo. PDF sẵn sàng; xem phần còn thiếu và phạm vi dữ liệu trước khi sử dụng.' : 'Đã xử lý '+(names[module] || 'dữ liệu')+'.', failed);
   });
 }
 $('request-form').onsubmit = e => {
   e.preventDefault();
   task(async () => {
     const request = Object.fromEntries(new FormData(e.target));
-    const result = await api('/api/runs', request);
-    analysis = result.analysis; pdfAvailable = false; $('execution').hidden = true;
-    chartRange = 'all';
-    $('request-form').elements.namedItem('industry_name').value = analysis.request.industry_name;
-    await loadRuns();
-    message('Đã tạo input chung. Bấm Chạy workflow & tạo PDF để xử lý các phần đã tích hợp.');
+    await createAnalysis(request);
+    message('Đã lưu cấu hình. Bấm Phân tích & tạo báo cáo để tiếp tục.');
   });
 };
 $('run-select').onchange = e => {
   const id = e.target.value;
   if (id) task(async () => {
-    const result = await api('/api/runs/' + id);
-    analysis = result.analysis; pdfAvailable = result.pdf_available; $('execution').hidden = true;
-    chartRange = 'all';
-    for (const [key, value] of Object.entries(analysis.request)) {
-      const field = $('request-form').elements.namedItem(key);
-      if (field) field.value = value;
-    }
+    await openRun(id);
   });
 };
 $('package-upload').onclick = () => $('package-file').click();
@@ -273,6 +337,14 @@ $('start').onclick = e => {
   $('request-form').elements.namedItem('ticker').focus({preventScroll:true});
 };
 $('pipeline').onclick = () => execute();
+$('download-top').onclick = () => download('report.pdf');
+$('request-form').addEventListener('input',renderDraftState);
+$('request-form').addEventListener('change',renderDraftState);
+$('hpg-preset').onclick = () => {
+  const preset={ticker:'HPG',exchange:'HOSE',industry_name:'',as_of_date:'2026-10-09',period_start:'2025-01-01',period_end:'2026-10-08',investment_horizon:'Trung hạn',investment_horizon_months:12,financial_basis:'annual',statement_scope:'consolidated'};
+  for(const [key,value] of Object.entries(preset))$('request-form').elements.namedItem(key).value=value;
+  renderDraftState();message('Đã điền cấu hình snapshot HPG. Bạn có thể chỉnh lại trước khi Tạo lần phân tích.');
+};
 $('request-download').onclick = () => download('request.json');
 $('analysis-download').onclick = () => download('analysis.json');
 $('preview').onclick = () => window.open(runUrl('report'), '_blank', 'noopener');
@@ -299,5 +371,9 @@ render();
 task(async () => {
   const result = await api('/api/modules');
   registry = result.registry;
+  let previous;try{previous=localStorage.getItem('mmb-last-run');}catch{}
+  if(previous && /^[a-f0-9-]{36}$/.test(previous)){
+    try{await openRun(previous);}catch(e){if(!e.message.includes('Không tìm thấy'))throw e;try{localStorage.removeItem('mmb-last-run');}catch{}}
+  }
   await loadRuns();
 });

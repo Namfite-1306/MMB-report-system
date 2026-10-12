@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="vi">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><title>MMB Analysis</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('hub-theme')==='light'?'light':'dark'}catch{document.documentElement.dataset.theme='dark'}</script><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/dashboard.css"><script src="/app.js" type="module"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><title>MMB Analysis</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('hub-theme')==='light'?'light':'dark'}catch{document.documentElement.dataset.theme='dark'}</script><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/dashboard.css"><link rel="stylesheet" href="/ux.css"><script src="/app.js" type="module"></script></head>
 <body>
 <a class="skip-link" href="#setup">Đến phần thiết lập</a>
 <header class="site-header">
@@ -30,13 +30,16 @@
 <div class="layout">
 <aside>
 <section class="panel input-panel" id="setup">
-<div class="section-title"><span class="step">01</span><h2>Thiết lập phân tích</h2></div><p class="section-description">Một input chung cho toàn bộ nhóm.</p>
+<div class="section-title"><span class="step">01</span><h2>Thiết lập phân tích</h2></div><p class="section-description">Chọn cổ phiếu và thời điểm thông tin được phép sử dụng.</p>
+<button id="hpg-preset" class="quick-start" type="button">Điền cấu hình HPG đã bàn giao <span aria-hidden="true">↗</span></button><p class="setup-help">Cấu hình HPG dùng snapshot đến 09/10/2026; không phải dữ liệu cập nhật trực tiếp.</p>
 <form id="request-form">
 <div class="pair"><label>Mã cổ phiếu<input name="ticker" required placeholder="Nhập mã" maxlength="12" autocomplete="off" spellcheck="false"></label><label>Sàn<select name="exchange"><option>HOSE</option><option>HNX</option><option>UPCOM</option></select></label></div>
 <label>Tên ngành<input name="industry_name" placeholder="Tự tra theo mã cổ phiếu, hoặc nhập tên ngành"></label>
 <label>Ngày chốt dữ liệu<input type="date" name="as_of_date" required></label><div class="pair"><label>Từ ngày<input type="date" name="period_start" required></label><label>Đến ngày<input type="date" name="period_end" required></label></div>
+<p class="setup-help">Ngày chốt: chỉ dùng thông tin đã công bố đến ngày này. Khoảng từ/đến: kỳ giá cần xem, có thể ngắn hơn lịch sử dữ liệu thực có.</p>
 <div class="pair"><label>Thời hạn đầu tư<input name="investment_horizon" required placeholder="Ví dụ: Trung hạn"></label><label>Số tháng đầu tư<input name="investment_horizon_months" type="number" min="1" max="600" value="12" required></label></div>
 <div class="pair"><label>Kỳ BCTC<select name="financial_basis"><option value="annual">Năm</option><option value="ytd">Lũy kế (YTD)</option><option value="quarterly">Quý</option><option value="ttm">12 tháng (TTM)</option></select></label><label>Phạm vi BCTC<select name="statement_scope"><option value="consolidated">Hợp nhất</option><option value="separate">Riêng lẻ</option></select></label></div>
+<p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
 <button class="primary wide" type="submit">Tạo lần phân tích <span aria-hidden="true">↗</span></button>
 </form>
 <div class="divider"></div><label>Mở lần phân tích đã lưu<select id="run-select"><option value="">Chọn lần phân tích</option></select></label><p class="hint">Đổi mã, kỳ hoặc ngày chốt bằng một lần phân tích mới. Gửi <code>request.json</code> cho nhóm trước khi nhận output.</p>
@@ -48,11 +51,11 @@
 </aside>
 <div class="workspace">
 <section class="panel run-panel"><div class="run-head"><div><p class="eyebrow">LẦN PHÂN TÍCH HIỆN TẠI</p><h2 id="run-title">Chưa tạo input</h2></div><span id="overall" class="badge">Chờ input</span></div><p id="run-meta" class="hint"></p>
-<div class="toolbar"><button id="request-download" disabled>Tải request.json <span aria-hidden="true">↓</span></button><button id="pipeline" class="primary" disabled>Chạy workflow & tạo PDF <span aria-hidden="true">↗</span></button><button id="analysis-download" disabled>Tải analysis.json <span aria-hidden="true">↓</span></button></div><p id="next-action" class="next-action">Bắt đầu bằng việc tạo input ở bảng thiết lập.</p></section>
+<div class="toolbar"><button id="pipeline" class="primary" disabled>Phân tích & tạo báo cáo <span aria-hidden="true">↗</span></button><button id="download-top" disabled>Tải PDF <span aria-hidden="true">↓</span></button><button id="request-download" disabled>Tải input JSON</button><button id="analysis-download" disabled>Tải dữ liệu JSON</button></div><p id="busy-status" role="status" aria-live="polite" hidden></p><p id="next-action" class="next-action">Bắt đầu bằng việc tạo input ở bảng thiết lập.</p><div class="run-links"><a href="#dashboard">Xem diễn biến giá</a><a href="#report">Đọc kết quả & nguồn</a></div><div id="investor-overview" class="investor-overview"></div></section>
 <section id="data"><div class="section-title"><span class="step">02</span><h2>Dữ liệu & chiến lược</h2></div><p class="section-description">Tải lên JSON của nhóm hoặc chạy module đã cài.</p><div id="module-grid" class="module-grid"></div></section>
 <section id="dashboard" aria-labelledby="dashboard-title"><div class="section-title"><span class="step">↗</span><h2 id="dashboard-title">Dashboard phân tích</h2></div><p class="section-description">Diễn biến giá, giao dịch và tài chính từ dữ liệu bàn giao.</p><div id="dashboard-content"></div></section>
-<section class="panel report-panel" id="report"><div class="section-title"><span class="step">03</span><h2>Kết quả & báo cáo</h2></div><div id="conclusion" class="empty"></div><div id="strategy-results"></div><div id="metrics" class="table-scroll" tabindex="0" role="region" aria-label="Bảng chỉ số phân tích"></div>
-<div class="toolbar"><button id="preview" class="primary" disabled>Xem / In báo cáo <span aria-hidden="true">↗</span></button><button id="pdf-generate" disabled>Tạo PDF bằng module</button><button id="pdf-download" disabled>Tải PDF <span aria-hidden="true">↓</span></button></div><p id="pdf-hint" class="hint">Mở báo cáo rồi chọn In / Lưu PDF trong trình duyệt. Xuất PDF tự động cần module của người 6.</p></section>
+<section class="panel report-panel" id="report"><div class="section-title"><span class="step">03</span><h2>Kết quả & báo cáo</h2></div><div id="conclusion" class="empty"></div>
+<div class="toolbar report-actions"><button id="preview" class="primary" disabled>Xem / In báo cáo <span aria-hidden="true">↗</span></button><button id="pdf-generate" disabled>Tạo lại PDF</button><button id="pdf-download" disabled>Tải PDF <span aria-hidden="true">↓</span></button></div><p id="pdf-hint" class="hint">Mở báo cáo rồi chọn In / Lưu PDF trong trình duyệt. Xuất PDF tự động cần module của người 6.</p><div id="strategy-results"></div><div id="metrics" class="table-scroll" tabindex="0" role="region" aria-label="Bảng chỉ số phân tích"></div></section>
 <section class="panel log-panel"><details><summary>Kiểm tra & nhật ký <span id="issue-count" class="badge">Chưa có dữ liệu</span></summary><ul id="issues"><li>Chưa có lần phân tích.</li></ul><pre id="execution" hidden></pre></details></section>
 </div></div>
 </main>
