@@ -4,6 +4,16 @@ export const MODULE_NAMES={macro:'Vĩ mô',industry:'Ngành',company:'Doanh nghi
 export const BASIS_NAMES={annual:'Năm',quarterly:'Quý',ytd:'Lũy kế (YTD)',ttm:'12 tháng (TTM)'};
 export const RULE_NAMES={macro:'Bối cảnh vĩ mô',industry:'Triển vọng ngành',fundamental:'Sức khỏe tài chính',value:'Đầu tư giá trị',relative_valuation:'Định giá so sánh',momentum:'Xu hướng giá',risk:'Rủi ro danh mục',capm:'Lợi suất yêu cầu (CAPM)',news:'Tin tức và sự kiện'};
 export const RULE_STATUS={evaluated:'Đã đánh giá',insufficient_data:'Thiếu dữ liệu',not_applicable:'Không áp dụng',error:'Có lỗi',pending:'Đang chờ'};
+export function runLabel(request) {
+  return [request.ticker,displayDate(request.as_of_date),BASIS_NAMES[request.financial_basis] || 'Năm',request.statement_scope==='separate'?'Riêng lẻ':'Hợp nhất',request.run_id.slice(0,8)].join(' · ');
+}
+const searchable=value=>String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'d').toLowerCase();
+export function matchesMetric(metric,module,{query='',section='all',missingOnly=false}={}) {
+  if(section!=='all' && module!==section)return false;
+  if(missingOnly && metric.value!==null)return false;
+  const text=searchable([metricPresentation(metric).label,metric.metric_id,metric.period_start,metric.period_end].join(' '));
+  return searchable(query).trim().split(/\s+/).every(term=>text.includes(term));
+}
 const METRIC_NAMES={vn_real_gdp_growth_annual_yoy_2024:'Tăng trưởng GDP thực 2024',vn_cpi_average_growth_annual_yoy_2024:'Lạm phát bình quân 2024',vn_sbv_refinancing_rate_effective_2023_06_19:'Lãi suất tái cấp vốn',vn_sbv_central_usd_vnd_2025_01_06:'Tỷ giá trung tâm USD/VND',ind_pe_median:'P/E trung vị nhóm ngành',ind_pb_median:'P/B trung vị nhóm ngành',ind_roe_avg:'ROE bình quân nhóm ngành',ind_net_margin_avg:'Biên lợi nhuận ròng nhóm ngành',ind_crude_steel_consumption_growth:'Tăng trưởng tiêu thụ thép thô',ind_iip_metal_growth:'Tăng trưởng sản xuất kim loại'};
 const num=(value,digits=2)=>new Intl.NumberFormat('vi-VN',{maximumFractionDigits:digits}).format(value);
 export function displayDate(value) {

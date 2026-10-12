@@ -27,6 +27,16 @@
 .metric-source p { color:var(--muted); line-height:1.7; margin:8px 0; overflow-wrap:anywhere }
 .metric-source code { font-size:10px; overflow-wrap:anywhere }
 .rule-values summary { font-size:12px; margin-top:12px; color:var(--muted) }
+.metric-filters { display:flex; flex-wrap:wrap; align-items:end; gap:12px; margin:24px 0 12px }
+.metric-filters>label { flex:1 1 180px; font-size:12px; margin:0 }
+.metric-filters input[type="search"],.metric-filters select { margin-top:6px; min-height:44px }
+.metric-filters .check { flex:1 1 200px; min-height:44px }
+.metric-filters .check input { width:18px; height:18px; flex:none; margin:0 }
+.metric-filters button,#draft-discard { min-height:44px }
+#notice { flex-wrap:wrap }
+#notice-text { flex:1 1 260px }
+#connection-retry { font-size:12px; flex:none }
+#draft-status:empty { display:none }
 .chart-plot { overflow-x:auto }
 .chart-plot:focus-visible { outline:2px solid var(--green); outline-offset:3px }
 .chart-scroll-hint { display:none }

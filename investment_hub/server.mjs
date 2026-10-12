@@ -1,5 +1,5 @@
 import http from 'node:http';
-import {readFile, mkdir, readdir, realpath} from 'node:fs/promises';
+import {readFile, mkdir, readdir, realpath, stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {randomUUID} from 'node:crypto';
@@ -26,7 +26,7 @@ export async function createApp({root=here}={}) {
       const url=new URL(req.url,`http://${host}`), route=url.pathname;
       if(req.headers.origin)assert(req.headers.origin===`http://${host}`,'Không cho phép yêu cầu từ website khác.');
       res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('X-Frame-Options','DENY');
-      if(req.method==='GET' && ['/','/app.js','/style.css','/dashboard.js','/dashboard.css','/presentation.js','/ux.css'].includes(route)) {
+      if(req.method==='GET' && ['/','/app.js','/api.js','/style.css','/dashboard.js','/dashboard.css','/presentation.js','/ux.css'].includes(route)) {
         const file=route==='/'?'index.html':route.slice(1);res.setHeader('Content-Type',file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8');res.end(await readFile(path.join(here,'public',file)));return;
       }
       if(req.method==='GET'&&route==='/api/modules')return json(res,200,{registry:await readJSON(path.join(plugins,'registry.json'),{}),python_configured:!!process.env.PYTHON_BIN});
@@ -35,12 +35,13 @@ export async function createApp({root=here}={}) {
         try{return json(res,200,{registry:await installPackage(plugins,b.package)});}finally{installing=false;}
       }
       if(route==='/api/runs'&&req.method==='GET') {
-        const runs=[];for(const id of await readdir(storage)){try{const r=await readJSON(path.join(runDir(id),'state.json'));runs.push(r.request);}catch{}}
-        return json(res,200,{runs:runs.reverse()});
+        const runs=[];for(const id of await readdir(storage)){try{const filename=path.join(runDir(id),'state.json'),r=await readJSON(filename);const created=r.created_at || (await stat(path.join(runDir(id),'request.json'))).birthtime.toISOString();runs.push({...r.request,created_at:created});}catch{}}
+        runs.sort((a,b)=>b.created_at.localeCompare(a.created_at) || b.run_id.localeCompare(a.run_id));
+        return json(res,200,{runs});
       }
       if(route==='/api/runs'&&req.method==='POST') {
         const request=validateRequest(await body(req),randomUUID()),dir=runDir(request.run_id);await mkdir(dir);
-        const run={dir,request,meta:{request,revision:0,pdf:null},modules:{}};
+        const run={dir,request,meta:{request,created_at:new Date().toISOString(),revision:0,pdf:null},modules:{}};
         await writeJSON(path.join(dir,'state.json'),run.meta);await writeJSON(path.join(dir,'request.json'),request);
         for(const name of MODULES){run.modules[name]=pending(request,name);await writeJSON(path.join(dir,`${name}.json`),run.modules[name]);}
         return json(res,201,{analysis:await saveAnalysis(run)});

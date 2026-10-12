@@ -28,7 +28,7 @@ Không ghi đường dẫn cá nhân cố định vào mã nguồn.
 
 ## Cách dùng
 
-**Người 1–4 và PDF người 6 đã cài:** tạo input rồi bấm **Chạy workflow & tạo PDF**.
+**Người 1–4 và PDF người 6 đã cài:** tạo input rồi bấm **Phân tích & tạo báo cáo**.
 Không cần nhập mã ngành; hệ thống tra theo bản ánh xạ ticker của người 2. Tên ngành
 có thể để trống để tự điền. Mã chưa được ánh xạ ghi rõ Chưa phân loại.
 Tab Dashboard có giá/MA20, khối lượng, doanh thu/LNST/CFO và bộ lọc thời gian.
@@ -43,7 +43,20 @@ Nút sáng/tối nằm trên thanh đầu trang và lưu lựa chọn trên máy
 4. Tải `strategy.json` sau dữ liệu, hoặc cài/chạy module người 4. Đổi bất kỳ module
    dữ liệu nào sẽ đưa chiến lược về pending và vô hiệu PDF cũ, tránh kết luận lỗi thời.
 5. Tải `analysis.json`, hoặc mở báo cáo để In / Lưu PDF bằng trình duyệt.
-6. Module PDF người 6 đã tích hợp. Bấm Tạo PDF bằng module → Tải PDF.
+6. Module PDF người 6 đã tích hợp. Workflow tạo PDF tự động; nếu cần xuất lại, bấm Tạo lại PDF → Tải PDF.
+
+Bản nháp cấu hình được lưu riêng cho từng lần phân tích trên trình duyệt này.
+Khi tải lại trang hoặc mở lại lần đó, bản nháp được khôi phục nhưng không áp dụng
+vào kết quả đã lưu. Bấm **Tạo lần phân tích** để áp dụng, hoặc **Khôi phục cấu hình
+đã lưu** để bỏ bản nháp. Trình duyệt chặn localStorage sẽ hiện thông báo chưa lưu nháp.
+Form khóa khi workflow đang chạy. Bộ lọc chỉ số hỗ trợ tìm không dấu, chọn nhóm và
+chỉ xem giá trị thiếu; bộ lọc không thay đổi JSON, chiến lược hay PDF xuất toàn bộ.
+Danh sách phiên xếp theo thời gian tạo; phiên cũ chưa có metadata thời gian dùng
+ngày tạo tệp request trên máy làm mốc thay thế.
+
+Nếu mất kết nối, bấm **Thử kết nối lại** để đọc trạng thái và danh sách đã lưu.
+App không tự gửi lại các yêu cầu tạo/chạy/xuất khi mất phản hồi, tránh thực hiện
+trùng một hành động có thể đã hoàn tất. Xem [lộ trình hoàn thiện](docs/product-roadmap.md).
 
 Đóng gói/cài lại PDF sau khi sửa: `node scripts/install-pdf.mjs`. Nguồn tại
 `PDF Format/report/`; gói bàn giao tại `packages/pdf.module.json`. Renderer dùng

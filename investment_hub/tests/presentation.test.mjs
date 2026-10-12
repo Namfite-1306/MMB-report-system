@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {metricPresentation,investorOverview} from '../public/presentation.js';
+import {metricPresentation,investorOverview,runLabel,matchesMetric} from '../public/presentation.js';
 
 test('investor display formats units without changing original metrics or treating missing as zero',()=>{
   const metric={metric_id:'macro:vn_real_gdp_growth_annual_yoy_2024',value:.0709,unit:'ratio',period_start:'2024-01-01',period_end:'2024-12-31'};
@@ -31,4 +31,17 @@ test('overview distinguishes execution failures from pending and small calendar 
   const overview=investorOverview(a);
   assert.equal(overview.gap,false);assert.deepEqual(overview.blocked,['Doanh nghiệp']);assert.deepEqual(overview.pending,['Chiến lược']);
   assert.match(overview.reasons[0],/lỗi/);
+});
+test('metric search supports Vietnamese without accents and keeps zero separate from missing',()=>{
+  const m={metric_id:'company:net_profit',name:'Lợi nhuận sau thuế',value:0,unit:'VND',period_start:'2025-01-01',period_end:'2025-12-31'};
+  assert.equal(matchesMetric(m,'company',{query:'loi nhuan 2025'}),true);
+  assert.equal(matchesMetric(m,'company',{section:'macro'}),false);
+  assert.equal(matchesMetric(m,'company',{missingOnly:true}),false);
+  assert.equal(matchesMetric({...m,value:null},'company',{query:'thuế',missingOnly:true}),true);
+  assert.equal(matchesMetric(m,'company',{query:'doanh thu'}),false);
+});
+test('saved run labels distinguish frequency and scope without exposing full UUID',()=>{
+  const r={ticker:'HPG',as_of_date:'2026-10-09',financial_basis:'quarterly',statement_scope:'separate',run_id:'abcdef12-3456-7890-1234-123456789012'};
+  assert.equal(runLabel(r),'HPG · 09/10/2026 · Quý · Riêng lẻ · abcdef12');
+  assert.match(runLabel({...r,financial_basis:'annual',statement_scope:'consolidated'}),/Năm · Hợp nhất/);
 });

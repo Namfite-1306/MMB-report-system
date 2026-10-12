@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,rm,readFile} from 'node:fs/promises';
+import {mkdtemp,rm,readFile,writeFile} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {createApp} from '../server.mjs';
@@ -19,6 +19,22 @@ test('create, persist, upload, download and invalidate old strategy',async t=>{
   assert.equal((await fetch(`${base}/api/runs/${id}/report`)).status,200);assert.equal((await fetch(`${base}/api/runs/${id}/download/report.pdf`)).status,400);
 });
 test('uploads cannot install untrusted code or escape package directory',async t=>{const {call,root}=await setup(t);assert.equal((await call('/api/modules/install',{package:{}})).status,400);await assert.rejects(installPackage(path.join(root,'modules'),{package_version:'1.0',module:'strategy',entrypoint:'run.mjs',files:[{path:'../run.mjs',content:'x'}]}));});
+test('saved runs sort by creation time and support legacy state without changing requests',async t=>{
+  const {call,root}=await setup(t);
+  const ids=[];for(let i=0;i<3;i++)ids.push((await call('/api/runs',input)).json.analysis.run_id);
+  for(const [i,id] of ids.entries()) {
+    const filename=path.join(root,'storage','runs',id,'state.json');
+    const state=JSON.parse(await readFile(filename,'utf8'));
+    if(i<2)state.created_at=i===0?'2099-01-01T00:00:00.000Z':'2000-01-01T00:00:00.000Z';
+    else delete state.created_at;
+    await writeFile(filename,JSON.stringify(state));
+  }
+  const {runs}=(await call('/api/runs')).json;
+  assert.deepEqual(runs.map(r=>r.run_id),[ids[0],ids[2],ids[1]]);
+  assert.ok(Number.isFinite(Date.parse(runs[1].created_at)));
+  const saved=JSON.parse(await readFile(path.join(root,'storage','runs',ids[0],'request.json'),'utf8'));
+  assert.equal(saved.created_at,undefined);
+});
 test('installed JS module executes with stdin JSON and respects schema',async t=>{
   const {call}=await setup(t);const code=await readFile(new URL('../templates/run.mjs',import.meta.url),'utf8');const install=await call('/api/modules/install',{trusted:true,package:{package_version:'1.0',module:'strategy',entrypoint:'run.mjs',files:[{path:'run.mjs',content:code}]}});assert.equal(install.status,200);
   const created=await call('/api/runs',input),id=created.json.analysis.run_id;

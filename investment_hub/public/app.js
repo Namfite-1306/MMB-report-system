@@ -1,5 +1,6 @@
 import {dashboardMarkup} from './dashboard.js';
-import {metricPresentation,investorOverview,displayDate,RULE_NAMES,RULE_STATUS} from './presentation.js';
+import {metricPresentation,investorOverview,displayDate,RULE_NAMES,RULE_STATUS,runLabel,matchesMetric} from './presentation.js';
+import {requestJSON} from './api.js';
 const $ = id => document.getElementById(id);
 const names = {macro:'Vĩ mô', industry:'Ngành', company:'Doanh nghiệp', strategy:'Chiến lược'};
 const descriptions = {
@@ -14,14 +15,37 @@ const labels = {attractive:'Có cơ hội', watchlist:'Theo dõi', unattractive:
 let analysis = null, registry = {}, busy = false, pdfAvailable = false;
 let chartRange = 'all';
 let busyText='';
+let draftNote='';
+function formRequest() {
+  return Object.fromEntries(Array.from($('request-form').elements).filter(field=>field.name).map(field=>[field.name,field.value]));
+}
+const draftKey=()=> 'mmb-draft-'+(analysis?.run_id || 'new');
+function saveDraft() {
+  try {
+    if(!draftChanged() && analysis){localStorage.removeItem(draftKey());draftNote='';}
+    else {localStorage.setItem(draftKey(),JSON.stringify(formRequest()));draftNote='Bản nháp được lưu trên trình duyệt này; chưa áp dụng vào kết quả.';}
+  } catch {draftNote='Không lưu được bản nháp trên trình duyệt này. Hãy tạo lần phân tích để lưu cấu hình vào hệ thống.';}
+}
+function restoreDraft() {
+  draftNote='';
+  try {
+    const saved=JSON.parse(localStorage.getItem(draftKey()) || 'null');
+    if(!saved || typeof saved!=='object')return;
+    for(const field of Array.from($('request-form').elements))if(field.name && typeof saved[field.name]==='string')field.value=saved[field.name];
+    draftNote='Đã khôi phục bản nháp trên trình duyệt này; kết quả vẫn thuộc cấu hình đã lưu.';
+  } catch {draftNote='Không đọc được bản nháp; cấu hình đã lưu vẫn được giữ.';}
+}
 function draftChanged() {
   if(!analysis)return false;
-  const draft=Object.fromEntries(new FormData($('request-form')));
+  const draft=formRequest();
   return Object.entries(draft).some(([key,value])=>String(value).trim().toUpperCase()!==String(analysis.request[key] ?? '').trim().toUpperCase());
 }
 function renderDraftState() {
   const changed=draftChanged();
   $('form-feedback').textContent=changed?'Cấu hình đã đổi nhưng kết quả bên phải vẫn thuộc lần đã lưu. Bấm Tạo lần phân tích để áp dụng cấu hình mới.':'';
+  $('draft-status').textContent=draftNote;
+  $('draft-discard').hidden=!changed;
+  availability($('draft-discard'),!!analysis && changed);
   availability($('pipeline'),!!analysis && !changed && Object.keys(names).some(k=>registry[k]),changed?'Tạo lần phân tích mới để áp dụng cấu hình.':'Tạo input và cài module trước.');
   availability($('pdf-generate'),!!analysis && !changed && !!registry.pdf);
   if($('use-annual'))availability($('use-annual'),!changed,'Tạo lần phân tích mới để áp dụng cấu hình đang sửa.');
@@ -29,19 +53,19 @@ function renderDraftState() {
 }
 function rememberRun() { try{localStorage.setItem('mmb-last-run',analysis.run_id);}catch{} }
 function syncForm() {
-  for(const [key,value] of Object.entries(analysis.request)) {
-    const field=$('request-form').elements.namedItem(key);if(field)field.value=value;
-  }
+  for(const field of Array.from($('request-form').elements))if(field.name)field.value=analysis.request[field.name] ?? '';
 }
 async function openRun(id) {
   const result=await api('/api/runs/'+id);
   analysis=result.analysis;pdfAvailable=result.pdf_available;chartRange='all';$('execution').hidden=true;
-  syncForm();rememberRun();
+  syncForm();restoreDraft();rememberRun();
 }
 async function createAnalysis(request) {
   if(request.period_start>request.period_end || request.period_end>request.as_of_date)throw Error('Cần Từ ngày ≤ Đến ngày ≤ Ngày chốt. Kiểm tra lại ba ngày trong thiết lập.');
+  const previousDraft=draftKey();
   const result=await api('/api/runs',request);
   analysis=result.analysis;pdfAvailable=false;chartRange='all';$('execution').hidden=true;
+  try{localStorage.removeItem(previousDraft);}catch{}draftNote='';
   syncForm();rememberRun();await loadRuns();
 }
 function renderOverview() {
@@ -80,6 +104,7 @@ function message(text, error = false) {
   $('notice').className = error ? 'error' : '';
   $('notice').setAttribute('role',error?'alert':'status');
   $('notice').setAttribute('aria-live',error?'assertive':'polite');
+  $('connection-retry').hidden=!error;
   if(error)$('notice').scrollIntoView({block:'start'});
 }
 function availability(node, enabled, reason = '') {
@@ -87,12 +112,7 @@ function availability(node, enabled, reason = '') {
   node.title = busy ? 'Đang xử lý, vui lòng chờ.' : enabled ? '' : reason;
 }
 async function api(route, body) {
-  const response = await fetch(route, body === undefined ? {} : {
-    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
-  });
-  const result = await response.json();
-  if (!response.ok) throw Error(result.error || 'Yêu cầu thất bại.');
-  return result;
+  return requestJSON(route,body);
 }
 async function task(fn) {
   if (busy) return;
@@ -124,8 +144,9 @@ function render() {
   renderOverview();
   $('run-title').textContent = analysis
     ? analysis.request.ticker + ' · ' + analysis.request.industry_name : 'Chưa tạo input';
+  if(analysis)$('run-select').value=analysis.run_id;
   $('run-meta').textContent = analysis
-    ? 'Ngày chốt ' + displayDate(analysis.request.as_of_date) + ' · ' + analysis.request.investment_horizon + ' (' + (analysis.request.investment_horizon_months || 'Chưa có') + ' tháng)'
+    ? 'Ngày chốt ' + displayDate(analysis.request.as_of_date) + ' · ' + analysis.request.exchange + ' · ' + analysis.request.investment_horizon + ' (' + (analysis.request.investment_horizon_months || 'Chưa có') + ' tháng) · '+runLabel(analysis.request).split(' · ').slice(2,4).join(' · ')
     : 'Thiết lập mã cổ phiếu, ngành và kỳ phân tích để nhận dữ liệu của nhóm.';
   $('overall').textContent = analysis ? statusNames[analysis.overall_status] : 'Chờ input';
   $('overall').className = 'badge ' + (analysis?.overall_status || '');
@@ -150,9 +171,10 @@ function render() {
   availability($('download-top'),!!analysis && pdfAvailable,'Chưa có PDF cho lần phân tích này.');
   availability($('hpg-preset'),true);
   availability($('package-upload'), true);
+  availability($('connection-retry'),true);
   $('trusted').disabled = busy;
   $('package-file').disabled = busy;
-  $('request-form').querySelector('button').disabled = busy;
+  for(const field of $('request-form').querySelectorAll('input,select,button'))field.disabled=busy;
   $('run-select').disabled = busy;
   $('pdf-hint').textContent = pdfAvailable ? 'PDF thuộc đúng lần phân tích đang mở. Dữ liệu thay đổi sẽ làm PDF cũ hết hiệu lực.' : registry.pdf
     ? 'Có thể xuất PDF cả khi thiếu dữ liệu; báo cáo sẽ ghi rõ giới hạn và chưa có kết luận đủ điều kiện.'
@@ -231,9 +253,28 @@ function render() {
     }
     $('strategy-results').append(details);
   }
+  renderMetrics();
+  const issues = analysis ? [...analysis.errors, ...analysis.warnings] : [];
+  $('issue-count').textContent = analysis ? (issues.length ? issues.length + ' cần kiểm tra' : 'Không có cảnh báo') : 'Chưa có dữ liệu';
+  $('issue-count').className = 'badge ' + (analysis?.errors.length ? 'error' : issues.length ? 'partial' : '');
+  $('issues').replaceChildren();
+  for (const text of issues.length ? issues : [analysis ? 'Không có lỗi/cảnh báo từ output hiện tại.' : 'Chưa có lần phân tích.']) {
+    $('issues').append(element('li', '', text));
+  }
+  if (analysis?.errors.length) $('issues').closest('details').open = true;
+  $('installed').textContent = Object.keys(registry).length
+    ? 'Đã cài: ' + Object.keys(registry).map(k => names[k] || (k === 'pdf' ? 'PDF' : k)).join(', ')
+    : 'Chưa cài module. Bạn vẫn có thể nhận JSON và xem / in báo cáo.';
+  renderDraftState();
+}
+function renderMetrics() {
   $('metrics').replaceChildren();
+  $('metric-filters').hidden=!analysis;
+  $('metric-count').textContent='';
   if (analysis) {
-    const rows = Object.entries(analysis.modules).flatMap(([key,m]) => (m.data.metrics || []).map(metric=>({key,module:m,metric,presentation:metricPresentation(metric)})));
+    const allRows = Object.entries(analysis.modules).flatMap(([key,m]) => (m.data.metrics || []).map(metric=>({key,module:m,metric,presentation:metricPresentation(metric)})));
+    const rows=allRows.filter(row=>matchesMetric(row.metric,row.key,{query:$('metric-search').value,section:$('metric-section').value,missingOnly:$('metric-missing').checked}));
+    $('metric-count').textContent='Hiển thị '+rows.length+' / '+allRows.length+' chỉ số · '+allRows.filter(row=>row.metric.value===null).length+' chỉ số thiếu dữ liệu trong toàn bộ kết quả. Bộ lọc chỉ đổi bảng đang xem.';
     if (rows.length) {
       const table = element('table', 'metric-table');
       const head = element('thead'), header = element('tr'), body = element('tbody');
@@ -258,26 +299,14 @@ function render() {
         body.append(tr);
       }
       table.append(head, body); $('metrics').append(table);
-    }
+    } else $('metrics').append(element('p','hint',allRows.length?'Không có chỉ số khớp bộ lọc. Xóa bộ lọc để xem lại toàn bộ.':'Chưa có chỉ số. Chạy phân tích hoặc nhận dữ liệu của nhóm.'));
   }
-  const issues = analysis ? [...analysis.errors, ...analysis.warnings] : [];
-  $('issue-count').textContent = analysis ? (issues.length ? issues.length + ' cần kiểm tra' : 'Không có cảnh báo') : 'Chưa có dữ liệu';
-  $('issue-count').className = 'badge ' + (analysis?.errors.length ? 'error' : issues.length ? 'partial' : '');
-  $('issues').replaceChildren();
-  for (const text of issues.length ? issues : [analysis ? 'Không có lỗi/cảnh báo từ output hiện tại.' : 'Chưa có lần phân tích.']) {
-    $('issues').append(element('li', '', text));
-  }
-  if (analysis?.errors.length) $('issues').closest('details').open = true;
-  $('installed').textContent = Object.keys(registry).length
-    ? 'Đã cài: ' + Object.keys(registry).map(k => names[k] || (k === 'pdf' ? 'PDF' : k)).join(', ')
-    : 'Chưa cài module. Bạn vẫn có thể nhận JSON và xem / in báo cáo.';
-  renderDraftState();
 }
 async function loadRuns() {
   const result = await api('/api/runs');
   $('run-select').replaceChildren(new Option('Chọn lần phân tích', ''));
   for (const request of result.runs) {
-    $('run-select').add(new Option(request.ticker + ' · ' + request.as_of_date + ' · ' + request.run_id.slice(0,8), request.run_id));
+    $('run-select').add(new Option(runLabel(request), request.run_id));
   }
   if (analysis) $('run-select').value = analysis.run_id;
 }
@@ -306,14 +335,15 @@ async function execute(module) {
 }
 $('request-form').onsubmit = e => {
   e.preventDefault();
+  const request = formRequest();
   task(async () => {
-    const request = Object.fromEntries(new FormData(e.target));
     await createAnalysis(request);
     message('Đã lưu cấu hình. Bấm Phân tích & tạo báo cáo để tiếp tục.');
   });
 };
 $('run-select').onchange = e => {
   const id = e.target.value;
+  if(analysis)$('run-select').value=analysis.run_id;
   if (id) task(async () => {
     await openRun(id);
   });
@@ -338,12 +368,15 @@ $('start').onclick = e => {
 };
 $('pipeline').onclick = () => execute();
 $('download-top').onclick = () => download('report.pdf');
-$('request-form').addEventListener('input',renderDraftState);
-$('request-form').addEventListener('change',renderDraftState);
+$('request-form').addEventListener('input',()=>{if(!busy)saveDraft();renderDraftState();});
+$('request-form').addEventListener('change',()=>{if(!busy)saveDraft();renderDraftState();});
+$('draft-discard').onclick=()=>{syncForm();draftNote='';try{localStorage.removeItem(draftKey());}catch{}renderDraftState();};
+for(const id of ['metric-search','metric-section','metric-missing'])$(id).addEventListener(id==='metric-search'?'input':'change',renderMetrics);
+$('metric-reset').onclick=()=>{$('metric-search').value='';$('metric-section').value='all';$('metric-missing').checked=false;renderMetrics();};
 $('hpg-preset').onclick = () => {
   const preset={ticker:'HPG',exchange:'HOSE',industry_name:'',as_of_date:'2026-10-09',period_start:'2025-01-01',period_end:'2026-10-08',investment_horizon:'Trung hạn',investment_horizon_months:12,financial_basis:'annual',statement_scope:'consolidated'};
   for(const [key,value] of Object.entries(preset))$('request-form').elements.namedItem(key).value=value;
-  renderDraftState();message('Đã điền cấu hình snapshot HPG. Bạn có thể chỉnh lại trước khi Tạo lần phân tích.');
+  saveDraft();renderDraftState();message('Đã điền cấu hình snapshot HPG. Bạn có thể chỉnh lại trước khi Tạo lần phân tích.');
 };
 $('request-download').onclick = () => download('request.json');
 $('analysis-download').onclick = () => download('analysis.json');
@@ -366,14 +399,20 @@ $('theme-toggle').onclick = () => {
   try { localStorage.setItem('hub-theme', document.documentElement.dataset.theme); } catch {}
   renderTheme();
 };
-renderTheme();
-render();
-task(async () => {
+async function reconnect() {
+ await task(async () => {
   const result = await api('/api/modules');
   registry = result.registry;
   let previous;try{previous=localStorage.getItem('mmb-last-run');}catch{}
   if(previous && /^[a-f0-9-]{36}$/.test(previous)){
-    try{await openRun(previous);}catch(e){if(!e.message.includes('Không tìm thấy'))throw e;try{localStorage.removeItem('mmb-last-run');}catch{}}
+    try{await openRun(previous);}catch(e){if(e.status!==404)throw e;if(analysis?.run_id===previous){analysis=null;pdfAvailable=false;}try{localStorage.removeItem('mmb-last-run');}catch{}}
   }
+  if(!analysis)restoreDraft();
   await loadRuns();
-});
+  $('notice').hidden=true;
+ });
+}
+$('connection-retry').onclick=()=>reconnect();
+renderTheme();
+render();
+reconnect();
