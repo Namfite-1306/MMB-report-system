@@ -1,0 +1,13 @@
+{
+  "url": "https://trading.vietcap.com.vn/api/chart/OHLCChart/gap-chart",
+  "retrieved_at": "2026-10-09T14:56:47+07:00",
+  "sha256": "9142a77038f75b86ae3949d7b5a65efd5571a122a308d38b2055c0e90ef7acb5",
+  "request_body": {
+    "timeFrame": "ONE_DAY",
+    "symbols": [
+      "HPG"
+    ],
+    "to": 1791478800,
+    "countBack": 665
+  }
+}

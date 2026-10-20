@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "ticker": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]{1,9}$"
+    },
+    "exchange": {
+      "enum": [
+        "HOSE",
+        "HNX",
+        "UPCOM"
+      ]
+    },
+    "industry_code": {
+      "type": "string"
+    },
+    "industry_name": {
+      "type": "string"
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "investment_horizon": {
+      "type": "string"
+    },
+    "language": {
+      "const": "vi"
+    },
+    "currency": {
+      "const": "VND"
+    },
+    "financial_basis": {
+      "enum": [
+        "annual",
+        "ytd",
+        "quarterly",
+        "ttm"
+      ]
+    },
+    "statement_scope": {
+      "enum": [
+        "consolidated",
+        "separate"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "ticker",
+    "exchange",
+    "industry_code",
+    "industry_name",
+    "as_of_date",
+    "period_start",
+    "period_end",
+    "investment_horizon",
+    "language",
+    "currency"
+  ],
+  "additionalProperties": true,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,1135 @@
+{
+  "ticker": "HPG",
+  "sources": [
+    {
+      "source_id": "company_src_annual_pdf_bs_assets",
+      "title": "BCTC hợp nhất kiểm toán HPG 2025 - bs_assets",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "published_at": "2026-03-27",
+      "retrieved_at": "2026-10-09T14:42:08.701509+07:00",
+      "locator": "Trang PDF 8; trang in 6; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/annual_pdf.pdf",
+      "raw_sha256": "f38c5f75becf7d3f145d27183eec81f119fd4f75e378b983a2763ddc3f7e0c07"
+    },
+    {
+      "source_id": "company_src_annual_pdf_bs_current",
+      "title": "BCTC hợp nhất kiểm toán HPG 2025 - bs_current",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "published_at": "2026-03-27",
+      "retrieved_at": "2026-10-09T14:42:08.701509+07:00",
+      "locator": "Trang PDF 7; trang in 5; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/annual_pdf.pdf",
+      "raw_sha256": "f38c5f75becf7d3f145d27183eec81f119fd4f75e378b983a2763ddc3f7e0c07"
+    },
+    {
+      "source_id": "company_src_annual_pdf_bs_funding",
+      "title": "BCTC hợp nhất kiểm toán HPG 2025 - bs_funding",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "published_at": "2026-03-27",
+      "retrieved_at": "2026-10-09T14:42:08.701509+07:00",
+      "locator": "Trang PDF 9; trang in 7; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/annual_pdf.pdf",
+      "raw_sha256": "f38c5f75becf7d3f145d27183eec81f119fd4f75e378b983a2763ddc3f7e0c07"
+    },
+    {
+      "source_id": "company_src_annual_pdf_income",
+      "title": "BCTC hợp nhất kiểm toán HPG 2025 - income",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "published_at": "2026-03-27",
+      "retrieved_at": "2026-10-09T14:42:08.701509+07:00",
+      "locator": "Trang PDF 10; trang in 8; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/annual_pdf.pdf",
+      "raw_sha256": "f38c5f75becf7d3f145d27183eec81f119fd4f75e378b983a2763ddc3f7e0c07"
+    },
+    {
+      "source_id": "company_src_annual_pdf_cashflow",
+      "title": "BCTC hợp nhất kiểm toán HPG 2025 - cashflow",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "published_at": "2026-03-27",
+      "retrieved_at": "2026-10-09T14:42:08.701509+07:00",
+      "locator": "Trang PDF 11; trang in 9; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/annual_pdf.pdf",
+      "raw_sha256": "f38c5f75becf7d3f145d27183eec81f119fd4f75e378b983a2763ddc3f7e0c07"
+    },
+    {
+      "source_id": "company_src_interim_pdf_bs_assets",
+      "title": "BCTC hợp nhất soát xét HPG 6 tháng 2026 - bs_assets",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "published_at": "2026-08-28",
+      "retrieved_at": "2026-10-09T14:42:14.478379+07:00",
+      "locator": "Trang PDF 10; trang in 6; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/interim_pdf.pdf",
+      "raw_sha256": "9a2881a88ac8ca4cc5cd948b0fafa031ff30fd0332a372f362477a8a6b0c9968"
+    },
+    {
+      "source_id": "company_src_interim_pdf_bs_current",
+      "title": "BCTC hợp nhất soát xét HPG 6 tháng 2026 - bs_current",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "published_at": "2026-08-28",
+      "retrieved_at": "2026-10-09T14:42:14.478379+07:00",
+      "locator": "Trang PDF 9; trang in 5; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/interim_pdf.pdf",
+      "raw_sha256": "9a2881a88ac8ca4cc5cd948b0fafa031ff30fd0332a372f362477a8a6b0c9968"
+    },
+    {
+      "source_id": "company_src_interim_pdf_bs_funding",
+      "title": "BCTC hợp nhất soát xét HPG 6 tháng 2026 - bs_funding",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "published_at": "2026-08-28",
+      "retrieved_at": "2026-10-09T14:42:14.478379+07:00",
+      "locator": "Trang PDF 11; trang in 7; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/interim_pdf.pdf",
+      "raw_sha256": "9a2881a88ac8ca4cc5cd948b0fafa031ff30fd0332a372f362477a8a6b0c9968"
+    },
+    {
+      "source_id": "company_src_interim_pdf_income",
+      "title": "BCTC hợp nhất soát xét HPG 6 tháng 2026 - income",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "published_at": "2026-08-28",
+      "retrieved_at": "2026-10-09T14:42:14.478379+07:00",
+      "locator": "Trang PDF 12; trang in 8; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/interim_pdf.pdf",
+      "raw_sha256": "9a2881a88ac8ca4cc5cd948b0fafa031ff30fd0332a372f362477a8a6b0c9968"
+    },
+    {
+      "source_id": "company_src_interim_pdf_cashflow",
+      "title": "BCTC hợp nhất soát xét HPG 6 tháng 2026 - cashflow",
+      "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "published_at": "2026-08-28",
+      "retrieved_at": "2026-10-09T14:42:14.478379+07:00",
+      "locator": "Trang PDF 13; trang in 9; VND; cột kỳ này/kỳ trước",
+      "publication_date_verified": true,
+      "verification_method": "Đối chiếu ảnh PDF và ngày đăng trên trang issuer",
+      "publication_evidence_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "raw_file": "hpg_raw/interim_pdf.pdf",
+      "raw_sha256": "9a2881a88ac8ca4cc5cd948b0fafa031ff30fd0332a372f362477a8a6b0c9968"
+    }
+  ],
+  "financials": [
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_current_assets",
+      "item_id": "current_assets",
+      "value": 103659402759724,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_cash",
+      "item_id": "cash",
+      "value": 8300890304205,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_inventory",
+      "item_id": "inventory",
+      "value": 52828227344442,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_current_assets",
+      "item_id": "current_assets",
+      "value": 86674276272995,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_cash",
+      "item_id": "cash",
+      "value": 6887646139852,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_inventory",
+      "item_id": "inventory",
+      "value": 46091222189472,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_assets",
+      "item_id": "assets",
+      "value": 257899200817547,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_assets"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_assets",
+      "item_id": "assets",
+      "value": 224489707553981,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_assets"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_liabilities",
+      "item_id": "liabilities",
+      "value": 126679189940972,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_current_liabilities",
+      "item_id": "current_liabilities",
+      "value": 94186268324508,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_short_debt",
+      "item_id": "short_debt",
+      "value": 64694957245143,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_long_debt",
+      "item_id": "long_debt",
+      "value": 27479194057074,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_equity_total",
+      "item_id": "equity_total",
+      "value": 131220010876575,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-12-31_2025-12-31_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "value": 2039012776403,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2025-12-31",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_liabilities",
+      "item_id": "liabilities",
+      "value": 109842249570282,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_current_liabilities",
+      "item_id": "current_liabilities",
+      "value": 75225243262689,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_short_debt",
+      "item_id": "short_debt",
+      "value": 55882686213459,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_long_debt",
+      "item_id": "long_debt",
+      "value": 27080443256096,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_equity_total",
+      "item_id": "equity_total",
+      "value": 114647457983699,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-12-31_2024-12-31_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "value": 290990632368,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2024-12-31",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_revenue",
+      "item_id": "revenue",
+      "value": 156116094618482,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_gross_profit",
+      "item_id": "gross_profit",
+      "value": 24497788183182,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_interest_expense",
+      "item_id": "interest_expense",
+      "value": 3114855868974,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_pretax_profit",
+      "item_id": "pretax_profit",
+      "value": 18040591977880,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_net_profit",
+      "item_id": "net_profit",
+      "value": 15514931571606,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_parent_profit",
+      "item_id": "parent_profit",
+      "value": 15453174006223,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_basic_eps",
+      "item_id": "basic_eps",
+      "value": 1973,
+      "unit": "VND/share",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_revenue",
+      "item_id": "revenue",
+      "value": 138855112131387,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_gross_profit",
+      "item_id": "gross_profit",
+      "value": 18497549127684,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_interest_expense",
+      "item_id": "interest_expense",
+      "value": 2287360810880,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_pretax_profit",
+      "item_id": "pretax_profit",
+      "value": 13693502261178,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_net_profit",
+      "item_id": "net_profit",
+      "value": 12020023621271,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_parent_profit",
+      "item_id": "parent_profit",
+      "value": 12021443836074,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_basic_eps",
+      "item_id": "basic_eps",
+      "value": 1505,
+      "unit": "VND/share",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_cfo",
+      "item_id": "cfo",
+      "value": 17365859056591,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2025-01-01_2025-12-31_capex_cash",
+      "item_id": "capex_cash",
+      "value": -25748320476719,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_cfo",
+      "item_id": "cfo",
+      "value": 6608320655215,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_annual_pdf_2024-01-01_2024-12-31_capex_cash",
+      "item_id": "capex_cash",
+      "value": -35495026797327,
+      "unit": "VND",
+      "frequency": "annual",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_annual_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_current_assets",
+      "item_id": "current_assets",
+      "value": 119968988853207,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_cash",
+      "item_id": "cash",
+      "value": 9782057360909,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_inventory",
+      "item_id": "inventory",
+      "value": 55607877088316,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_current"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_assets",
+      "item_id": "assets",
+      "value": 278929786247772,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_assets"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_liabilities",
+      "item_id": "liabilities",
+      "value": 137413759457075,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_current_liabilities",
+      "item_id": "current_liabilities",
+      "value": 105037075079739,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_short_debt",
+      "item_id": "short_debt",
+      "value": 71433383400905,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_long_debt",
+      "item_id": "long_debt",
+      "value": 27096593831648,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_equity_total",
+      "item_id": "equity_total",
+      "value": 141516026790697,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-06-30_2026-06-30_noncontrolling_interest",
+      "item_id": "noncontrolling_interest",
+      "value": 859680276468,
+      "unit": "VND",
+      "frequency": "point_in_time",
+      "period_start": "2026-06-30",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_bs_funding"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_revenue",
+      "item_id": "revenue",
+      "value": 108059749601554,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_gross_profit",
+      "item_id": "gross_profit",
+      "value": 18852855801426,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_interest_expense",
+      "item_id": "interest_expense",
+      "value": 2853028567414,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_pretax_profit",
+      "item_id": "pretax_profit",
+      "value": 17946868046971,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_net_profit",
+      "item_id": "net_profit",
+      "value": 15480392467117,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_parent_profit",
+      "item_id": "parent_profit",
+      "value": 15365022248705,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_basic_eps",
+      "item_id": "basic_eps",
+      "value": 1781,
+      "unit": "VND/share",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_revenue",
+      "item_id": "revenue",
+      "value": 73532193664787,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_gross_profit",
+      "item_id": "gross_profit",
+      "value": 12013876410841,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_interest_expense",
+      "item_id": "interest_expense",
+      "value": 1066136992112,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_pretax_profit",
+      "item_id": "pretax_profit",
+      "value": 8812148842683,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_net_profit",
+      "item_id": "net_profit",
+      "value": 7614329521616,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_parent_profit",
+      "item_id": "parent_profit",
+      "value": 7600771906152,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_basic_eps",
+      "item_id": "basic_eps",
+      "value": 880,
+      "unit": "VND/share",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_income"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_cfo",
+      "item_id": "cfo",
+      "value": 12641697117285,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2026-01-01_2026-06-30_capex_cash",
+      "item_id": "capex_cash",
+      "value": -12523577829074,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2026-01-01",
+      "period_end": "2026-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_cfo",
+      "item_id": "cfo",
+      "value": 507162083475,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    },
+    {
+      "record_id": "company_pdf_interim_pdf_2025-01-01_2025-06-30_capex_cash",
+      "item_id": "capex_cash",
+      "value": -10688184320479,
+      "unit": "VND",
+      "frequency": "ytd",
+      "period_start": "2025-01-01",
+      "period_end": "2025-06-30",
+      "statement_scope": "consolidated",
+      "source_refs": [
+        "company_src_interim_pdf_cashflow"
+      ],
+      "verified": true,
+      "verification_method": "read_pdf_visual"
+    }
+  ],
+  "price_series": [],
+  "news": [],
+  "warnings": [
+    "BCTC bán niên 2026 phân loại lại số đầu kỳ; không suy luận tăng trưởng TSNH/tồn kho giữa hai cách phân loại.",
+    "EPS năm 2025 và H1/2026 chưa đối chiếu điều chỉnh cổ phiếu 2026; P/E giữ null.",
+    "Ngày công bố issuer FY2025=2026-03-27/H1-2026=2026-08-28; API publicDate=2026-03-30/2026-09-03.",
+    "Ảnh PDF năm 2025 xác nhận LNST 15.514.931.571.606 VND; không dùng bản OCR chưa kiểm."
+  ]
+}

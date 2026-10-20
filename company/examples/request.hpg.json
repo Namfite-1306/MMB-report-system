@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run_hpg_company_20261009_v1",
+  "ticker": "HPG",
+  "exchange": "HOSE",
+  "industry_code": "1750",
+  "industry_name": "Sản xuất Thép & Kim loại",
+  "as_of_date": "2026-10-09",
+  "period_start": "2025-01-01",
+  "period_end": "2026-10-08",
+  "investment_horizon": "6–12 tháng (cấu hình chạy thử; người 5 thay bằng lựa chọn người dùng)",
+  "language": "vi",
+  "currency": "VND",
+  "financial_basis": "ytd",
+  "statement_scope": "consolidated"
+}

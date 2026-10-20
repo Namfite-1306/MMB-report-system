@@ -1,0 +1,6 @@
+{
+  "url": "https://iq.vietcap.com.vn/api/iq-insight-service/v1/news?ticker=HPG&fromDate=20250101&toDate=20261009&languageId=1&page=0&size=50",
+  "retrieved_at": "2026-10-09T14:56:55+07:00",
+  "sha256": "604ec93ea8977e387ad24a2e9ae64fcaa58e9a2e751350bd2a4ccb5dea01595b",
+  "request_body": null
+}

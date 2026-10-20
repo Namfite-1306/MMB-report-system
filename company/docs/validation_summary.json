@@ -1,0 +1,66 @@
+{
+  "validated_at": "2026-10-09T15:04:20.955722+07:00",
+  "company_tests": {
+    "run": 41,
+    "failures": 0,
+    "errors": 0
+  },
+  "industry_existing_tests": {
+    "run": 5,
+    "passed": 5
+  },
+  "output_checks": [
+    {
+      "file": "company.json",
+      "contract_valid": true,
+      "status": "partial",
+      "errors": [],
+      "coverage": {
+        "prices_count": 437,
+        "financial_records_count": 66,
+        "financial_candidates_count": 361,
+        "verified_financial_records_count": 66,
+        "metrics_available": 20,
+        "news_count": 50
+      }
+    },
+    {
+      "file": "company/examples/company.hpg.annual.json",
+      "contract_valid": true,
+      "status": "partial",
+      "errors": [],
+      "coverage": {
+        "prices_count": 437,
+        "financial_records_count": 66,
+        "financial_candidates_count": 361,
+        "verified_financial_records_count": 66,
+        "metrics_available": 20,
+        "news_count": 50
+      }
+    },
+    {
+      "file": "company/examples/company.hpg.live.json",
+      "contract_valid": true,
+      "status": "partial",
+      "errors": [],
+      "coverage": {
+        "prices_count": 437,
+        "financial_records_count": 66,
+        "financial_candidates_count": 361,
+        "verified_financial_records_count": 66,
+        "metrics_available": 20,
+        "news_count": 50
+      }
+    }
+  ],
+  "reconciliation": {
+    "compared": 64,
+    "exact_matches": 64,
+    "mismatches": 0
+  },
+  "live_collection_verified": true,
+  "repo_base_commit": "ebc994d6546754df272407b91d39d4019f135e40",
+  "push_performed": false,
+  "pdf_group_report_checked": false,
+  "json_schema_external_validator": "Không cài jsonschema; kiểm bằng contract validator và bộ test stdlib"
+}
